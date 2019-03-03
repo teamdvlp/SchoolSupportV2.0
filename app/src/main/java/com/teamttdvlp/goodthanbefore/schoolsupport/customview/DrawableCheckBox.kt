@@ -9,6 +9,10 @@ import android.widget.CompoundButton
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 
 
+/**
+ * This class is created for reducing drawable's count
+ * We don't need to create .xml file selector for state changing
+ */
 class DrawableCheckBox: CheckBox {
 
     var checked_background : Drawable? = null
@@ -46,7 +50,6 @@ class DrawableCheckBox: CheckBox {
                         unchecked_background
 
     }
-
 
     override fun setOnCheckedChangeListener(listener: OnCheckedChangeListener?) {
         var newListener = object : OnCheckedChangeListener {

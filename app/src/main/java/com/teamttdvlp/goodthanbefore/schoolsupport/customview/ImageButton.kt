@@ -6,11 +6,17 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
 
 
-class ImageButton : CheckBox {
+/**
+ * This class is created for reducing drawable's count
+ * We don't need to create clicked_state_drawable of button when it is clicked as well as
+ * the .xml file selector
+ */
+class ImageButton : Button {
 
     private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
         duration = 200
@@ -25,10 +31,6 @@ class ImageButton : CheckBox {
 
     constructor(context : Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         setOnTouchListener(null)
-    }
-
-    override fun setOnCheckedChangeListener(listener: OnCheckedChangeListener?) {
-        super.setOnCheckedChangeListener(listener)
     }
 
     override fun setOnTouchListener(l: OnTouchListener?) {

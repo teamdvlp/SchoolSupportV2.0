@@ -4,6 +4,6 @@
         <bitmap android:src="@drawable/rbtn_checked_failed"/>
     </item>
     <item android:state_checkable="true">
-        <bitmap android:src="@drawable/rbtn_checked_ok"/>
+        <bitmap android:src="@drawable/rbtn_check_ok"/>
     </item>
 </selector>
