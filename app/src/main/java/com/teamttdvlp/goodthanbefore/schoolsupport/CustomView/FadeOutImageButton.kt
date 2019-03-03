@@ -11,11 +11,9 @@ import android.widget.ImageButton
 
 class FadeOutImageButton : ImageButton {
 
-    companion object {
-        private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
-            duration = 200
-            fillAfter = true
-        }
+    private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
+        duration = 200
+        fillAfter = true
     }
 
     var mOnClickListener : View.OnClickListener? = null
