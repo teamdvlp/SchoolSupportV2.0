@@ -1,4 +1,4 @@
-package com.teamttdvlp.goodthanbefore.schoolsupport.CustomView
+package com.teamttdvlp.goodthanbefore.schoolsupport.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -9,7 +9,7 @@ import android.view.animation.Animation
 import android.widget.ImageButton
 
 
-class FadeOutImageButton : ImageButton {
+class ImageButton : ImageButton {
 
     private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
         duration = 200
