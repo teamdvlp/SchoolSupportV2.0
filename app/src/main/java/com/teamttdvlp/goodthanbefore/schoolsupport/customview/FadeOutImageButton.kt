@@ -6,10 +6,11 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.widget.CheckBox
 import android.widget.ImageButton
 
 
-class ImageButton : ImageButton {
+class ImageButton : CheckBox {
 
     private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
         duration = 200
@@ -24,6 +25,10 @@ class ImageButton : ImageButton {
 
     constructor(context : Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         setOnTouchListener(null)
+    }
+
+    override fun setOnCheckedChangeListener(listener: OnCheckedChangeListener?) {
+        super.setOnCheckedChangeListener(listener)
     }
 
     override fun setOnTouchListener(l: OnTouchListener?) {
