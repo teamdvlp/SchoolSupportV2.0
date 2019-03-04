@@ -3,101 +3,134 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [FragmentSignUp.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [FragmentSignUp.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class FragmentSignUp : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private lateinit var mBinding : FragmentSignUpBinding
+    private lateinit var mActivityModel : LoginViewModel
+
+    private var isEmailValid = false
+    private var isPasswordValid = true
+    private var isRepeatPassValidValid = true
+    private var isDisplayNameValid = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+        mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_sign_up, container, false)
+        mActivityModel = activity!!.getViewModel()
+        return mBinding.root
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addControls()
+        setup()
+        addEvents()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
+    private fun addEvents() {
+        mBinding.edtEmail.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                isEmailValid = mActivityModel.checkEmail(s.toString())
+                mBinding.rbtnEmailValid.isChecked = isEmailValid
+                mBinding.rbtnEmailValid.visibility = View.VISIBLE
+                resetButton()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        mBinding.edtPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                isPasswordValid = mActivityModel.checkPassword(s.toString())
+                mBinding.rbtnPasswordValid.isChecked = isPasswordValid
+                mBinding.rbtnPasswordValid.visibility = View.VISIBLE
+                resetButton()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+        mBinding.edtDisplayname.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                var isDisplayNameValid = mActivityModel.checkDisplayname(s.toString())
+                mBinding.rbtnDisplayNameValid.isChecked = isDisplayNameValid
+                mBinding.rbtnDisplayNameValid.visibility = View.VISIBLE
+                resetButton()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+        mBinding.edtRepeatPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                isRepeatPassValidValid = mBinding.edtPassword.text.toString().equals(mBinding.edtRepeatPassword.text.toString())
+                mBinding.rbtnRepeatPasswordValid.isChecked = isRepeatPassValidValid
+                mBinding.rbtnRepeatPasswordValid.visibility = View.VISIBLE
+                resetButton()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
+
+
+    }
+
+    private fun resetButton () {
+        if (isEmailValid && isDisplayNameValid && isPasswordValid && isRepeatPassValidValid) {
+            mBinding.btnSignUpDefault.visibility = View.GONE
+            mBinding.btnSignupOk.visibility = View.VISIBLE
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            mBinding.btnSignUpDefault.visibility = View.VISIBLE
+            mBinding.btnSignupOk.visibility = View.GONE
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    private fun setup() {
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+    private fun addControls() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentSignUp.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentSignUp().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private val mInstance : FragmentSignUp = FragmentSignUp()
+        fun getInstance () : FragmentSignUp {
+            return mInstance
+        }
+
     }
 }

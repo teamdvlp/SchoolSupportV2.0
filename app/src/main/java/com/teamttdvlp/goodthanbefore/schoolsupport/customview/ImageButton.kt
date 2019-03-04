@@ -16,7 +16,7 @@ import android.widget.ImageButton
  * We don't need to create clicked_state_drawable of button when it is clicked as well as
  * the .xml file selector
  */
-class ImageButton : Button {
+class ImageButton : ImageButton {
 
     private val fade_out_anim : Animation = AlphaAnimation(0.6f, 1.0f).apply {
         duration = 200
