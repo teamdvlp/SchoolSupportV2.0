@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        startActivity(Intent(this, InterestActivity::class.java))
         addControls()
         addSetup()
         addEvents()
