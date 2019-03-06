@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,21 +19,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.firebase.auth.FacebookAuthProvider
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.LogCode
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import kotlinx.coroutines.*
 import java.lang.Exception
 import java.util.*
 
-
-class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult> {
-
+class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult>, LoginEvent {
     private lateinit var mBinding : FragmentLoginBinding
     private lateinit var signinApi : GoogleApiClient
     private lateinit var mCallbackManager: CallbackManager
@@ -43,6 +39,7 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     private val REQUESTCODE_GG_SIGNIN = 9
 
     private lateinit var activityViewModel : LoginViewModel
+    @InternalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,6 +70,7 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
         mBinding.btnLoginFacebook.setOnClickListener({
             loginFacebook()
         })
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -82,9 +80,9 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                var loginManager : LoginManager = com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager()
-
+                activityViewModel.loginWithGoogle(account!!)
             } catch (e: ApiException) {
+                Result
                 Log.w(LogCode.login, "Google sign in failed", e)
             }
         } else {
@@ -122,33 +120,29 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     }
 
     override fun onSuccess(result: LoginResult?) {
-        var loginManager : LoginManager = com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager()
-        loginManager.onLoginEvent = object : LoginEvent{
-            override fun onLoginSuccess(user: User) {
-                Toast.makeText(context, "thanh cong", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onLoginFailed(e: Exception?) {
-                Toast.makeText(context, "thanh cong cc", Toast.LENGTH_LONG).show()
-            }
-
-        }
-        loginManager.loginWithFacebook(result!!.accessToken!!)
+        activityViewModel.loginWithFacebook(result!!.accessToken)
     }
 
     override fun onCancel() {
         Log.w(LogCode.login, "FB connection was cancel")
     }
 
+    override fun onLoginSuccess(user: User) {
+        Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
+    }
+
+    override fun onLoginFailed(e: Exception?) {
+        Toast.makeText(context, "Login failed", Toast.LENGTH_LONG)
+    }
+
     override fun onError(error: FacebookException?) {
         Log.w(LogCode.login, "FB connection failed: " + error!!.message)
     }
 
-
-
     private fun setUp() {
         GGLoginSetup()
         setupLoginFacebook()
+        activityViewModel.onLoginEvent = this
     }
     companion object {
         private val mInstance : FragmentLogin = FragmentLogin()
