@@ -1,5 +1,11 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.users
 
+import com.google.firebase.firestore.Exclude
+
 class User {
-    lateinit var id : String
+    var id : String = ""
+    var avatar = ""
+    var displayName = ""
+    @Exclude
+    var interests : ArrayList<String> = ArrayList()
 }

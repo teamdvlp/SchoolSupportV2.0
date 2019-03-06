@@ -3,4 +3,19 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import java.lang.Exception
 
-data class LoginEvent (var onSuccess : (User)->Unit, var onFailed : (Exception))
+interface LoginEvent {
+    fun onLoginSuccess (user:User)
+    fun onLoginFailed (e:Exception?)
+}
+interface WriteInfoEvent {
+    fun onWriteInfoSuccess ()
+    fun onWriteInfoFailed (e:Exception?)
+}
+interface ReadInfoEvent {
+    fun onReadInfoSuccess (user:User?)
+    fun onReadInfoFailed (e:Exception?)
+}
+interface GetUserInterestEvent {
+    fun onGetUserInterestSuccess (user:ArrayList<String>)
+    fun onGetUserInterestFailed (e:Exception?)
+}

@@ -16,7 +16,7 @@ class CheckRegisterInfo {
     }
 
     fun checkDisplayName(displayName:String) : Boolean {
-        return displayName.length>8
+        return displayName.length>=8
     }
 
 }

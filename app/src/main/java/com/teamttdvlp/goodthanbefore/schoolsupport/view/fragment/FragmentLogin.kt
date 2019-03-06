@@ -1,46 +1,154 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.facebook.*
+import com.facebook.login.LoginResult
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FacebookAuthProvider
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.LogCode
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import java.lang.Exception
+import java.util.*
 
 
-class FragmentLogin : Fragment() {
+class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult> {
+
     private lateinit var mBinding : FragmentLoginBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var signinApi : GoogleApiClient
+    private lateinit var mCallbackManager: CallbackManager
+    private var permissonFacebook = Arrays.asList("email","public_profile")
+    private lateinit var mFBLoginManager:com.facebook.login.LoginManager
+    private val REQUESTCODE_GG_SIGNIN = 9
 
+    private lateinit var activityViewModel : LoginViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_login, container, false)
         addControls()
-        setup()
+        setUp()
         addEvents()
         return mBinding.root
-
     }
 
     private fun addControls() {
+        activityViewModel = activity!!.getViewModel()
     }
 
     private fun addEvents() {
-        mBinding.btnSignup.setOnClickListener({
+        mBinding.btnLogin.setOnClickListener({
+            val email = mBinding.edtEmail.text.toString()
+            val password = mBinding.edtPassword.text.toString()
+            activityViewModel.loginNormally(email, password)
+        })
 
+        mBinding.btnLoginGoogle.setOnClickListener({
+            var intent = Auth.GoogleSignInApi.getSignInIntent(signinApi)
+            startActivityForResult(intent, REQUESTCODE_GG_SIGNIN)
+        })
+
+        mBinding.btnLoginFacebook.setOnClickListener({
+            loginFacebook()
         })
     }
 
-    private fun setup() {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        mCallbackManager.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUESTCODE_GG_SIGNIN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                var loginManager : LoginManager = com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager()
 
+            } catch (e: ApiException) {
+                Log.w(LogCode.login, "Google sign in failed", e)
+            }
+        } else {
+        }
+
+    }
+
+    private fun GGLoginSetup() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .requestProfile()
+            .build()
+
+        signinApi = GoogleApiClient.Builder(context!!)
+            .enableAutoManage(requireActivity(), this)
+            .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+            .build()
+    }
+
+    private fun setupLoginFacebook () {
+        FacebookSdk.sdkInitialize(context)
+        mCallbackManager = CallbackManager.Factory.create()
+        mFBLoginManager = com.facebook.login.LoginManager.getInstance()
+    }
+
+    private fun loginFacebook () {
+        mFBLoginManager.logInWithReadPermissions(this, permissonFacebook)
+        mFBLoginManager.registerCallback(mCallbackManager, this)
+    }
+
+    // google login connection failed
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        Log.w(LogCode.login, "GG connection failed: " + p0.errorMessage)
+    }
+
+    override fun onSuccess(result: LoginResult?) {
+        var loginManager : LoginManager = com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager()
+        loginManager.onLoginEvent = object : LoginEvent{
+            override fun onLoginSuccess(user: User) {
+                Toast.makeText(context, "thanh cong", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onLoginFailed(e: Exception?) {
+                Toast.makeText(context, "thanh cong cc", Toast.LENGTH_LONG).show()
+            }
+
+        }
+        loginManager.loginWithFacebook(result!!.accessToken!!)
+    }
+
+    override fun onCancel() {
+        Log.w(LogCode.login, "FB connection was cancel")
+    }
+
+    override fun onError(error: FacebookException?) {
+        Log.w(LogCode.login, "FB connection failed: " + error!!.message)
+    }
+
+
+
+    private fun setUp() {
+        GGLoginSetup()
+        setupLoginFacebook()
     }
     companion object {
         private val mInstance : FragmentLogin = FragmentLogin()

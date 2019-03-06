@@ -31,7 +31,7 @@
                 android:layout_height="40dp"
                 android:paddingBottom="3dp"
                 android:inputType="textEmailAddress"
-                android:hint="Name"
+                android:hint="Display Name"
                 android:ems="10"
                 android:id="@+id/edtDisplayname" android:layout_marginTop="65dp"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -51,12 +51,12 @@
                 android:inputType="textPassword"
                 android:hint="Email"
                 android:ems="10"
-                android:id="@+id/edtEmail" android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@+id/edtDisplayname"
+                android:id="@+id/edtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/txtErrMessDisplayNameInValid"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintHorizontal_bias="0.0"/>
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="23dp"/>
         <EditText
                 android:layout_width="222dp"
                 android:background="@drawable/edt_account"
@@ -74,8 +74,8 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintHorizontal_bias="0.482"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@+id/edtEmail"/>
+                android:layout_marginTop="23dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtErrMessEmailInValid"/>
         <EditText
                 android:layout_width="222dp"
                 android:background="@drawable/edt_account"
@@ -92,8 +92,8 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintHorizontal_bias="0.482"
-                app:layout_constraintTop_toBottomOf="@+id/edtPassword" android:layout_marginTop="25dp"/>
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintTop_toBottomOf="@+id/txtErrMessPasswordInValid" android:layout_marginTop="23dp"/>
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.ImageButton
                 android:layout_width="222dp"
                 android:scaleType="center"
@@ -116,8 +116,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintHorizontal_bias="0.482"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@+id/edtRepeatPassword"/>
+                android:layout_marginTop="23dp" app:layout_constraintTop_toBottomOf="@+id/txtErrMessRepeatPasswordInValid"/>
         <androidx.constraintlayout.widget.Guideline
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5"
@@ -126,48 +125,99 @@
                 android:id="@+id/guideline"/>
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
                 app:checked_background="@drawable/rbtn_check_ok"
+                android:focusable="false"
                 android:enabled="false"
                 app:unchecked_background="@drawable/rbtn_checked_failed"
-                android:layout_width="22dp"
+                android:layout_width="12dp"
                 android:checked="true"
-                android:layout_height="22dp"
+                android:layout_height="12dp"
                 android:id="@+id/rbtnDisplayNameValid"
                 app:layout_constraintStart_toEndOf="@+id/edtDisplayname"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintTop_toTopOf="@+id/edtDisplayname" android:visibility="gone"/>
+                app:layout_constraintTop_toTopOf="@+id/edtDisplayname" android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/edtDisplayname"/>
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
                 app:checked_background="@drawable/rbtn_check_ok"
+                android:focusable="false"
                 app:unchecked_background="@drawable/rbtn_checked_failed"
                 android:enabled="false"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:id="@+id/rbtnEmailValid"
                 app:layout_constraintStart_toEndOf="@+id/edtEmail"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp" app:layout_constraintTop_toTopOf="@+id/edtEmail"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toTopOf="@+id/edtEmail"
+                android:visibility="gone" app:layout_constraintBottom_toBottomOf="@+id/edtEmail"/>
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
                 app:checked_background="@drawable/rbtn_check_ok"
+                android:focusable="false"
                 app:unchecked_background="@drawable/rbtn_checked_failed"
                 android:enabled="false"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:id="@+id/rbtnPasswordValid"
                 app:layout_constraintStart_toEndOf="@+id/edtPassword"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp" app:layout_constraintTop_toTopOf="@+id/edtPassword"
-                android:visibility="gone"/>
+                android:layout_marginTop="9dp" app:layout_constraintTop_toTopOf="@+id/edtPassword"
+                android:visibility="gone" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtErrMessPasswordInValid"/>
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
                 app:checked_background="@drawable/rbtn_check_ok"
                 app:unchecked_background="@drawable/rbtn_checked_failed"
-                android:layout_width="22dp"
+                android:focusable="false"
+                android:layout_width="12dp"
                 android:enabled="false"
-                android:layout_height="22dp"
+                android:layout_height="12dp"
                 android:id="@+id/rbtnRepeatPasswordValid"
                 app:layout_constraintStart_toEndOf="@+id/edtRepeatPassword"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp" app:layout_constraintTop_toTopOf="@+id/edtRepeatPassword"
+                app:layout_constraintTop_toTopOf="@+id/edtRepeatPassword"
+                android:visibility="gone" app:layout_constraintBottom_toBottomOf="@+id/edtRepeatPassword"/>
+        <TextView
+                android:text="Your display name must be at least 8 characters"
+                android:fontFamily="@font/marat_sans_regular"
+                android:textSize="12sp"
+                android:textColor="#DD4B39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtErrMessDisplayNameInValid" android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/edtDisplayname"
+                app:layout_constraintStart_toStartOf="@+id/edtDisplayname" android:layout_marginStart="20dp"
                 android:visibility="gone"/>
+        <TextView
+                android:text="Your email is invalid"
+                android:fontFamily="@font/marat_sans_regular"
+                android:textSize="12sp"
+                android:textColor="#DD4B39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtErrMessEmailInValid"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmail"
+                app:layout_constraintStart_toStartOf="@+id/edtEmail" android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp" android:visibility="gone"/>
+        <TextView
+                android:text="Your password name must be \nat least 8 characters,\nhave at least 1 upper case character\nand have at least 1 number"
+                android:fontFamily="@font/marat_sans_regular"
+                android:textSize="12sp"
+                android:textColor="#DD4B39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtErrMessPasswordInValid"
+                app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+                app:layout_constraintStart_toStartOf="@+id/edtPassword" android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+        />
+        <TextView
+                android:text="Your repeat password does not match"
+                android:fontFamily="@font/marat_sans_regular"
+                android:textSize="12sp"
+                android:textColor="#DD4B39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtErrMessRepeatPasswordInValid"
+                app:layout_constraintTop_toBottomOf="@+id/edtRepeatPassword"
+                android:layout_marginStart="20dp" app:layout_constraintStart_toStartOf="@+id/edtRepeatPassword"
+                android:layout_marginTop="2dp" android:visibility="gone"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

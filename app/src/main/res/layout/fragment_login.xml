@@ -110,5 +110,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_login_facebook" android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="@+id/guideline" app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintHorizontal_bias="0.472"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

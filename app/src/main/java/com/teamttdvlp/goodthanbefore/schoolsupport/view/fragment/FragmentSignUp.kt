@@ -1,7 +1,5 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,12 +12,10 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class FragmentSignUp : Fragment() {
     private lateinit var mBinding : FragmentSignUpBinding
-    private lateinit var mActivityModel : LoginViewModel
+    private lateinit var activityModel : LoginViewModel
 
     private var isEmailValid = false
     private var isPasswordValid = true
@@ -35,7 +31,7 @@ class FragmentSignUp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_sign_up, container, false)
-        mActivityModel = activity!!.getViewModel()
+        activityModel = activity!!.getViewModel()
         return mBinding.root
     }
 
@@ -47,12 +43,23 @@ class FragmentSignUp : Fragment() {
     }
 
     private fun addEvents() {
+        mBinding.btnSignupOk.setOnClickListener{
+            val email = mBinding.edtEmail.text.toString()
+            val password = mBinding.edtPassword.text.toString()
+            val displayName = mBinding.edtDisplayname.text.toString()
+            activityModel.signup(email, password, displayName)
+        }
         mBinding.edtEmail.addTextChangedListener(object:TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                isEmailValid = mActivityModel.checkEmail(s.toString())
+                isEmailValid = activityModel.checkEmail(s.toString())
                 mBinding.rbtnEmailValid.isChecked = isEmailValid
                 mBinding.rbtnEmailValid.visibility = View.VISIBLE
                 resetButton()
+                if (!isEmailValid) {
+                    mBinding.txtErrMessEmailInValid.visibility = View.VISIBLE
+                } else {
+                    mBinding.txtErrMessEmailInValid.visibility = View.GONE
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -63,10 +70,15 @@ class FragmentSignUp : Fragment() {
         })
         mBinding.edtPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                isPasswordValid = mActivityModel.checkPassword(s.toString())
+                isPasswordValid = activityModel.checkPassword(s.toString())
                 mBinding.rbtnPasswordValid.isChecked = isPasswordValid
                 mBinding.rbtnPasswordValid.visibility = View.VISIBLE
                 resetButton()
+                if (!isPasswordValid) {
+                    mBinding.txtErrMessPasswordInValid.visibility = View.VISIBLE
+                } else {
+                    mBinding.txtErrMessPasswordInValid.visibility = View.GONE
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -78,10 +90,15 @@ class FragmentSignUp : Fragment() {
         })
         mBinding.edtDisplayname.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                var isDisplayNameValid = mActivityModel.checkDisplayname(s.toString())
+                var isDisplayNameValid = activityModel.checkDisplayname(s.toString())
                 mBinding.rbtnDisplayNameValid.isChecked = isDisplayNameValid
                 mBinding.rbtnDisplayNameValid.visibility = View.VISIBLE
                 resetButton()
+                if (!isDisplayNameValid) {
+                    mBinding.txtErrMessDisplayNameInValid.visibility = View.VISIBLE
+                } else {
+                    mBinding.txtErrMessDisplayNameInValid.visibility = View.GONE
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -97,6 +114,11 @@ class FragmentSignUp : Fragment() {
                 mBinding.rbtnRepeatPasswordValid.isChecked = isRepeatPassValidValid
                 mBinding.rbtnRepeatPasswordValid.visibility = View.VISIBLE
                 resetButton()
+                if (!isRepeatPassValidValid) {
+                    mBinding.txtErrMessRepeatPasswordInValid.visibility = View.VISIBLE
+                } else {
+                    mBinding.txtErrMessRepeatPasswordInValid.visibility = View.GONE
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
