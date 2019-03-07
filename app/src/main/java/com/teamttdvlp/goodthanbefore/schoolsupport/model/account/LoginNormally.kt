@@ -15,9 +15,9 @@ class LoginNormally : ILoginNormally {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener({
             if (it.isSuccessful) {
                 var user = User()
-                user.id = it.result!!.user.providerId
-                user.displayName = it.result!!.user.displayName!!
-                user.avatar = if (it.result?.user?.displayName == null) "" else it.result!!.user.displayName!!
+                user.Id = it.result!!.user.providerId
+                user.DisplayName = it.result!!.user.displayName!!
+                user.Avatar = if (it.result?.user?.displayName == null) "" else it.result!!.user.displayName!!
                 callback.onLoginSuccess(user)
             } else {
                 callback.onLoginFailed(it.exception)

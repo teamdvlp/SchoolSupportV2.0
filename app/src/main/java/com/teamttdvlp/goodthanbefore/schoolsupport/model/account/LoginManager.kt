@@ -60,12 +60,12 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
 
     override fun onWriteInfoSuccess() {
         Log.d("sukien", "onWriteInfoSuccess")
-        userManager.getInterests(currentUser.id)
+        userManager.getInterests(currentUser.Id)
     }
 
     override fun onGetUserInterestSuccess(results: ArrayList<String>) {
         Log.d("sukien", "onGetUserInterestSuccess")
-        currentUser.interests.addAll(results)
+        currentUser.Interests.addAll(results)
         onLoginEvent?.onLoginSuccess(currentUser)
     }
 

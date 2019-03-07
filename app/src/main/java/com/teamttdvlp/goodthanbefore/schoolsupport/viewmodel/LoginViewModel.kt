@@ -1,5 +1,8 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel
 
+import androidx.databinding.Bindable
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.facebook.AccessToken
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -11,6 +14,8 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 class LoginViewModel : ViewModel() {
     private var mCheck :CheckRegisterInfo = CheckRegisterInfo()
     private var mLoginManager : LoginManager = LoginManager()
+    var isLoading : MutableLiveData<Int> = MutableLiveData()
+
     var onLoginEvent : LoginEvent? = null
 
     fun checkEmail(email:String) : Boolean  {

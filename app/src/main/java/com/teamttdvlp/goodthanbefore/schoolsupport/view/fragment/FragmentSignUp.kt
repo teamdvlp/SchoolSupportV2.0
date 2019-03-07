@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,10 +11,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import java.lang.Exception
 
-class FragmentSignUp : Fragment() {
+class FragmentSignUp : Fragment(), LoginEvent {
+
     private lateinit var mBinding : FragmentSignUpBinding
     private lateinit var activityModel : LoginViewModel
 
@@ -48,6 +54,7 @@ class FragmentSignUp : Fragment() {
             val password = mBinding.edtPassword.text.toString()
             val displayName = mBinding.edtDisplayname.text.toString()
             activityModel.signup(email, password, displayName)
+            activityModel.isLoading.value = View.GONE
         }
         mBinding.edtEmail.addTextChangedListener(object:TextWatcher{
             override fun afterTextChanged(s: Editable?) {
@@ -132,6 +139,16 @@ class FragmentSignUp : Fragment() {
 
     }
 
+    override fun onLoginSuccess(user: User) {
+        activityModel.isLoading.value = View.VISIBLE
+        startActivity(Intent(context, InterestActivity::class.java))
+    }
+
+    override fun onLoginFailed(e: Exception?) {
+        activityModel.isLoading.value = View.VISIBLE
+    }
+
+
     private fun resetButton () {
         if (isEmailValid && isDisplayNameValid && isPasswordValid && isRepeatPassValidValid) {
             mBinding.btnSignUpDefault.visibility = View.GONE
@@ -143,6 +160,7 @@ class FragmentSignUp : Fragment() {
     }
 
     private fun setup() {
+        activityModel.onLoginEvent = this
     }
 
     private fun addControls() {

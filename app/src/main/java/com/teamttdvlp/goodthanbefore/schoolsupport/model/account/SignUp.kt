@@ -16,8 +16,8 @@ class SignUp {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener({
             if (it.isSuccessful) {
                 var user = User()
-                user.displayName = displayName
-                user.id = it.result!!.user.uid
+                user.DisplayName = displayName
+                user.Id = it.result!!.user.uid
                 val newProfile = UserProfileChangeRequest.Builder().setDisplayName(displayName)
                     .setPhotoUri(Uri.EMPTY)
                     .build()

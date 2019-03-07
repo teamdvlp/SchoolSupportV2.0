@@ -15,7 +15,7 @@ class UserInfo : IUserInfo{
         mFirebaseStorage = FirebaseFirestore.getInstance()
     }
     override fun writeInfo(user: User, callback: WriteInfoEvent) {
-        mFirebaseStorage.collection("Users").document(user.id).set(user)
+        mFirebaseStorage.collection("Users").document(user.Id).set(user)
             .addOnCompleteListener({
                 if (it.isSuccessful) {
                     callback.onWriteInfoSuccess()

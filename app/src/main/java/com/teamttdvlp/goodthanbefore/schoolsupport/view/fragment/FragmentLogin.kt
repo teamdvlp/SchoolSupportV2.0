@@ -1,8 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,6 +23,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.LogCode
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import kotlinx.coroutines.*
 import java.lang.Exception
@@ -57,17 +56,20 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
 
     private fun addEvents() {
         mBinding.btnLogin.setOnClickListener({
+            activityViewModel.isLoading.value =  View.GONE
             val email = mBinding.edtEmail.text.toString()
             val password = mBinding.edtPassword.text.toString()
             activityViewModel.loginNormally(email, password)
         })
 
         mBinding.btnLoginGoogle.setOnClickListener({
+            activityViewModel.isLoading.value =  View.GONE
             var intent = Auth.GoogleSignInApi.getSignInIntent(signinApi)
             startActivityForResult(intent, REQUESTCODE_GG_SIGNIN)
         })
 
         mBinding.btnLoginFacebook.setOnClickListener({
+            activityViewModel.isLoading.value =  View.GONE
             loginFacebook()
         })
 
@@ -128,10 +130,15 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     }
 
     override fun onLoginSuccess(user: User) {
+        activityViewModel.isLoading.value =  View.VISIBLE
+        if (user.Interests.size == 0) {
+            startActivity(Intent(context, InterestActivity::class.java))
+        }
         Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
     }
 
     override fun onLoginFailed(e: Exception?) {
+        activityViewModel.isLoading.value =  View.VISIBLE
         Toast.makeText(context, "Login failed", Toast.LENGTH_LONG)
     }
 

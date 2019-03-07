@@ -12,6 +12,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 
@@ -24,7 +25,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        startActivity(Intent(this, InterestActivity::class.java))
         addControls()
         addSetup()
         addEvents()
@@ -49,7 +49,10 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
 
 
     private fun addControls() {
+        mViewModel = getViewModel()
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_login)
+        mBinding.mViewModel = mViewModel
+        mBinding.lifecycleOwner = this
         mBinding.pgLogin.adapter = LoginViewPagerAdapter(supportFragmentManager)
     }
 }

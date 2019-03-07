@@ -16,9 +16,9 @@ class LoginWithCredential : ILoginWithCredential {
         mAuth.signInWithCredential(credential).addOnCompleteListener({
             if (it.isSuccessful) {
                 val result = User()
-                result.id = it.result!!.user.uid
-                result.avatar = it.result!!.user!!.photoUrl.toString()
-                result.displayName = it.result!!.user!!.displayName!!
+                result.Id = it.result!!.user.uid
+                result.Avatar = it.result!!.user!!.photoUrl.toString()
+                result.DisplayName = it.result!!.user!!.displayName!!
                 callback.onLoginSuccess(result)
             } else {
                 callback.onLoginFailed(it.exception)
