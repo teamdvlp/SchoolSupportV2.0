@@ -31,10 +31,11 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
             if (isChecked && !selected_itemList.contains(clicked_item)) {
                 selected_itemList.add(clicked_item)
             } else {
-                Log.e("Error", "Remove an unexist interest, InterestRecyclerViewAdapter.kt")
                 selected_itemList.remove(clicked_item)
             }
         }
+
+        Log.e("Size", selected_itemList.size.toString())
     }
 
     fun adaptFor (recyclerView : RecyclerView) {

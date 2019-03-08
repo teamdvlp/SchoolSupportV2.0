@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.firestore.FirebaseFirestore
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
@@ -52,26 +53,32 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
 
     private fun addControls() {
         activityViewModel = activity!!.getViewModel()
+        FirebaseFirestore.getInstance().collection("Stories23")
+            .whereArrayContains("date", "07-03-2019")
+            .get()
+            .addOnCompleteListener {
+                Log.d("Fuck", "thanh cong")
+            }
     }
 
     private fun addEvents() {
-        mBinding.btnLogin.setOnClickListener({
+        mBinding.btnLogin.setOnClickListener {
             activityViewModel.isLoading.value =  View.GONE
             val email = mBinding.edtEmail.text.toString()
             val password = mBinding.edtPassword.text.toString()
             activityViewModel.loginNormally(email, password)
-        })
+        }
 
-        mBinding.btnLoginGoogle.setOnClickListener({
+        mBinding.btnLoginGoogle.setOnClickListener {
             activityViewModel.isLoading.value =  View.GONE
             var intent = Auth.GoogleSignInApi.getSignInIntent(signinApi)
             startActivityForResult(intent, REQUESTCODE_GG_SIGNIN)
-        })
+        }
 
-        mBinding.btnLoginFacebook.setOnClickListener({
-            activityViewModel.isLoading.value =  View.GONE
+        mBinding.btnLoginFacebook.setOnClickListener {
+            activityViewModel.isLoading.value = View.GONE
             loginFacebook()
-        })
+        }
 
     }
 
@@ -132,7 +139,9 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     override fun onLoginSuccess(user: User) {
         activityViewModel.isLoading.value =  View.VISIBLE
         if (user.Interests.size == 0) {
-            startActivity(Intent(context, InterestActivity::class.java))
+            var intent = Intent(context, InterestActivity::class.java)
+                intent.putExtra("User", user)
+            startActivity(intent)
         }
         Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
     }

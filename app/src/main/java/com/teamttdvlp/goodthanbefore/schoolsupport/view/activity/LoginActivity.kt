@@ -31,21 +31,17 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     }
 
 
-
     private fun addEvents() {
+
     }
 
     private fun addSetup() {
     }
 
 
-
     override fun onConnectionFailed(p0: ConnectionResult) {
 
     }
-
-
-
 
 
     private fun addControls() {
