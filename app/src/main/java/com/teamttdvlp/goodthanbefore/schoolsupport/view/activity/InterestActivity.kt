@@ -3,12 +3,7 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityInterestBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
@@ -24,7 +19,7 @@ class InterestActivity : AppCompatActivity() {
 
     lateinit var mViewModel : InterestViewModel
 
-    var interest_list = ArrayList<Interest>()
+    var interestList = ArrayList<Interest>()
 
     var user : User? = null
 
@@ -39,7 +34,7 @@ class InterestActivity : AppCompatActivity() {
 
     fun addControl () {
         mViewModel = getViewModel()
-        rcv_interest_adapter = InterestRecylerViewAdapter(this, interest_list)
+        rcv_interest_adapter = InterestRecylerViewAdapter(this, interestList)
         rcv_interest_adapter.adaptFor(lvInterest)
     }
 
@@ -63,15 +58,15 @@ class InterestActivity : AppCompatActivity() {
 
     fun loadData () {
 
-        var onAnImageLoadSuccess : (Interest) -> Unit = {
-            interest_list.add(it)
+        val onAnImageLoadSuccess : (Interest) -> Unit = {
+            interestList.add(it)
             rcv_interest_adapter.notifyDataSetChanged()
         }
 
-        var onLoadInFoFailed : (Exception) -> Unit = {
+        val onLoadInfoFailed : (Exception) -> Unit = {
             // Process error
         }
 
-        mViewModel.loadData (onAnImageLoadSuccess, onLoadInFoFailed)
+        mViewModel.loadData (onAnImageLoadSuccess, onLoadInfoFailed)
     }
 }

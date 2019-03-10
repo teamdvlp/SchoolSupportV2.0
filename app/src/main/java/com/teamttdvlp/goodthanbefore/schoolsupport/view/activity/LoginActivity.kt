@@ -11,13 +11,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
-
 
     private lateinit var mBinding : ActivityLoginBinding
     private lateinit var mViewModel : LoginViewModel
@@ -28,6 +27,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
 
@@ -36,13 +36,13 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     }
 
     private fun addSetup() {
+
     }
 
 
     override fun onConnectionFailed(p0: ConnectionResult) {
 
     }
-
 
     private fun addControls() {
         mViewModel = getViewModel()
