@@ -8,19 +8,19 @@ import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IInterestDownloadManager
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ONE_MEGABYTE
 import java.lang.Exception
 
-class InterestSetUpManager (var app : Application) {
+class InterestDownloadManager (var app : Application) : IInterestDownloadManager {
 
     val firestoreDB = FirebaseFirestore.getInstance()
 
     val storageDB = FirebaseStorage.getInstance()
 
-
-    fun loadInterest(onAnImageLoadSuccess : (interst : Interest) -> Unit
+    override fun loadInterest(onAnImageLoadSuccess : (interst : Interest) -> Unit
                      ,onGetCollectionFailed: (Exception) -> Unit ) {
 
         firestoreDB.collection("Topic").get().
@@ -47,8 +47,5 @@ class InterestSetUpManager (var app : Application) {
         }
     }
 
-    // After that user is set Interests in InterestActivity
-    fun writeUserToFS (user : User){
-        firestoreDB.collection("Users").document(user.Id).set(user)
-    }
+
 }

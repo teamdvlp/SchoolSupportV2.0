@@ -1,9 +1,12 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -11,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentGlobalBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.UserActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_global.*
 
@@ -31,6 +35,11 @@ class FragmentGlobal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addControl()
+        addEvents()
+    }
+
+    fun addControl () {
         val mockAvatar = context!!.getDrawable(R.drawable.edt_account)
         val story = Story("Title", "Author", "30/4/1945", mockAvatar!!)
         mockList.add(story)
@@ -39,12 +48,35 @@ class FragmentGlobal : Fragment() {
 
         adapter = PostRecyclerViewAdapter(context!!, mockList)
         adapter.adaptFor(rcv_tester)
-        adapter.addOnScrollToEnd {
-            // Bat buoc goi truoc khi load du lieu, thoi la bi bug
-            adapter.startLoadingState()
-            loadMore()
+    }
+
+    fun addEvents () {
+        global_btn_user.setOnClickListener {
+            startActivity(Intent(context, UserActivity::class.java))
         }
 
+        adapter.addOnScrollListener(object : PostRecyclerViewAdapter.OnScrollListener {
+            override fun onScrollToFirstElement() {
+                mBinding.globalDividerLine.apply {
+                    if (visibility == VISIBLE)
+                        visibility = INVISIBLE
+                }
+            }
+
+            override fun onScrollToLastElement() {
+                // Bat buoc goi truoc khi load du lieu, thoi la bi bug
+                adapter.startLoadingState()
+                loadMore()
+            }
+
+            override fun onScroll() {
+                mBinding.globalDividerLine.apply {
+                    if (visibility == INVISIBLE)
+                        visibility = VISIBLE
+                }
+            }
+
+        })
     }
 
     fun loadMore () {

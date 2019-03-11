@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -43,5 +44,4 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             if (navigatingFragmentId != null) mainNavHost.navigate(navigatingFragmentId)
         }
     }
-
 }

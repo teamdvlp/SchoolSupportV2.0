@@ -26,6 +26,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.MainActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.OfflineToolActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import kotlinx.coroutines.*
 import java.lang.Exception
@@ -81,6 +82,9 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
             loginFacebook()
         }
 
+        mBinding.btnWorkOffline.setOnClickListener {
+            startActivity(Intent(context, MainActivity::class.java))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -141,13 +145,10 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
         activityViewModel.isLoading.value =  View.VISIBLE
         if (user.Interests.size == 0) {
             var intent = Intent(context, InterestActivity::class.java)
-            intent.putExtra("User", user)
-            startActivity(intent)
-        } else {
-            var intent = Intent(context, MainActivity::class.java)
-            intent.putExtra("User", user)
+                intent.putExtra("User", user)
             startActivity(intent)
         }
+        Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
     }
 
     override fun onLoginFailed(e: Exception?) {
