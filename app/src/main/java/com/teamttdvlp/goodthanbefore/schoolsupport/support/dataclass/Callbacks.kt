@@ -7,15 +7,24 @@ interface LoginEvent {
     fun onLoginSuccess (user:User)
     fun onLoginFailed (e:Exception?)
 }
+
 interface WriteInfoEvent {
     fun onWriteInfoSuccess ()
     fun onWriteInfoFailed (e:Exception?)
 }
+
 interface ReadInfoEvent {
     fun onReadInfoSuccess (user:User?)
     fun onReadInfoFailed (e:Exception?)
 }
+
 interface GetUserInterestEvent {
     fun onGetUserInterestSuccess (user:ArrayList<String>)
     fun onGetUserInterestFailed (e:Exception?)
 }
+
+interface WriteUserInterestEvent {
+    fun onWriteUserInterestSuccess ()
+    fun onWriteUserInterestFailed (e:Exception?)
+}
+

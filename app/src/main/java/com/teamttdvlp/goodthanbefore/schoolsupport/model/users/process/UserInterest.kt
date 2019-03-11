@@ -26,4 +26,6 @@ class UserInterest : IUserInterest {
                 }
             }
     }
+
+
 }

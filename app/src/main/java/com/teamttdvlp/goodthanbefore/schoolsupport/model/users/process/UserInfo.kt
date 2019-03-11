@@ -8,7 +8,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.ReadInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 
-class UserInfo : IUserInfo{
+class UserInfo : IUserInfo {
     private var mFirebaseStorage : FirebaseFirestore
 
     constructor() {

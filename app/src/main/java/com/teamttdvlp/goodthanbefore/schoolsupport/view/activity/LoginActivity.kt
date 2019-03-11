@@ -27,7 +27,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
-        startActivity(Intent(this, MainActivity::class.java))
     }
 
 

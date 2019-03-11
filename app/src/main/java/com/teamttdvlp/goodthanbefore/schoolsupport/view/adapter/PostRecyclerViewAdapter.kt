@@ -21,6 +21,8 @@ class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<S
 
     private var isEndOfList = false
 
+    private var layoutManager : LinearLayoutManager? = null
+
     var mRecyclerView : RecyclerView? = null
 
     fun startLoadingState () {
@@ -39,22 +41,33 @@ class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<S
         mRecyclerView = recyclerView
         mRecyclerView!!.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mRecyclerView!!.adapter = this
+        layoutManager = recyclerView.layoutManager as LinearLayoutManager
     }
 
-    fun addOnScrollToEnd (onScrollToEnd : (() -> Unit)) {
+    /**
+     * isLoading variable is used to
+     * stop this listener (onScrollToEnd) from being invoke many times
+     * while some outer modules is loading data to item_list
+     * because onScrolledListener will be called each time user scroll our recycler view
+     */
+    fun addOnScrollListener (onScrollListener : OnScrollListener) {
         mRecyclerView!!.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
                 if (!isEndOfList && !isLoading) {
-                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-
-                    if (layoutManager.findLastVisibleItemPosition() == item_list.size) {
-                        onScrollToEnd()
+                    if (layoutManager?.findLastVisibleItemPosition() == item_list.size) {
+                        onScrollListener.onScrollToLastElement()
                     }
+                }
+
+                if (layoutManager?.findFirstCompletelyVisibleItemPosition() == 0) {
+                    onScrollListener.onScrollToFirstElement()
+                } else {
+                    onScrollListener.onScroll()
                 }
             }
         })
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == LOADED_ITEM_VIEW) {
@@ -112,5 +125,13 @@ class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<S
     }
 
     class WaitingViewDataHolder (item_view : View) : RecyclerView.ViewHolder(item_view)
+
+    interface OnScrollListener {
+        fun onScrollToFirstElement ()
+
+        fun onScrollToLastElement ()
+
+        fun onScroll ()
+    }
 }
 

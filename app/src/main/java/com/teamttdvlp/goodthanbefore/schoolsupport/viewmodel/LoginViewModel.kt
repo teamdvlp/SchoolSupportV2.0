@@ -13,7 +13,9 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 
 class LoginViewModel : ViewModel() {
     private var mCheck :CheckRegisterInfo = CheckRegisterInfo()
+
     private var mLoginManager : LoginManager = LoginManager()
+
     var isLoading : MutableLiveData<Int> = MutableLiveData()
 
     var onLoginEvent : LoginEvent? = null
