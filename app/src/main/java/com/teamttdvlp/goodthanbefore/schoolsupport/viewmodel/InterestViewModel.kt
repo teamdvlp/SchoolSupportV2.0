@@ -12,10 +12,6 @@ import java.lang.Exception
 
 const val ONE_MEGABYTE : Long = 1024 * 1024
 
-
-/**
- * @see InterestActivity
- */
 class InterestViewModel (var app : Application): AndroidViewModel (app) {
 
 

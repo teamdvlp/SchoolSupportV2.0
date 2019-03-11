@@ -49,6 +49,6 @@ class InterestSetUpManager (var app : Application) {
 
     // After that user is set Interests in InterestActivity
     fun writeUserToFS (user : User){
-        firestoreDB.collection("User").document(user.Id).set(user)
+        firestoreDB.collection("Users").document(user.Id).set(user)
     }
 }
