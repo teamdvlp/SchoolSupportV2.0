@@ -8,10 +8,11 @@ class SpawnStories {
     , "Biology", "Geography", "CivicEducation", "English", "EducationNews", "CompetitionNews")
     private fun spawnId () : ArrayList<String> {
         var result :ArrayList<String> = ArrayList()
-        var a = Random.nextLong(9000000, 9999999999)
+        // sao đó cộng dần dần lên để đảm bảo id không trùng
+        var start : Long = 100000000000
         for (i in 0..count) {
-            a += i
-            result.add(a.toString())
+            start += i
+            result.add(start.toString())
         }
         return result
     }

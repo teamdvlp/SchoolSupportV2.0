@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass
 
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import java.lang.Exception
 
@@ -18,4 +19,17 @@ interface ReadInfoEvent {
 interface GetUserInterestEvent {
     fun onGetUserInterestSuccess (user:ArrayList<String>)
     fun onGetUserInterestFailed (e:Exception?)
+}
+interface GetHotStoryEvent {
+    fun onGetHotStorySuccess (results:ArrayList<Stories>)
+    fun onGetHotStoryFailed (e:Exception?)
+
+}
+interface WriteUserInterestEvent {
+    fun onWriteUserInterestSuccess ()
+    fun onWriteUserInterestFailed (e:Exception?)
+}
+interface GetMultipleHotStoryEvent {
+    fun onGetMultipleHotStoriesSuccess (results:ArrayList<Stories>)
+    fun onGetMultipleHotStoriesFailed (e:ArrayList<Exception?>)
 }
