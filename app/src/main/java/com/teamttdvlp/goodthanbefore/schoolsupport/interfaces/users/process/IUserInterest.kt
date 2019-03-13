@@ -8,7 +8,3 @@ interface IUserInterest {
     fun getUserInterest(userId:String, callback:GetUserInterestEvent)
 }
 
-interface IInterestDownloadManager {
-    fun loadInterest(onAnImageLoadSuccess : (interst : Interest) -> Unit,
-                     onGetCollectionFailed: (Exception) -> Unit )
-}

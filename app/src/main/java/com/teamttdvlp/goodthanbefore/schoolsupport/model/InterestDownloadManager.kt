@@ -8,13 +8,13 @@ import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IInterestDownloadManager
+import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.IInterestDownload
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ONE_MEGABYTE
 import java.lang.Exception
 
-class InterestDownloadManager (var app : Application) : IInterestDownloadManager {
+class InterestDownload (var app : Application) : IInterestDownload {
 
     val firestoreDB = FirebaseFirestore.getInstance()
 
