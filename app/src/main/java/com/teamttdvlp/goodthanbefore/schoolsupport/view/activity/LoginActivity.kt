@@ -15,6 +15,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
@@ -27,6 +28,8 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
+        SpawnStories().spawnStories(10)
+
     }
 
 
