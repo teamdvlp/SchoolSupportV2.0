@@ -28,8 +28,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
-        SpawnStories().spawnStories(10)
-
     }
 
 

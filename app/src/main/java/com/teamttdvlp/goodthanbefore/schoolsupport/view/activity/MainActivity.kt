@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         rbtn_new_stories.setOnCheckedChangeListener (this)
         rbtn_tool.setOnCheckedChangeListener (this)
         rbtn_bookmarks.setOnCheckedChangeListener (this)
+
     }
 
     override fun onCheckedChanged(view: CompoundButton?, isChecked: Boolean) {

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/activity_search"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        tools:context=".view.activity.SearchActivity">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:background="#EEEEEE"
+            android:layout_width="match_parent"
+            android:layout_height="33dp" android:layout_marginLeft="6dp" android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+
+        <ImageView
+                android:background="@drawable/btn_search"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="9dp" android:layout_marginLeft="5dp"/>
+
+        <EditText
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Android"
+                android:layout_marginTop="7dp" android:layout_marginLeft="6dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/search_tablayout_directory"
+            app:tabIndicatorColor="@color/transparent"
+            android:layout_width="272dp"
+            android:layout_height="34dp">
+
+        <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monday"/>
+
+        <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tuesday"/>
+
+        <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wednesday"/>
+    </com.google.android.material.tabs.TabLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" android:id="@+id/textView7" android:background="#BBBBBB"/>
+    <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/search_vpg_search" android:background="#ffffff"/>
+
+</LinearLayout>

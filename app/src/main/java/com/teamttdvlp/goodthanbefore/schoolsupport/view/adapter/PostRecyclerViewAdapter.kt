@@ -15,7 +15,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
 const val LOADED_ITEM_VIEW = 0
 const val WAITING_LOAD_VIEW = 1
 
-class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<Story?>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<Story>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var isLoading = false
 

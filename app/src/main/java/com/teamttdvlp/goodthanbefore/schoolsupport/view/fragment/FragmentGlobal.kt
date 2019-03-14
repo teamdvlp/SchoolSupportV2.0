@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentGlobalBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SearchBarActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.UserActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_global.*
@@ -31,7 +32,7 @@ class FragmentGlobal : Fragment() {
         return mBinding.root
     }
 
-    var mockList = ArrayList<Story?>()
+    var mockList = ArrayList<Story>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,6 +52,10 @@ class FragmentGlobal : Fragment() {
     }
 
     fun addEvents () {
+        global_btn_search.setOnClickListener {
+            startActivity(Intent(context, SearchBarActivity::class.java))
+        }
+
         global_btn_user.setOnClickListener {
             startActivity(Intent(context, UserActivity::class.java))
         }
