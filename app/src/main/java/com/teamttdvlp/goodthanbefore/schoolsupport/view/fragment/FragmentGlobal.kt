@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentGlobalBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SearchBarActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.UserActivity
@@ -32,7 +34,7 @@ class FragmentGlobal : Fragment() {
         return mBinding.root
     }
 
-    var mockList = ArrayList<Story>()
+    var mockList = ArrayList<Stories>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,12 +43,8 @@ class FragmentGlobal : Fragment() {
     }
 
     fun addControl () {
-        val mockAvatar = context!!.getDrawable(R.drawable.edt_account)
-        val story = Story("Title", "Author", "30/4/1945", mockAvatar!!)
-        mockList.add(story)
-        mockList.add(story)
-        mockList.add(story)
 
+        mockList = SpawnStories().spawnStories(5)
         adapter = PostRecyclerViewAdapter(context!!, mockList)
         adapter.adaptFor(rcv_tester)
     }
@@ -91,7 +89,7 @@ class FragmentGlobal : Fragment() {
             val story = Story("Title", "Author", "30/4/1945", mockAvatar!!)
             story.title += "3"
             for ( i in 0..2) {
-                mockList.add(story)
+                mockList.add(SpawnStories().spawnStories(1)[0])
             }
 
             // Bat buoc goi sau khi load du lieu, thoi la onScrollToEnd se khong chay nua

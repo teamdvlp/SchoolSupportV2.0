@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_history.*
@@ -27,11 +28,7 @@ class FragmentHistory : androidx.fragment.app.Fragment() {
     }
 
     private fun addControls() {
-        var mockList = ArrayList<Story>()
-        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.edt_account)!!))
-        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.edt_account)!!))
-        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.edt_account)!!))
-        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.edt_account)!!))
+        var mockList = SpawnStories().spawnStories(10)
         adapter = PostRecyclerViewAdapter(context!!, mockList)
         history_rcv_history.adapter = adapter
         history_rcv_history.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

@@ -10,12 +10,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
+import java.text.SimpleDateFormat
 
 const val LOADED_ITEM_VIEW = 0
 const val WAITING_LOAD_VIEW = 1
 
-class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<Story>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<Stories>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var isLoading = false
 
@@ -107,10 +108,10 @@ class PostRecyclerViewAdapter(var context : Context, var item_list : ArrayList<S
                 val story = item_list[position]
                 story?.let {
                     holder.apply {
-                        imgAvatar?.background = story.avatar
-                        txtPostTitle?.text = story.title
-                        txtAuthor?.text = story.author
-                        txtDate?.text = story.post_date
+//                        imgAvatar?.background = story.Avatar
+                        txtPostTitle?.text = story.Title
+                        txtAuthor?.text = story.Author
+                        txtDate?.text = SimpleDateFormat("dd/MM/YYYY").format(story.PostedTime)
                     }
                 }
             }
