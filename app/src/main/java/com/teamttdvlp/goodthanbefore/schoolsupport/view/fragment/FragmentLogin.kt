@@ -50,6 +50,10 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
         addControls()
         setUp()
         addEvents()
+        activityViewModel.isLoading.value = View.GONE
+        if (!activityViewModel.keepMeLogin()) {
+            activityViewModel.isLoading.value = View.VISIBLE
+        }
         return mBinding.root
     }
 
@@ -142,10 +146,14 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     }
 
     override fun onLoginSuccess(user: User) {
-        activityViewModel.isLoading.value =  View.VISIBLE
+        Log.d("LoginCC", user.Interests.size.toString())
         if (user.Interests.size == 0) {
             var intent = Intent(context, InterestActivity::class.java)
                 intent.putExtra("User", user)
+                startActivity(intent)
+        }else {
+            var intent = Intent(context, MainActivity::class.java)
+            intent.putExtra("User", user)
             startActivity(intent)
         }
         Toast.makeText(context, "Login success", Toast.LENGTH_LONG)

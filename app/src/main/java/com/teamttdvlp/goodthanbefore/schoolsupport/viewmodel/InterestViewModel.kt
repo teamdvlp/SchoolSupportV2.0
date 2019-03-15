@@ -9,6 +9,8 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.InterestDownload
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process.UserInfo
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process.UserInterest
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SetUserInterestEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 import java.lang.Exception
 
@@ -24,14 +26,14 @@ class InterestViewModel (var app : Application): AndroidViewModel (app) {
 
     var mInterestSetUpManager : IInterestDownload = InterestDownload(app)
 
-    var mUserInfoManager = UserInfo()
+    var mUserInterest = UserInterest()
 
-    fun loadData (onAnImageLoadSuccess : (interst : Interest) -> Unit, onLoadFailed: (Exception) -> Unit) {
-        mInterestSetUpManager.loadInterest(onAnImageLoadSuccess, onLoadFailed)
+    fun loadData (onLoadSuccess : (interst : ArrayList<Interest>) -> Unit, onLoadFailed: (Exception) -> Unit) {
+        mInterestSetUpManager.loadInterest(onLoadSuccess, onLoadFailed)
     }
 
-    fun writeUserToFS(user: User, callback : WriteInfoEvent) {
-        mUserInfoManager.writeInfo(user, callback)
+    fun setUserInterest (userId : String, interests:ArrayList<String>, callback : SetUserInterestEvent) {
+        mUserInterest.setUserInterest(userId,interests, callback)
     }
 
 }

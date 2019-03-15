@@ -3,6 +3,7 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.Auth
@@ -10,6 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
@@ -18,7 +20,6 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBind
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
-
     private lateinit var mBinding : ActivityLoginBinding
     private lateinit var mViewModel : LoginViewModel
 

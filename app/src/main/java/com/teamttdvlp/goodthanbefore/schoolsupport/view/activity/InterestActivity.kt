@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SetUserInterestEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.InterestRecylerViewAdapter
@@ -19,8 +20,7 @@ import kotlinx.android.synthetic.main.activity_interest.*
 import java.lang.Exception
 
 private const val REQUIRE_SELECTED_CONTENT_COUNT = 3
-class InterestActivity : AppCompatActivity(), WriteInfoEvent {
-
+class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
 
     lateinit var rcv_interest_adapter : InterestRecylerViewAdapter
 
@@ -35,7 +35,7 @@ class InterestActivity : AppCompatActivity(), WriteInfoEvent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interest)
-        user = intent.getParcelableExtra("User")
+        user = intent.getSerializableExtra("User") as User?
         addControl()
         addEvents()
         loadData()
@@ -43,9 +43,13 @@ class InterestActivity : AppCompatActivity(), WriteInfoEvent {
 
     fun addControl () {
         mViewModel = getViewModel()
+
         rcv_interest_adapter = InterestRecylerViewAdapter(this, interestList)
         rcv_interest_adapter.adaptFor(lvInterest)
         setUpErrorDialog()
+    }
+
+    fun tickInterest () {
     }
 
     fun addEvents () {
@@ -53,23 +57,35 @@ class InterestActivity : AppCompatActivity(), WriteInfoEvent {
             if (rcv_interest_adapter.selected_itemList.size >= REQUIRE_SELECTED_CONTENT_COUNT)
             {
                 try {
+                val userInterest: ArrayList<String> = ArrayList()
                     for (interest in rcv_interest_adapter.selected_itemList) {
-                        user!!.Interests.add(interest.name)
+                        userInterest.add(interest.name)
                     }
-                    mViewModel.writeUserToFS(user!!, this)
+                    user!!.Interests.clear()
+                    user!!.Interests.addAll(userInterest)
+                    mViewModel.setUserInterest(user!!.Id,  userInterest, this)
                 } catch (ex :Exception) {
                     ex.printStackTrace()
                 }
-            } else {
-
             }
         }
     }
+    override fun onSetUserInterestEventSuccess() {
+        startActivity(Intent(this, MainActivity::class.java).putExtra("User", user))
+    }
+
+    override fun onSetUserInterestEventFailed(e: Exception?) {
+        showErrorDialog()
+    }
 
     fun loadData () {
-
-        val onAnImageLoadSuccess : (Interest) -> Unit = {
-            interestList.add(it)
+        val onLoadSuccess : (ArrayList<Interest>) -> Unit = {
+            for (topic in it) {
+                topic.ticked = user!!.Interests.contains(topic.name)
+            }
+            Log.d("UserInteres", user!!.Interests.toString())
+            interestList.clear()
+            interestList.addAll(it)
             rcv_interest_adapter.notifyDataSetChanged()
         }
 
@@ -77,7 +93,7 @@ class InterestActivity : AppCompatActivity(), WriteInfoEvent {
             showErrorDialog()
         }
 
-        mViewModel.loadData (onAnImageLoadSuccess, onLoadInfoFailed)
+        mViewModel.loadData (onLoadSuccess, onLoadInfoFailed)
     }
 
     fun setUpErrorDialog () {
@@ -95,16 +111,5 @@ class InterestActivity : AppCompatActivity(), WriteInfoEvent {
     fun showErrorDialog () {
         dialogInterestError.show()
         dialogInterestError.setCanceledOnTouchOutside(true)
-    }
-
-    /**
-     * Callback of writing User after set up "INTERESTS"
-     */
-    override fun onWriteInfoSuccess() {
-        startActivity(Intent(this, MainActivity::class.java))
-    }
-
-    override fun onWriteInfoFailed(e: Exception?) {
-        showErrorDialog()
     }
 }

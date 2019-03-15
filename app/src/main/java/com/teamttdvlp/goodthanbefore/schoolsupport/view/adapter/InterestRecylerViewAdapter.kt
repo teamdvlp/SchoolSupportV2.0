@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
@@ -25,7 +27,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
         var view_child = checkBox.parent.parent
         var position = recyclerView?.indexOfChild(view_child as ViewGroup)
-
+        if (position != -1) {
         position?.let {
             var clicked_item = item_list[position]
             if (isChecked && !selected_itemList.contains(clicked_item)) {
@@ -34,7 +36,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
                 selected_itemList.remove(clicked_item)
             }
         }
-
+        }
         Log.e("Size", selected_itemList.size.toString())
     }
 
@@ -56,12 +58,16 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         var item = item_list[position]
-        holder.img_avatar.setImageDrawable(item.avatar)
+        FirebaseStorage.getInstance().getReference(item.avatar)
+            .downloadUrl
+            .addOnCompleteListener {
+                Picasso.get().load(it.result).into(holder.img_avatar)
+            }
         holder.txt_name.text = item.name
         holder.txt_description.text = item.description
+        holder.rbtn_is_selected.isChecked = item.ticked
         holder.rbtn_is_selected.setOnCheckedChangeListener(onCheckboxCheckedChangeListener)
     }
-
 
     inner class DataViewHolder(itemView : View) : RecyclerView.ViewHolder (itemView) {
         var img_avatar : ImageView = itemView.findViewById(R.id.item_lsi_img_avatar)

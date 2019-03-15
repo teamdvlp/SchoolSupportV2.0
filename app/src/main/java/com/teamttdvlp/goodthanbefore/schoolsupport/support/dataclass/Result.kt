@@ -8,13 +8,13 @@ class Result<T> {
     var result : T? = null; get private set
     var exception : Exception? = null; get private set
 
-    fun success (value:T) {
+    fun success (value:T?) {
         result = value
         isFailed = false
         isSuccess =  true
     }
 
-    fun failed (e:Exception) {
+    fun failed (e:Exception?) {
         exception = e
         isSuccess = false
         isFailed = true

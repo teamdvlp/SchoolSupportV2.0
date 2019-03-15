@@ -1,5 +1,4 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process
-
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserInfo
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserInterest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
@@ -68,7 +67,6 @@ class UserManager : ReadInfoEvent, WriteInfoEvent, GetUserInterestEvent, WriteUs
     }
 
     override fun onWriteInfoFailed(e: Exception?) {
-
         if (setUserInfoListener != null) {
             setUserInfoListener!!.onWriteInfoFailed(e)
         }
@@ -79,6 +77,4 @@ class UserManager : ReadInfoEvent, WriteInfoEvent, GetUserInterestEvent, WriteUs
             getUserInterestListener!!.onGetUserInterestFailed(e)
         }
     }
-
-
 }

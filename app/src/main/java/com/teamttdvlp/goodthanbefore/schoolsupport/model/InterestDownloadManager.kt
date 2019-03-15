@@ -20,32 +20,22 @@ class InterestDownload (var app : Application) : IInterestDownload {
 
     val storageDB = FirebaseStorage.getInstance()
 
-    override fun loadInterest(onAnImageLoadSuccess : (interst : Interest) -> Unit
+    override fun loadInterest(onLoadSuccess : (interst : ArrayList<Interest>) -> Unit
                      ,onGetCollectionFailed: (Exception) -> Unit ) {
 
         firestoreDB.collection("Topic").get().
             addOnSuccessListener {
-                loadInterestInfo(it.documents, onAnImageLoadSuccess)
+                val result : ArrayList<Interest> = ArrayList()
+                for (doc in it.documents) {
+                    val interest:Interest = Interest(doc["Avatar"].toString(), doc.id, doc["Description"].toString(), false)
+                    result.add(interest)
+                }
+                onLoadSuccess(result)
             }.
             addOnFailureListener {
                 it.printStackTrace()
                 onGetCollectionFailed(it)
             }
     }
-
-    private fun loadInterestInfo(docs : List<DocumentSnapshot>, onAnImageLoadSuccess : (interst : Interest) -> Unit) {
-        for (doc in docs) {
-            storageDB.getReference(doc["Avatar"].toString()).getBytes(ONE_MEGABYTE)
-                .addOnSuccessListener { byteArray ->
-
-                    var drawable : Drawable = BitmapDrawable(app.resources, BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
-                    onAnImageLoadSuccess(Interest(drawable, doc.id, doc["Description"].toString()))
-
-                }.addOnCanceledListener {
-                    Log.e("Error", "InterestViewModel.kt, loadImage()")
-                }
-        }
-    }
-
 
 }

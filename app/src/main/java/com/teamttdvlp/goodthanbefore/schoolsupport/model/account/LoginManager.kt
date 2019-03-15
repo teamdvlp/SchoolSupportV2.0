@@ -14,16 +14,17 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEv
 import java.lang.Exception
 
 class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
-
     private var loginNormally : ILoginNormally
     private var loginGoogle : ILoginWithGoogle
     private var loginFacebook : ILoginWithFacebook
     private var signUp : SignUp
     private var userManager:UserManager
+    private var keepMeLogin:KeepMeLogin
     private var onGetUserInterestEventListener: GetUserInterestEvent? = null
     var onLoginEvent : LoginEvent? = null
 
     constructor() {
+        keepMeLogin = KeepMeLogin()
         signUp = SignUp()
         userManager = UserManager()
         loginFacebook = LoginWithFacebook()
@@ -33,6 +34,16 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
         userManager.getUserInterestListener = this
         userManager.setUserInfoListener = this
 
+    }
+
+    fun keepMeLogin () : Boolean {
+        val result : User? = keepMeLogin.keepMeLogin()
+        if (result!=null) {
+            onLoginSuccess(result)
+            return true
+        } else {
+            return false
+        }
     }
 
     fun loginWithGoogle (account:GoogleSignInAccount) {
@@ -64,7 +75,7 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
     }
 
     override fun onGetUserInterestSuccess(results: ArrayList<String>) {
-        Log.d("sukien", "onGetUserInterestSuccess")
+        Log.d("sukien", "onGetUserInterestSuccess" + results.size.toString())
         currentUser.Interests.addAll(results)
         onLoginEvent?.onLoginSuccess(currentUser)
     }

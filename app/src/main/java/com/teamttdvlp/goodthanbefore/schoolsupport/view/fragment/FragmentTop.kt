@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_top.*
@@ -29,8 +29,12 @@ class FragmentTop : androidx.fragment.app.Fragment() {
     }
 
     private fun addControls() {
-        var mockList = SpawnStories().spawnStories(10)
-        adapter = PostRecyclerViewAdapter(context!!, mockList)
+        var mockList = ArrayList<Stories>()
+//        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.btn_clear_clicked)!!))
+//        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.btn_clear_clicked)!!))
+//        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.btn_clear_clicked)!!))
+//        mockList.add(Story("Title", "Author", "Date", context!!.getDrawable(R.drawable.btn_clear_clicked)!!))
+        adapter = PostRecyclerViewAdapter(mockList, context!!)
         top_rcv_top.adapter = adapter
         top_rcv_top.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }

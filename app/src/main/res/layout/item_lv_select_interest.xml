@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:paddingTop="13dp"
@@ -20,7 +20,7 @@
                 android:id="@+id/item_lsi_img_avatar"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:background="#888888"/>
+                android:background="@color/white" tools:srcCompat="@color/white"/>
 
         <TextView android:layout_width="wrap_content"
                   android:text="Math"

@@ -14,6 +14,7 @@ class UserInfo : IUserInfo {
     constructor() {
         mFirebaseStorage = FirebaseFirestore.getInstance()
     }
+
     override fun writeInfo(user: User, callback: WriteInfoEvent) {
         mFirebaseStorage.collection("Users").document(user.Id).set(user)
             .addOnCompleteListener({
@@ -23,6 +24,7 @@ class UserInfo : IUserInfo {
                     callback.onWriteInfoFailed(it.exception)
                 }
             })
+
     }
 
     override fun readInfo(userId:String, callback: ReadInfoEvent) {
@@ -36,5 +38,4 @@ class UserInfo : IUserInfo {
                 }
             })
     }
-
 }

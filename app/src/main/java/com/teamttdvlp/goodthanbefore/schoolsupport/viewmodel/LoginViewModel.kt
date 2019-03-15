@@ -1,18 +1,16 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel
 
-import androidx.databinding.Bindable
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.facebook.AccessToken
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.CheckRegisterInfo
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.CheckRegisterInfo
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.account.LoginManager
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 
 class LoginViewModel : ViewModel() {
-    private var mCheck :CheckRegisterInfo = CheckRegisterInfo()
+    private var mCheck : CheckRegisterInfo =
+        CheckRegisterInfo()
 
     private var mLoginManager : LoginManager = LoginManager()
 
@@ -49,4 +47,9 @@ class LoginViewModel : ViewModel() {
         mLoginManager.onLoginEvent = this.onLoginEvent
         mLoginManager.signUp(email, password, displayname)
     }
-}
+
+    fun keepMeLogin () : Boolean {
+        mLoginManager.onLoginEvent = this.onLoginEvent
+        return mLoginManager.keepMeLogin()
+    }
+ }

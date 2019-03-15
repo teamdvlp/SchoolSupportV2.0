@@ -1,7 +1,4 @@
-package com.teamttdvlp.goodthanbefore.schoolsupport.model
-
-import android.util.Log
-import java.util.regex.Matcher
+package com.teamttdvlp.goodthanbefore.schoolsupport.support
 
 class CheckRegisterInfo {
     fun checkEmail (email:String):Boolean {

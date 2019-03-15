@@ -44,7 +44,6 @@ class FragmentSignUp : Fragment(), LoginEvent {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addControls()
-        setup()
         addEvents()
     }
 
@@ -160,10 +159,6 @@ class FragmentSignUp : Fragment(), LoginEvent {
             mBind.btnSignUpDefault.visibility = View.VISIBLE
             mBind.btnSignupOk.visibility = View.GONE
         }
-    }
-
-    private fun setup() {
-        activityModel.onLoginEvent = this
     }
 
     private fun addControls() {
