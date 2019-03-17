@@ -1,5 +1,8 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
+import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioGroup
@@ -8,10 +11,12 @@ import androidx.viewpager.widget.ViewPager
 import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityViewProfileBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.UserProfilePagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
+import kotlinx.android.synthetic.main.activity_view_profile.*
 
 class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
     private lateinit var mBinding:ActivityViewProfileBinding
@@ -27,6 +32,11 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
         addEvents()
     }
 
+    override fun onResume() {
+        super.onResume()
+        imgAvatar.background = BitmapDrawable(resources, CurrentUser.bitmapUserAvatar)
+    }
+
     private fun setup() {
         val currentUser: User = intent.getSerializableExtra("User") as User
         mViewModel = getViewModel({return@getViewModel  ViewProfileViewModel(currentUser)})
@@ -37,6 +47,11 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     private fun addEvents() {
         mBinding.vpgProfile.addOnPageChangeListener(this)
         mBinding.tabLayout.setOnCheckedChangeListener(this)
+        mBinding.btnEdit.setOnClickListener {
+
+            startActivity(Intent(this, EditProfileActivity::class.java)
+                .putExtra("User", mViewModel.currentUser))
+        }
     }
 
     override fun onPageScrollStateChanged(state: Int) {

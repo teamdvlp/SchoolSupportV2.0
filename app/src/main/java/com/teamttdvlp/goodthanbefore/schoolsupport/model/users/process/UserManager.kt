@@ -8,7 +8,9 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEv
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteUserInterestEvent
 import java.lang.Exception
 
-class UserManager : ReadInfoEvent, WriteInfoEvent, GetUserInterestEvent, WriteUserInterestEvent {
+class UserManager : ReadInfoEvent, WriteInfoEvent,
+
+                    GetUserInterestEvent, WriteUserInterestEvent{
 
     private var mUserInfo : IUserInfo
     private var mUserInterest : IUserInterest

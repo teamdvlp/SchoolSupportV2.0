@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserLikedStories
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.CompactStory
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.UserStoriesManger
@@ -29,8 +30,8 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         setContentView(R.layout.activity_main)
         addControls()
         addEvents()
-        Log.d("UserIn", mViewModel.currentUser.Interests.size.toString())
-        var m : UserStoriesManger = UserStoriesManger()
+
+        var m = UserStoriesManger()
         m.onGetHistorialStoriesListener = object : GetMultipleStories {
             override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
                 Log.d("getLiked", "" + result.size)
@@ -46,6 +47,10 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     private fun addControls() {
         var mUser : User = intent.getSerializableExtra("User") as User
         mViewModel = getViewModel({return@getViewModel MainViewModel(mUser)})
+        // Edited Code
+        // {
+            mViewModel.setUpCurrentUser(mUser)
+        // }
         mainNavHost = Navigation.findNavController(this, R.id.main_nav_host)
     }
 

@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.IInterestDownload
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.InterestDownload
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.functions.InterestDownload
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process.UserInfo
@@ -24,12 +24,12 @@ class InterestViewModel (var app : Application): AndroidViewModel (app) {
 
     var dataReceiver = ArrayList<Interest>()
 
-    var mInterestSetUpManager : IInterestDownload = InterestDownload(app)
+    var mInterestDownload : IInterestDownload = InterestDownload(app)
 
     var mUserInterest = UserInterest()
 
     fun loadData (onLoadSuccess : (interst : ArrayList<Interest>) -> Unit, onLoadFailed: (Exception) -> Unit) {
-        mInterestSetUpManager.loadInterest(onLoadSuccess, onLoadFailed)
+        mInterestDownload.loadInterest(onLoadSuccess, onLoadFailed)
     }
 
     fun setUserInterest (userId : String, interests:ArrayList<String>, callback : SetUserInterestEvent) {

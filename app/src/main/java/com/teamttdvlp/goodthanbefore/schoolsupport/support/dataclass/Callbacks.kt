@@ -17,6 +17,16 @@ interface ReadInfoEvent {
     fun onReadInfoSuccess (user:User?)
     fun onReadInfoFailed (e:Exception?)
 }
+
+interface UpdateInfoEvent {
+    fun onUpdateSuccess()
+    fun onUpdateFailed()
+}
+
+interface UploadAvatarEvent {
+    fun onUploadSuccess(downloadUri : String)
+    fun onUploadFailed(message : String)
+}
 interface GetUserInterestEvent {
     fun onGetUserInterestSuccess (user:ArrayList<String>)
     fun onGetUserInterestFailed (e:Exception?)

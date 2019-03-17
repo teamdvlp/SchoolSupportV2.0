@@ -1,6 +1,7 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,9 +10,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityUserBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity() {
     private lateinit var mBinding : ActivityUserBinding
@@ -27,15 +30,21 @@ class UserActivity : AppCompatActivity() {
 
     private fun addControls() {
         var mUser : User = intent.getSerializableExtra("User") as User
-        mViewModel = getViewModel({ return@getViewModel UserViewModel(mUser)})
+        mViewModel = getViewModel {return@getViewModel UserViewModel(mUser)}
+    }
+
+    override fun onResume() {
+        super.onResume()
+        imgAvatar.background = BitmapDrawable(resources, CurrentUser.bitmapUserAvatar)
     }
 
     private fun addEvents() {
-        mBinding.btnViewProfile.setOnClickListener({
+        mBinding.btnViewProfile.setOnClickListener {
             val intent = Intent(this, ViewProfileActivity::class.java)
             intent.putExtra("User", mViewModel.currentUser)
             startActivity(intent)
-        })
+        }
+
         mBinding.btnCustomizeYourInterest.setOnClickListener {
             val intent = Intent(this, InterestActivity::class.java)
             intent.putExtra("User", mViewModel.currentUser)

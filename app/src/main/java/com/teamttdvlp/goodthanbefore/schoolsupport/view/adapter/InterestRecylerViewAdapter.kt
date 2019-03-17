@@ -20,7 +20,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
     var recyclerView : RecyclerView? = null
 
-    var selected_itemList = ArrayList<Interest>()
+    var selectedItemList = ArrayList<Interest>()
 
     var onCheckboxCheckedChangeListener : (CompoundButton, Boolean) -> Unit = {
         checkBox, isChecked ->
@@ -30,14 +30,14 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
         if (position != -1) {
         position?.let {
             var clicked_item = item_list[position]
-            if (isChecked && !selected_itemList.contains(clicked_item)) {
-                selected_itemList.add(clicked_item)
+            if (isChecked && !selectedItemList.contains(clicked_item)) {
+                selectedItemList.add(clicked_item)
             } else {
-                selected_itemList.remove(clicked_item)
+                selectedItemList.remove(clicked_item)
             }
         }
         }
-        Log.e("Size", selected_itemList.size.toString())
+        Log.e("Size", selectedItemList.size.toString())
     }
 
     fun adaptFor (recyclerView : RecyclerView) {
@@ -66,6 +66,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
         holder.txt_name.text = item.name
         holder.txt_description.text = item.description
         holder.rbtn_is_selected.isChecked = item.ticked
+        if (item.ticked) selectedItemList.add(item)
         holder.rbtn_is_selected.setOnCheckedChangeListener(onCheckboxCheckedChangeListener)
     }
 

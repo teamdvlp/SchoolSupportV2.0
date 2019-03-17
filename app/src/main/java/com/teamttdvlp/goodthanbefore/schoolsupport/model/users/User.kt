@@ -1,21 +1,24 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.users
 
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import com.google.firebase.firestore.Exclude
 import java.io.Serializable
 
-class User() : Serializable {
+class User : Serializable {
     var Id : String = ""
-    var DisplayName:String = ""
-    var About:String = ""
-    var LikedStories:ArrayList<String> = ArrayList()
-    var PostedStories:ArrayList<String> = ArrayList()
-    var Interests: ArrayList<String> = ArrayList()
-    var Bookmarks: ArrayList<String> = ArrayList()
-    var Email:String = ""
+    var DisplayName : String = ""
+    var About : String = ""
+    var LikedStories : ArrayList<String> = ArrayList()
+    var PostedStories : ArrayList<String> = ArrayList()
+    var Interests : ArrayList<String> = ArrayList()
+    var Bookmarks : ArrayList<String> = ArrayList()
+    var Email : String = ""
     var UserFollower : ArrayList<String> = ArrayList()
     var UserFollowing : ArrayList<String> = ArrayList()
-    var Avatar:String =""
-    var JointDay :String =""
-
+    var Avatar : String = ""
+    var JointDay : String = ""
 //    constructor(parcel: Parcel) : this() {
 //        Id = "" + parcel.readString()
 //        DisplayName = "" + parcel.readString()

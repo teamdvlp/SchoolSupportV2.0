@@ -43,22 +43,22 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
 
     fun addControl () {
         mViewModel = getViewModel()
-
         rcv_interest_adapter = InterestRecylerViewAdapter(this, interestList)
         rcv_interest_adapter.adaptFor(lvInterest)
         setUpErrorDialog()
     }
 
     fun tickInterest () {
+
     }
 
     fun addEvents () {
         btnNext.setOnClickListener {
-            if (rcv_interest_adapter.selected_itemList.size >= REQUIRE_SELECTED_CONTENT_COUNT)
+            if (rcv_interest_adapter.selectedItemList.size >= REQUIRE_SELECTED_CONTENT_COUNT)
             {
                 try {
                 val userInterest: ArrayList<String> = ArrayList()
-                    for (interest in rcv_interest_adapter.selected_itemList) {
+                    for (interest in rcv_interest_adapter.selectedItemList) {
                         userInterest.add(interest.name)
                     }
                     user!!.Interests.clear()
