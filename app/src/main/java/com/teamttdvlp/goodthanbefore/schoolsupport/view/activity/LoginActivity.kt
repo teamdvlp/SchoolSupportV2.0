@@ -33,8 +33,8 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
-        for (a in SpawnStories().spawnStories(5)) {
-            FirebaseFirestore.getInstance().collection("Stories").document(a.Id).set(a  )
+        for (a in SpawnStories().spawnStories(10)) {
+            FirebaseFirestore.getInstance().collection("Stories2").document(a.Id).set(a)
         }
     }
 
