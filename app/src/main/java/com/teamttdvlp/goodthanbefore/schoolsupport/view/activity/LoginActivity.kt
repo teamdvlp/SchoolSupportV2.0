@@ -12,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserInfo
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.IgnoreExtraProperties
@@ -32,6 +33,9 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
+        for (a in SpawnStories().spawnStories(5)) {
+            FirebaseFirestore.getInstance().collection("Stories").document(a.Id).set(a  )
+        }
     }
 
     private fun addEvents() {
