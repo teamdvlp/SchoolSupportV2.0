@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         setContentView(R.layout.activity_main)
         addControls()
         addEvents()
-
         var m = UserStoriesManger()
         m.onGetHistorialStoriesListener = object : GetMultipleStories {
             override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
@@ -57,9 +56,12 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     private fun addEvents() {
         rbtn_global.setOnCheckedChangeListener (this)
         rbtn_local.setOnCheckedChangeListener (this)
-        rbtn_new_stories.setOnCheckedChangeListener (this)
         rbtn_tool.setOnCheckedChangeListener (this)
         rbtn_bookmarks.setOnCheckedChangeListener (this)
+        rbtn_new_stories.setOnClickListener {
+            startActivity(Intent(this, WriteStoriesActivity::class.java))
+        }
+
     }
 
     override fun onCheckedChanged(view: CompoundButton?, isChecked: Boolean) {
@@ -67,7 +69,6 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             val navigatingFragmentId : Int? = when (view?.id) {
                 R.id.rbtn_global -> R.id.main_nav_fragment_global
                 R.id.rbtn_local -> R.id.main_nav_fragment_local
-                R.id.rbtn_new_stories-> R.id.main_nav_fragment_new_stories
                 R.id.rbtn_tool -> R.id.main_nav_fragment_tool
                 R.id.rbtn_bookmarks -> R.id.main_nav_fragment_bookmarks
                 else -> null

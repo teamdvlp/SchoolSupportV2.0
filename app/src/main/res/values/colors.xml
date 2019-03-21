@@ -12,4 +12,6 @@
     <color name="white">#FFFFFF</color>
     <color name="blackloading">#EEEEEE</color>
     <color name="blue_cyan">#06ACAC</color>
+    <color name="line_color">#A3A3A3</color>
+    <color name="bright_yellow">#FFFBE2</color>
 </resources>

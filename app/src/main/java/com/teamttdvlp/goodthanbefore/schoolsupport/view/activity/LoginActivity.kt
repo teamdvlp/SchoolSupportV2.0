@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        startActivity(Intent(this, WriteStoriesActivity::class.java))
         addControls()
         addSetup()
         addEvents()

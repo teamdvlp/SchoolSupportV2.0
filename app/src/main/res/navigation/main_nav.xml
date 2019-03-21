@@ -9,9 +9,6 @@
     <fragment android:id="@+id/main_nav_fragment_local"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentLocal"
               android:label="FragmentNewStories"/>
-    <fragment android:id="@+id/main_nav_fragment_new_stories"
-              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentNewStories"
-              android:label="FragmentNewStories"/>
     <fragment android:id="@+id/main_nav_fragment_tool"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentTool"
               android:label="FragmentNewStories"/>
