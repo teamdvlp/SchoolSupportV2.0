@@ -60,6 +60,7 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
                 val userInterest: ArrayList<String> = ArrayList()
                     for (interest in rcv_interest_adapter.selectedItemList) {
                         userInterest.add(interest.name)
+                        Log.e("Name", "name? ${interest.name}")
                     }
                     user!!.Interests.clear()
                     user!!.Interests.addAll(userInterest)

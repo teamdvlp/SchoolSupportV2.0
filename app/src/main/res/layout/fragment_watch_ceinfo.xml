@@ -79,7 +79,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="@{chemicalElement.elecCount}"
+                    android:text="@{String.valueOf(chemicalElement.elecCount)}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/txt_chem_electron_proton_count"
@@ -105,7 +105,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="23"
+                    android:text="@{String.valueOf(chemicalElement.notron_count)}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -261,6 +261,7 @@
                     android:id="@+id/txt_other_info"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="1dp"
+                    android:layout_marginBottom="10dp"
                     android:textSize="15sp"
                     android:textColor="#000000"/>
         </LinearLayout>

@@ -17,6 +17,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentGlobalBin
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SearchBarActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.UserActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
@@ -65,6 +66,10 @@ class FragmentGlobal : Fragment() {
             val intent = Intent(context, UserActivity::class.java)
             intent.putExtra("User", activityModel.currentUser)
             startActivity(intent)
+        }
+
+        global_btn_search.setOnClickListener {
+            startActivity(Intent(context!!, SearchBarActivity::class.java))
         }
 
         adapter.addOnScrollListener(object : RecyclerViewLoadmoreAdapter.OnScrollListener {

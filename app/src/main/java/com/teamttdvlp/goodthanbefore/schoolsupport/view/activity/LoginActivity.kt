@@ -21,6 +21,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
@@ -33,9 +34,6 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
-        for (a in SpawnStories().spawnStories(10)) {
-            FirebaseFirestore.getInstance().collection("Stories2").document(a.Id).set(a)
-        }
     }
 
     private fun addEvents() {

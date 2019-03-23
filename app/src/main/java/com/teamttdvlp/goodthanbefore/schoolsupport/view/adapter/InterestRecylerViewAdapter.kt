@@ -15,30 +15,13 @@ import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 
 class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayList<Interest> = ArrayList()): RecyclerView.Adapter<InterestRecylerViewAdapter.DataViewHolder>() {
 
     var recyclerView : RecyclerView? = null
 
     var selectedItemList = ArrayList<Interest>()
-
-    var onCheckboxCheckedChangeListener : (CompoundButton, Boolean) -> Unit = {
-        checkBox, isChecked ->
-
-        var view_child = checkBox.parent.parent
-        var position = recyclerView?.indexOfChild(view_child as ViewGroup)
-        if (position != -1) {
-        position?.let {
-            var clicked_item = item_list[position]
-            if (isChecked && !selectedItemList.contains(clicked_item)) {
-                selectedItemList.add(clicked_item)
-            } else {
-                selectedItemList.remove(clicked_item)
-            }
-        }
-        }
-        Log.e("Size", selectedItemList.size.toString())
-    }
 
     fun adaptFor (recyclerView : RecyclerView) {
         this.recyclerView = recyclerView
@@ -48,8 +31,8 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         var layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var item_view = layoutInflater.inflate(R.layout.item_lv_select_interest, parent, false)
-        return DataViewHolder(item_view)
+        var itemView = layoutInflater.inflate(R.layout.item_lv_select_interest, parent, false)
+        return DataViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
@@ -58,6 +41,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         var item = item_list[position]
+        logError("------- $position", "------------------- $item")
         FirebaseStorage.getInstance().getReference(item.avatar)
             .downloadUrl
             .addOnCompleteListener {
@@ -66,14 +50,42 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
         holder.txt_name.text = item.name
         holder.txt_description.text = item.description
         holder.rbtn_is_selected.isChecked = item.ticked
-        if (item.ticked) selectedItemList.add(item)
-        holder.rbtn_is_selected.setOnCheckedChangeListener(onCheckboxCheckedChangeListener)
+        if (item.ticked && (!selectedItemList.contains(item))) {
+            selectedItemList.add(item)
+        }
+
+        holder.onItemClickListener = object : OnItemChooseChangeListener {
+            override fun onItemClick(isChosen: Boolean, pos: Int) {
+                val clickedItem = item_list[pos]
+
+                if (isChosen && !selectedItemList.contains(clickedItem))
+                    selectedItemList.add(clickedItem)
+
+                else if (!isChosen && selectedItemList.contains(clickedItem))
+                    selectedItemList.remove(clickedItem)
+
+                item_list[pos].ticked = isChosen
+                logError("Duma $pos", item_list[pos].toString())
+            }
+        }
     }
 
-    inner class DataViewHolder(itemView : View) : RecyclerView.ViewHolder (itemView) {
+    inner class DataViewHolder: RecyclerView.ViewHolder {
         var img_avatar : ImageView = itemView.findViewById(R.id.item_lsi_img_avatar)
         var txt_name : TextView = itemView.findViewById(R.id.item_lsi_txt_interest_name)
         var txt_description  : TextView = itemView.findViewById(R.id.item_lsi_txt_description)
         var rbtn_is_selected : DrawableCheckBox = itemView.findViewById(R.id.item_lsi_rbtn_is_selected)
+        var onItemClickListener : OnItemChooseChangeListener? = null
+
+        constructor(itemView: View ) : super (itemView) {
+            rbtn_is_selected.setOnCheckedChangeListener {
+                _, isChecked ->
+                onItemClickListener?.onItemClick(isChecked, adapterPosition)
+            }
+        }
+    }
+
+    interface OnItemChooseChangeListener {
+        fun onItemClick(isChosen : Boolean, pos : Int)
     }
 }

@@ -25,7 +25,8 @@ class BangTuanHoangGridviewAdapter (var context: Context, var itemList : ArrayLi
     private var gridView : GridView? = null
 
     private var onItemClickListener : (View) -> Unit = {
-        onItemClick?.onClick(itemList[gridView!!.indexOfChild(it)] as ChemicalElement)
+        var item = itemList[gridView!!.indexOfChild(it)]
+        if (item is ChemicalElement) onItemClick?.onClick(item)
     }
 
     fun adaptFor (target : GridView) {
@@ -57,7 +58,6 @@ class BangTuanHoangGridviewAdapter (var context: Context, var itemList : ArrayLi
         var txtEleNegative= childView.findViewById<TextView>(R.id.item_chem_ele_negative)
         var txtOxydationNumber = childView.findViewById<TextView>(R.id.item_chem_oxydation_numbers)
         var txtPosition = childView.findViewById<TextView>(R.id.item_chem_position)
-        Log.e("Bindview", "Bind")
 
         txtPosition.text = element.elecCount.toString()
         txtSymbol.text = element.symbol
@@ -111,6 +111,7 @@ class BangTuanHoangGridviewAdapter (var context: Context, var itemList : ArrayLi
     fun processFamilyChemicalElement (chemicalElement : FamilyChemicalElement, parent : ViewGroup) : View{
         var childView = layoutInflater.inflate(R.layout.item_ho_chemical_element, parent, false)
         var title = childView.findViewById<TextView>(R.id.txt_ho_chemical_element)
+        title.text = chemicalElement.chemicalElementName
         return childView
     }
 

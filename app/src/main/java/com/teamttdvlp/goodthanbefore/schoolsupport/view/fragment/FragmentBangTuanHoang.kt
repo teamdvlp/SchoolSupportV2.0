@@ -17,6 +17,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentBangTuanH
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.chemicalelement.IChemicalElement
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.ChemicalElement
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BangTuanHoanViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.FrmtBangTuanHoanViewModel
 
@@ -55,7 +56,10 @@ class FragmentBangTuanHoang : Fragment() {
     private fun addEvents() {
         val nav = Navigation.findNavController(activity!!, R.id.bth_bangtuanhoan_nav)
         gridAdapter.setOnItemClickListener {
-            nav.navigate(R.id.action_bth_nav_fragment_bth_to_watch_ceinfo_fragment)
+            val bundle = Bundle()
+            bundle.putParcelable("chemical_element", it)
+            logError("infos", it.toString())
+            nav.navigate(R.id.action_bth_nav_fragment_bth_to_watch_ceinfo_fragment, bundle)
         }
     }
 

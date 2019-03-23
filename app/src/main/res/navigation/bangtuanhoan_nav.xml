@@ -21,6 +21,8 @@
         <action android:id="@+id/action_bth_nav_fragment_watch_ceinfo_to_bth_nav_fragment_bth"
                 app:destination="@id/bth_nav_fragment_bth" app:enterAnim="@anim/move_right"
                 app:exitAnim="@anim/move_right" app:popEnterAnim="@anim/move_right" app:popExitAnim="@anim/move_right"/>
+        <argument android:name="chemical_element"
+                  app:argType="com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.ChemicalElement"/>
     </fragment>
 
 
