@@ -14,16 +14,28 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.BangTuanHoanAct
 import kotlinx.android.synthetic.main.fragment_tool.*
 
 
-class FragmentTool : Fragment() {
+class FragmentTool : Fragment(), View.OnClickListener {
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tool, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btn_bth.setOnClickListener {
+        btn_bangtuanhoan.setOnClickListener {
             startActivity(Intent(activity!!, BangTuanHoanActivity::class.java))
         }
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+    }
+
+    override fun onClick(v: View?) {
+
+    }
+
+    interface Aladu {
+
+    }
 }

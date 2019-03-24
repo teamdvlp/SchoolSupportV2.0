@@ -13,6 +13,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.SearchEQuationActivity">
+        </activity>
         <activity android:name=".view.activity.BangTuanHoanActivity">
         </activity>
         <activity android:name=".view.activity.ReadStoriesActivity">
@@ -34,6 +36,7 @@
         </activity>
         <activity android:name=".view.activity.SearchActivity">
         </activity>
+
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>

@@ -12,8 +12,7 @@
             tools:layout="@layout/activity_offline_tool"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            class="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentTool"
-    >
+            class="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentTool">
     </fragment>
 
 </FrameLayout>
