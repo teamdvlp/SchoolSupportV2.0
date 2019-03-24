@@ -54,8 +54,8 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
             selectedItemList.add(item)
         }
 
-        holder.onItemClickListener = object : OnItemChooseChangeListener {
-            override fun onItemClick(isChosen: Boolean, pos: Int) {
+        holder.onChosenChangeListener = object : OnItemChooseChangeListener {
+            override fun onChosenChange(isChosen: Boolean, pos: Int) {
                 val clickedItem = item_list[pos]
 
                 if (isChosen && !selectedItemList.contains(clickedItem))
@@ -75,17 +75,17 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
         var txt_name : TextView = itemView.findViewById(R.id.item_lsi_txt_interest_name)
         var txt_description  : TextView = itemView.findViewById(R.id.item_lsi_txt_description)
         var rbtn_is_selected : DrawableCheckBox = itemView.findViewById(R.id.item_lsi_rbtn_is_selected)
-        var onItemClickListener : OnItemChooseChangeListener? = null
+        var onChosenChangeListener : OnItemChooseChangeListener? = null
 
         constructor(itemView: View ) : super (itemView) {
             rbtn_is_selected.setOnCheckedChangeListener {
                 _, isChecked ->
-                onItemClickListener?.onItemClick(isChecked, adapterPosition)
+                onChosenChangeListener?.onChosenChange(isChecked, adapterPosition)
             }
         }
     }
 
     interface OnItemChooseChangeListener {
-        fun onItemClick(isChosen : Boolean, pos : Int)
+        fun onChosenChange(isChosen : Boolean, pos : Int)
     }
 }

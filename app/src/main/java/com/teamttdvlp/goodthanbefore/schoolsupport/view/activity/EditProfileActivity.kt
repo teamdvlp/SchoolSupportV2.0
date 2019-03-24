@@ -13,10 +13,13 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UpdateInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
+import kotlinx.android.synthetic.main.activity_view_profile.*
 import java.io.ByteArrayOutputStream
 
 
@@ -31,7 +34,7 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.teamttdvlp.goodthanbefore.schoolsupport.R.layout.activity_edit_profile)
-        currentUser = intent.extras!!.getSerializable("User") as User
+        currentUser = CurrentUser.currentUser!!
         currentAvatar = CurrentUser.bitmapUserAvatar
         img_avatar.setImageBitmap(currentAvatar)
         mViewModel = getViewModel()
@@ -40,7 +43,8 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
     }
 
     private fun addControls() {
-
+        edt_user_name.setText(currentUser.DisplayName)
+        edt_about.setText(currentUser.About)
     }
 
     private fun addEvents() {
@@ -49,6 +53,7 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
         }
 
         btn_save.setOnClickListener {
+            progress_bar.visibility = View.VISIBLE
             save()
         }
 
@@ -75,29 +80,41 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
 
     // Update User info
     override fun onUpdateSuccess() {
+        progress_bar.visibility = View.GONE
         finish()
         Log.e("Update:", "Success")
     }
 
     override fun onUpdateFailed() {
+        Toast.makeText(this, "Đã xảy ra lỗi", Toast.LENGTH_LONG).show()
         Log.e("Update:", "Failed")
     }
 
     private fun save () {
-        mViewModel.uploadAvatar(currentUser, currentAvatar!!, object : UploadAvatarEvent {
-            override fun onUploadSuccess(downloadUri: String) {
-                Log.e("Upload:", "Success. Uri: $downloadUri" )
-                currentUser.DisplayName = edt_user_name.text.toString()
-                currentUser.About = edt_about.text.toString()
-                currentUser.Avatar = downloadUri
-                CurrentUser.bitmapUserAvatar = currentAvatar
-                mViewModel.updateUserInfo(currentUser, this@EditProfileActivity)
-            }
+        if (currentAvatar != CurrentUser.bitmapUserAvatar) {
+            mViewModel.uploadAvatar(currentUser, currentAvatar!!, object : UploadAvatarEvent {
+                override fun onUploadSuccess(downloadUri: String) {
+                    Log.e("Upload:", "Success. Uri: $downloadUri" )
+                    currentUser.DisplayName = edt_user_name.text.toString()
+                    currentUser.About = edt_about.text.toString()
+                    currentUser.Avatar = downloadUri
+                    CurrentUser.bitmapUserAvatar = currentAvatar
+                    CurrentUser.currentUser = currentUser
+                    mViewModel.updateUserInfo(currentUser, this@EditProfileActivity)
+                }
 
-            override fun onUploadFailed(message : String) {
-                Log.e("Upload:", "Failed. Error: $message")
-            }
-        })
+                override fun onUploadFailed(message : String) {
+                    Toast.makeText(this@EditProfileActivity, "Đã xảy ra lỗi", Toast.LENGTH_LONG).show()
+                    Log.e("Upload:", "Failed. Error: $message")
+                }
+            })
+        } else {
+            currentUser.DisplayName = edt_user_name.text.toString()
+            currentUser.About = edt_about.text.toString()
+            CurrentUser.currentUser = currentUser
+            mViewModel.updateUserInfo(currentUser, this@EditProfileActivity)
+        }
+
     }
 
 }

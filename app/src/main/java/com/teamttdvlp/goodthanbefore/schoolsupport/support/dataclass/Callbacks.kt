@@ -65,3 +65,8 @@ interface GetMultipleStories {
     fun onGetMultipleStoriesSuccess (result:ArrayList<Stories>)
     fun onGetMultipleStoriesFailed ()
 }
+
+interface SearchStoriesEvent {
+    fun onSearchStoriesSuccess (resultStories : ArrayList<Stories>)
+    fun onSearchStoriesFailed (e : Exception?)
+}

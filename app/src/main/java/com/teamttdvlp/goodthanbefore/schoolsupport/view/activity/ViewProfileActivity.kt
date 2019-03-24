@@ -35,22 +35,21 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     override fun onResume() {
         super.onResume()
         imgAvatar.background = BitmapDrawable(resources, CurrentUser.bitmapUserAvatar)
+        txtUserName.text = CurrentUser.currentUser?.DisplayName
+        txtAbout.text = CurrentUser.currentUser?.About
     }
 
     private fun setup() {
-        val currentUser: User = intent.getSerializableExtra("User") as User
-        mViewModel = getViewModel({return@getViewModel  ViewProfileViewModel(currentUser)})
-        mBinding.txtUserName.text = currentUser.DisplayName
-        Picasso.get().load(currentUser.Avatar).into(mBinding.imgAvatar)
+        mViewModel = getViewModel()
+        mBinding.txtUserName.text = CurrentUser.currentUser?.DisplayName
+        Picasso.get().load(CurrentUser.currentUser?.Avatar).into(mBinding.imgAvatar)
     }
 
     private fun addEvents() {
         mBinding.vpgProfile.addOnPageChangeListener(this)
         mBinding.tabLayout.setOnCheckedChangeListener(this)
         mBinding.btnEdit.setOnClickListener {
-
-            startActivity(Intent(this, EditProfileActivity::class.java)
-                .putExtra("User", mViewModel.currentUser))
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
     }
 
