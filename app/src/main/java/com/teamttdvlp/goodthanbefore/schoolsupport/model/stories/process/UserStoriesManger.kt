@@ -1,6 +1,7 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.stories.IGlobalStories
+import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.stories.IHotStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserBookMark
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserHistoryStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserLikedStories
@@ -18,15 +19,21 @@ class UserStoriesManger {
     private var mUserLikedStories : IUserLikedStories
     private var mUserHistoryStories: IUserHistoryStories
     private var mUserBookmarkStories : IUserBookMark
+    private var mHotStories : IHotStories
     var onGetLikedStoriesListener:GetMultipleStories? = null
     var onGetHistorialStoriesListener : GetMultipleStories? = null
     var onGetBookmarkStoriesListener : GetMultipleStories? = null
-
+    var onGetHotStoriesListener:GetMultipleStories? = null
     constructor() {
+        mHotStories = HotStories()
         mUserBookmarkStories = UserBookMark()
         mUserHistoryStories = UserHistoryStories()
         mGlobalStories = GlobalStories()
         mUserLikedStories = UserLikedStories()
+    }
+
+    fun getHotStories (topics:ArrayList<String>, fromThree: Long, fromFive: Long, fromSeven: Long) {
+        mHotStories.getHotStoriesByTopic(topics, fromThree,fromFive,fromSeven, onGetHotStoriesListener)
     }
 
     fun getUserLikedStories (userId:String, count:Int) {

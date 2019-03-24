@@ -66,6 +66,11 @@ interface GetMultipleStories {
     fun onGetMultipleStoriesFailed ()
 }
 
+interface PostNewStoryEvent {
+    fun onPostNewStoryFailed (e:Exception?)
+    fun onPostNewStorySuccess ()
+}
+
 interface SearchStoriesEvent {
     fun onSearchStoriesSuccess (resultStories : ArrayList<Stories>)
     fun onSearchStoriesFailed (e : Exception?)

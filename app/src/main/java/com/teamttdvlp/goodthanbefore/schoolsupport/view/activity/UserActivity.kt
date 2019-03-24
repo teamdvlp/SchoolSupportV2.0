@@ -29,33 +29,32 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun addControls() {
-        var mUser : User = intent.getSerializableExtra("User") as User
-        mViewModel = getViewModel {return@getViewModel UserViewModel(mUser)}
+        mViewModel = getViewModel ()
     }
 
     override fun onResume() {
         super.onResume()
-        imgAvatar.background = BitmapDrawable(resources, CurrentUser.bitmapUserAvatar)
+        imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
     }
 
     private fun addEvents() {
         mBinding.btnViewProfile.setOnClickListener {
             val intent = Intent(this, ViewProfileActivity::class.java)
-            intent.putExtra("User", mViewModel.currentUser)
+            intent.putExtra("User", CurrentUser.currentUser)
             startActivity(intent)
         }
 
         mBinding.btnCustomizeYourInterest.setOnClickListener {
             val intent = Intent(this, InterestActivity::class.java)
-            intent.putExtra("User", mViewModel.currentUser)
+            intent.putExtra("User",CurrentUser.currentUser)
             startActivity(intent)
         }
     }
 
     private fun setUp() {
-        mBinding.txtUserName.text = mViewModel.currentUser.DisplayName
-        if (!mViewModel.currentUser.Avatar.isNullOrEmpty())
-        Picasso.get().load(mViewModel.currentUser.Avatar).into(mBinding.imgAvatar)
+        mBinding.txtUserName.text =CurrentUser.currentUser!!.DisplayName
+        if (!CurrentUser.currentUser!!.Avatar.isNullOrEmpty())
+        Picasso.get().load(CurrentUser.currentUser!!.Avatar).into(mBinding.imgAvatar)
     }
 
 }

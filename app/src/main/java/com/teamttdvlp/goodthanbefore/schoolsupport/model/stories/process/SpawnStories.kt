@@ -13,8 +13,8 @@ class SpawnStories {
 
     var currentID = 1000
 
-    val start = 1548954000000 // 1/2/2019
-    val end = 1553014800000 // 20/3/2019
+    val start = 1552867200000 // 18/3/2019
+    val end = System.currentTimeMillis() //homnay
     val dateFormat = "dd/MM/YYYY"
 
     private var tagsEx : ArrayList<String> = arrayListOf("AndroidDevelopment"
@@ -87,29 +87,29 @@ class SpawnStories {
 
     private fun spawnClaps () : Int = Random.nextInt(0, 100)
 
-    private fun spawnPostTime() : Long = Random.nextLong(0, 30) * ONE_DAY_IN_MILIS + start
+    private fun spawnPostTime() : Long = Random.nextLong(0, (start-1549065600000)/ONE_DAY_IN_MILIS) * ONE_DAY_IN_MILIS + 1549065600000
 
     private fun spawnScoreHotDayLifeCycle (storyReceiver : Stories) {
         val threeDaysScore = Random.nextInt(200, 1000)
         val fiveDaysScore = Random.nextInt(threeDaysScore , 1000)
         val sevenDaysScore = Random.nextInt(fiveDaysScore , 1000)
-        storyReceiver.ThreeHotDayCycle = threeDaysScore
-        storyReceiver.FiveHotDayCycle = fiveDaysScore
-        storyReceiver.SevenHotDayCycle = sevenDaysScore
+        storyReceiver.ThreeHotDayCycle = threeDaysScore.toLong()
+        storyReceiver.FiveHotDayCycle = fiveDaysScore.toLong()
+        storyReceiver.SevenHotDayCycle = sevenDaysScore.toLong()
     }
 
     val ONE_DAY_IN_MILIS = 86_400_000
-    private fun spawnHotDayLifeCycle (storyReceiver: Stories, postTime : Long) {
+    private fun spawnHotDayLifeCycle (storyReceiver: Stories, startTime : Long) {
         for (i in 0..2) {
-            storyReceiver.ThreeHotDayLifeCycle.add(getDate(postTime + i * ONE_DAY_IN_MILIS))
+            storyReceiver.ThreeHotDayLifeCycle.add(getDate(startTime + i * ONE_DAY_IN_MILIS))
         }
 
         for (i in 0..4) {
-            storyReceiver.FiveHotDayLifeCycle.add(getDate(postTime + i * ONE_DAY_IN_MILIS))
+            storyReceiver.FiveHotDayLifeCycle.add(getDate(startTime + i * ONE_DAY_IN_MILIS))
         }
 
         for (i in 0..6) {
-            storyReceiver.SevenHotDayLifeCycle.add(getDate(postTime + i * ONE_DAY_IN_MILIS))
+            storyReceiver.SevenHotDayLifeCycle.add(getDate(startTime + i * ONE_DAY_IN_MILIS))
         }
     }
 
@@ -136,7 +136,7 @@ class SpawnStories {
             Author = spawnAuthor()
             Topic = spawnTopic()
             spawnScoreHotDayLifeCycle(this)
-            spawnHotDayLifeCycle(this, PostedTime)
+            spawnHotDayLifeCycle(this, Random.nextLong(0, (end-start)/ONE_DAY_IN_MILIS) * ONE_DAY_IN_MILIS + start)
             spawnIsHotAndReputation(this)
             spawnReputationLifeCycle(this, PostedTime)
         }

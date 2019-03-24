@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserInfo
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
@@ -24,6 +25,7 @@ class UserInfo : IUserInfo {
     }
 
     override fun readInfo(userId:String, callback: ReadInfoEvent) {
+        Log.d("radInfo", userId)
         mFirestoreRef.collection("Users").document(userId).get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {

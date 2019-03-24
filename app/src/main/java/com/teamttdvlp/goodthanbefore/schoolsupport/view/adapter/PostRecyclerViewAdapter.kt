@@ -18,7 +18,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class PostRecyclerViewAdapter (
+class PostRecyclerViewAdapter  (
     listItem: ArrayList<Stories>,
     context: Context) : RecyclerViewLoadmoreAdapter<PostRecyclerViewAdapter.LoadedViewDataHolder>(context) {
     private var listItem = listItem
@@ -29,7 +29,9 @@ class PostRecyclerViewAdapter (
     override fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): LoadedViewDataHolder {
         Log.e("On Create View Holder", "Loaded item")
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_lv_post, parent, false)
-        return LoadedViewDataHolder(itemView)
+        var viewHolder = LoadedViewDataHolder(itemView)
+        viewHolder.onItemClickListener = getOnItemCLickedListener()
+        return viewHolder
     }
 
     override fun createWaitViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -57,11 +59,23 @@ class PostRecyclerViewAdapter (
         return format.format(result)
     }
 
-        class LoadedViewDataHolder (item_view : View) : RecyclerView.ViewHolder(item_view) {
-            var imgAvatar : ImageView? = item_view.findViewById(R.id.item_ilp_img_avatar)
-            var txtPostTitle : TextView? = item_view.findViewById(R.id.item_ilp_txt_post_title)
-            var txtAuthor : TextView? = item_view.findViewById(R.id.item_ilp_txt_author)
-            var txtDate : TextView? = item_view.findViewById(R.id.item_ilp_txt_date)
+        class LoadedViewDataHolder : RecyclerView.ViewHolder {
+            var imgAvatar : ImageView
+            var txtPostTitle : TextView
+            var txtAuthor : TextView
+            var txtDate : TextView
+            var txtTag : TextView
+            var onItemClickListener : OnItemClickListener? = null
+            constructor(item_view : View) : super (item_view) {
+                 imgAvatar= item_view.findViewById(R.id.item_ilp_img_avatar)
+                 txtPostTitle = item_view.findViewById(R.id.item_ilp_txt_post_title)
+                 txtAuthor  = item_view.findViewById(R.id.item_ilp_txt_author)
+                 txtDate  = item_view.findViewById(R.id.item_ilp_txt_date)
+                 txtTag  = item_view.findViewById(R.id.item_ilp_txt_tag)
+                item_view.setOnClickListener({
+                    onItemClickListener?.onClicked(adapterPosition)
+                })
+            }
         }
 
         class WaitingViewDataHolder (item_view : View) : RecyclerView.ViewHolder(item_view)

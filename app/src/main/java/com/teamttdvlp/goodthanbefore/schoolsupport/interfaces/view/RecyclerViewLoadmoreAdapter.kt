@@ -1,16 +1,15 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view
 
 import android.content.Context
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-
 const val LOADED_ITEM_VIEW = 0
 const val WAITING_LOAD_VIEW = 1
 
 abstract class  RecyclerViewLoadmoreAdapter <T:RecyclerView.ViewHolder>(var context : Context) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
      var isLoading = false
 
@@ -19,6 +18,8 @@ abstract class  RecyclerViewLoadmoreAdapter <T:RecyclerView.ViewHolder>(var cont
      var layoutManager : LinearLayoutManager? = null
 
      var mRecyclerView : RecyclerView? = null
+     private var mItemClickListener : OnItemClickListener? = null
+
     fun startLoadingState () {
         isLoading = true
     }
@@ -55,10 +56,19 @@ abstract class  RecyclerViewLoadmoreAdapter <T:RecyclerView.ViewHolder>(var cont
         })
     }
 
+    fun addOnItemClickedListener (listener:OnItemClickListener) {
+        mItemClickListener = listener
+    }
+
+    fun getOnItemCLickedListener () : OnItemClickListener? {
+        return mItemClickListener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == LOADED_ITEM_VIEW) {
-            return onCreateItemViewHolder(parent, viewType)
+            var v = onCreateItemViewHolder(parent, viewType)
+            return v
         } else {
             createWaitViewHolder(parent, viewType)
         }
@@ -109,5 +119,7 @@ abstract class  RecyclerViewLoadmoreAdapter <T:RecyclerView.ViewHolder>(var cont
         fun loadMore()
     }
 
-
+    interface OnItemClickListener {
+        fun onClicked (position: Int)
+    }
 }

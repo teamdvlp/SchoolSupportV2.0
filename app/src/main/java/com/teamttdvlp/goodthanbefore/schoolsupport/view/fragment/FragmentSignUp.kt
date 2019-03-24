@@ -144,6 +144,7 @@ class FragmentSignUp : Fragment(), LoginEvent {
         var intent = Intent(context, InterestActivity::class.java)
         intent.putExtra("User", user)
         startActivity(intent)
+        activity?.finish()
     }
 
     override fun onLoginFailed(e: Exception?) {

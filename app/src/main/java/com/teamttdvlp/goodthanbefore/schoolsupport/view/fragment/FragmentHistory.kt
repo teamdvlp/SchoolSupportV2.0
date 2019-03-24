@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.google.firebase.storage.FirebaseStorage
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentHistoryBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
@@ -22,7 +22,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewMode
 class FragmentHistory : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
 
     private lateinit var mBinding:FragmentHistoryBinding
-    private lateinit var activityViewModel : ViewProfileViewModel
+    private lateinit var activityViewModel:ViewProfileViewModel
     private lateinit var mViewModel:HistoryViewModel
 
     private lateinit var mAdapter:PostRecyclerViewAdapter
@@ -33,7 +33,7 @@ class FragmentHistory : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdap
     ): View? {
         mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_history, container, false)
         activityViewModel  = activity!!.getViewModel()
-        mViewModel = getViewModel {return@getViewModel HistoryViewModel(CurrentUser.currentUser!!)}
+        mViewModel = getViewModel()
         addControls()
         addEvents()
         setup()

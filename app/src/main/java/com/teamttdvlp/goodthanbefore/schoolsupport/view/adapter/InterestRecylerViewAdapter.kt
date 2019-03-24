@@ -37,6 +37,7 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
 
     override fun getItemCount(): Int {
         return item_list.size
+
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {

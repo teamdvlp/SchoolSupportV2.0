@@ -7,5 +7,5 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.WriteStoriesAct
  * @see WriteStoriesActivity
  */
 class WriteStoriesViewModel : ViewModel() {
-
+    lateinit var activityResultListener: WriteStoriesActivity.OnActivityResultListener
 }

@@ -34,7 +34,7 @@ class FragmentBookmarks : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAd
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_bookmark, container, false)
         activityViewModel = activity!!.getViewModel()
-        mViewModel = getViewModel({return@getViewModel BookmarkViewModel(activityViewModel.currentUser)})
+        mViewModel = getViewModel()
         return mBinding.root
     }
 

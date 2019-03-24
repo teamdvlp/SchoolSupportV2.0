@@ -8,9 +8,7 @@ import java.lang.Exception
 
 class UserViewModel : ViewModel {
     private var mUserManager : UserManager
-    var currentUser:User; get private set
-    constructor(user:User) {
-        currentUser = user
+    constructor() {
         mUserManager = UserManager()
     }
 }

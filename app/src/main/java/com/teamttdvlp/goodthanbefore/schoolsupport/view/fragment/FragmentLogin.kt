@@ -20,6 +20,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.firestore.FirebaseFirestore
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.LogCode
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
@@ -153,9 +154,10 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
                 startActivity(intent)
         }else {
             var intent = Intent(context, MainActivity::class.java)
-            intent.putExtra("User", user)
+            CurrentUser.currentUser = user
             startActivity(intent)
         }
+        activity?.finish()
         Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
     }
 
