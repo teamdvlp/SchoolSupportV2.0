@@ -7,6 +7,7 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.stories.IPostNewStory
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.DateSupport
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.PostNewStoryEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
 import java.io.ByteArrayOutputStream
@@ -26,14 +27,44 @@ class PostNewStory : IPostNewStory {
         return storyId
     }
 
+    fun calculateCycle () {
+
+    }
+    val ONE_DAY_IN_MILIS = 86_400_000
+    fun createCycle (startTime:Long) : HashMap<String, ArrayList<String>> {
+        var result : HashMap<String, ArrayList<String>> = HashMap()
+        var sevenCycle : ArrayList<String> = ArrayList()
+        var fiveCycle : ArrayList<String> = ArrayList()
+        var threeCycle : ArrayList<String> = ArrayList()
+        for (i in 0..2) {
+            threeCycle.add(DateSupport.getDateByTimeMillis(startTime + i * ONE_DAY_IN_MILIS))
+        }
+
+        for (i in 0..4) {
+            fiveCycle.add(DateSupport.getDateByTimeMillis(startTime + i * ONE_DAY_IN_MILIS))
+        }
+
+        for (i in 0..6) {
+            sevenCycle.add(DateSupport.getDateByTimeMillis(startTime + i * ONE_DAY_IN_MILIS))
+        }
+        result["three"] = threeCycle
+        result["five"] = fiveCycle
+        result["seven"] = sevenCycle
+        return result
+    }
+
     override fun postStory(id : String?,story: Stories, storyAvatar:Bitmap, listener : PostNewStoryEvent) {
         val storyId : String
-        if (story !=null) {
+        if (id !=null) {
             storyId = id!!
         } else {
             storyId = getStoryId()
         }
+        var firstCycle = createCycle(System.currentTimeMillis())
         story.Id = storyId
+        story.ThreeHotDayLifeCycle = firstCycle["three"]!!
+        story.FiveHotDayLifeCycle = firstCycle["five"]!!
+        story.SevenHotDayLifeCycle = firstCycle["seven"]!!
         Log.d("StoryId", story.Id)
         postStoryAvatar(storyAvatar, story.Id,object : UploadAvatarEvent {
             override fun onUploadSuccess(downloadUri: String) {

@@ -25,7 +25,7 @@ class SubmitStoryViewModel : ViewModel {
     }
 
     fun postStory(listener:PostNewStoryEvent, storyAvatar:Bitmap) {
-        mPostStory.postStory(null,currentStory.value!!,storyAvatar, listener)
+        mPostStory.postStory(null, currentStory.value!!,storyAvatar, listener)
     }
 
 }
