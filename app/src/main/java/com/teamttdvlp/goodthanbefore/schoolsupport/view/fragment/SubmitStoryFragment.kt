@@ -29,12 +29,11 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import java.lang.Exception
 
-class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.OnActivityResultListener {
+class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
     private var mStory : Stories = Stories()
     private lateinit var mBinding : DialogSubmitStoryLayoutBinding
     private lateinit var mViewModel : SubmitStoryViewModel
     private lateinit var activittViewModel : WriteStoriesViewModel
-    var currentAvatar : Bitmap? = null
 
     companion object {
         fun newInstance (date:String, author:String) : SubmitStoryFragment {
@@ -51,7 +50,6 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.
         mBinding.lifecycleOwner = this
         mViewModel = getViewModel()
         activittViewModel = getViewModel()
-        ((activity) as WriteStoriesActivity).activityResultListener = this
         Log.d("accc", "chayroido")
         mBinding.mVieModel = mViewModel
         mBinding.txtDate.text = mViewModel.getCurrentDate()
@@ -73,7 +71,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.
         mBinding.imgAvatar.setOnClickListener {
             CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
-                .start(requireActivity())
+                .start(context!!, this)
         }
 
         mBinding.btnSubmit.setOnClickListener{
@@ -110,7 +108,8 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.
         return true
     }
 
-    override fun onActivityResultListener(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         Log.d("avatarURi", "chay")
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             val result = CropImage.getActivityResult(data)
@@ -118,7 +117,6 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.
                 val resultUri = result.uri
                 Log.d("avatarURi", result.toString())
                 mBinding.imgAvatar.setImageURI(resultUri)
-                currentAvatar = ( mBinding.imgAvatar.drawable as BitmapDrawable).bitmap
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 val error = result.error
                 Log.e("loiroine ", "EditProfileActivity.kt \n onActivityResult \n $error")

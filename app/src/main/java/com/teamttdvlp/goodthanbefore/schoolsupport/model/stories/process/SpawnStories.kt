@@ -100,7 +100,7 @@ class SpawnStories {
 
     val ONE_DAY_IN_MILIS = 86_400_000
     private fun spawnHotDayLifeCycle (storyReceiver: Stories, startTime : Long) {
-        for (i in 0..2) {
+        for (i in 0..2) {0
             storyReceiver.ThreeHotDayLifeCycle.add(getDate(startTime + i * ONE_DAY_IN_MILIS))
         }
 
