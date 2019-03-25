@@ -18,6 +18,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
@@ -32,6 +33,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import kotlinx.coroutines.*
 import java.lang.Exception
 import java.util.*
+import kotlin.collections.HashMap
 
 class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult>, LoginEvent {
     private lateinit var mBinding : FragmentLoginBinding

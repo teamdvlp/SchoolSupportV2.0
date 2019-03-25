@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.stories
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.stories.ISearchStoryByTitle
@@ -20,7 +21,7 @@ class SearchStoriesByTitle : ISearchStoryByTitle {
         var queries : Query? = null
         for (part in titleParts) {
             if (queries == null) {
-                queries = col.whereEqualTo(part, true)
+                queries = col.whereEqualTo("splitTitle.${part}", true)
             } else {
                 queries = queries.whereEqualTo(part, true)
             }

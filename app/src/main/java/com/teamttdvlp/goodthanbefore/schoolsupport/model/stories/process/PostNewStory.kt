@@ -3,6 +3,7 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process
 import android.graphics.Bitmap
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.stories.IPostNewStory
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
@@ -40,9 +41,17 @@ class PostNewStory : IPostNewStory {
                 mFirestore.collection("Stories").document(storyId).set(story)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            var a : String = "aasdasd"
-                            a.indexOf("</body>")
-                            listener.onPostNewStorySuccess()
+                            var splitTitle = splitTitle(story.Title)
+                            var mergeData : HashMap<String, HashMap<String, Boolean>> = HashMap()
+                            mergeData["splitTitle"] = splitTitle
+                            mFirestore.collection("Stories").document(storyId).set(mergeData, SetOptions.merge())
+                                .addOnCompleteListener {
+                                    if (it.isSuccessful) {
+                                        listener.onPostNewStorySuccess()
+                                    } else {
+                                        listener.onPostNewStoryFailed(it.exception)
+                                    }
+                                }
                         } else {
                             listener.onPostNewStoryFailed(it.exception)
                         }
@@ -54,6 +63,15 @@ class PostNewStory : IPostNewStory {
             }
 
         })
+    }
+
+    private fun splitTitle (title:String) : HashMap<String, Boolean> {
+        var titleParts = title.toLowerCase().split(" ")
+        var result : HashMap<String, Boolean> = HashMap()
+        for (part in titleParts) {
+            result[part] = true
+        }
+        return result
     }
 
     override fun postStoryAvatar(bitmap: Bitmap, storyId:String, listener : UploadAvatarEvent) {

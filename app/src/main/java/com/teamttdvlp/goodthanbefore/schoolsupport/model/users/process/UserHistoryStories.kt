@@ -3,10 +3,13 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserHistoryStories
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.CompactStory
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetUserCompactStory
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.NewHistorialStoryEvent
 
 class UserHistoryStories : IUserHistoryStories {
+
     private var count =  0
     private var currentItem : CompactStory
     private var mFirestore : FirebaseFirestore
@@ -47,4 +50,22 @@ class UserHistoryStories : IUserHistoryStories {
                 }
             }
     }
+    override fun newHistorialStory(storyId: String, listener: NewHistorialStoryEvent) {
+        val compactStory : CompactStory = CompactStory()
+        compactStory.Id = storyId
+        compactStory.Time = System.currentTimeMillis()
+        mFirestore.collection("Users")
+            .document(CurrentUser.currentUser!!.Id)
+            .collection("HistorialStories")
+            .document(storyId)
+            .set(compactStory)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    listener.onNewHistorialStorySuccess()
+                } else {
+                    listener.onNewHistorialStoryFailed(it.exception)
+                }
+            }
+    }
+
 }

@@ -75,3 +75,39 @@ interface SearchStoriesEvent {
     fun onSearchStoriesSuccess (resultStories : ArrayList<Stories>)
     fun onSearchStoriesFailed (e : Exception?)
 }
+
+interface NewBookmarkEvent {
+    fun onNewBoomarkSuccess ()
+    fun onNewBookmarkFailed (e:Exception?)
+}
+
+interface DeleteBookmarkEvent {
+    fun onDeleteBookmarkSuccess ()
+    fun onDeleteBookmarkFailed (e:Exception?)
+}
+interface NewLikeStoryEvent {
+    fun onNewLikeStorySuccess ()
+    fun onNewLikeStoryFailed (e:Exception?)
+}
+interface NewHistorialStoryEvent {
+    fun onNewHistorialStorySuccess ()
+    fun onNewHistorialStoryFailed (e:Exception?)
+}
+interface DeleteHistorialStoryEvent {
+    fun onDeleteHistorialStorySuccess ()
+    fun onDeleteHistorialStorykFailed (e:Exception?)
+}
+
+interface DeleteLikeStoryEvent {
+    fun onDeleteLikeStorySuccess ()
+    fun onDeleteLikeStoryFailed (e:Exception?)
+}
+
+interface IsStoryExistInLikeListEvent {
+    fun onStoryExistInLikeListSuccess (result:Boolean)
+    fun onStoryExistInLikeListFailed (e:Exception?)
+}
+interface IsStoryExistInBookmarkListEvent {
+    fun onStoryExistInBookmarkListSuccess (result:Boolean)
+    fun onStoryExistInBookmarkListFailed (e:Exception?)
+}
