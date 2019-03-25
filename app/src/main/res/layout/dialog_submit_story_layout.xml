@@ -96,7 +96,6 @@
                     android:layout_width="0dp"
                     android:inputType="textPersonName"
                     android:maxLength="20"
-                    android:text="@={mVieModel.currentStory.Tag}"
                     android:background="@color/transparent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toStartOf="@+id/imgAvatar"

@@ -154,6 +154,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         mViewModel.currentStory.value!!.Content = arguments?.getString("Content")!!
         mViewModel.currentStory.value!!.Author = CurrentUser.currentUser!!.Id
         mViewModel.currentStory.value!!.AuthorDisplayName = CurrentUser.currentUser!!.DisplayName
+        mViewModel.currentStory.value!!.Tag = mBinding.edtTag.text.toString()
         mViewModel.currentStory.notifiChanged()
         Log.d("SubmitStory", "content: " + mStory.Content)
     }
