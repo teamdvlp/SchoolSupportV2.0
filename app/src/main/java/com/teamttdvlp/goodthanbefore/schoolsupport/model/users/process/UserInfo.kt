@@ -1,6 +1,9 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process
 
+import android.net.Uri
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.users.process.IUserInfo
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
@@ -16,7 +19,19 @@ class UserInfo : IUserInfo {
         mFirestoreRef.collection("Users").document(user.Id).set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    callback.onWriteInfoSuccess()
+                    val newProfile = UserProfileChangeRequest.Builder()
+                        .setDisplayName(user.DisplayName)
+                        .setPhotoUri(Uri.parse(user.Avatar))
+                        .build()
+                    FirebaseAuth.getInstance().currentUser?.updateProfile(newProfile)?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            callback.onWriteInfoSuccess()
+                        } else {
+                            Log.d("sukien", "new profile failed")
+                            callback.onWriteInfoFailed(it.exception)
+                        }
+                    }
+
                 } else {
                     callback.onWriteInfoFailed(it.exception)
                 }
@@ -37,9 +52,4 @@ class UserInfo : IUserInfo {
             }
     }
 
-    override fun updateInfo(user: User, callback: UpdateInfoEvent) {
-        mFirestoreRef.collection("Users")
-            .document(user.Id)
-            .set(user)
-    }
 }

@@ -42,7 +42,9 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     private fun setup() {
         mViewModel = getViewModel()
         mBinding.txtUserName.text = CurrentUser.currentUser?.DisplayName
-        Picasso.get().load(CurrentUser.currentUser?.Avatar).into(mBinding.imgAvatar)
+        if (!CurrentUser.currentUser?.Avatar.isNullOrEmpty()) {
+            Picasso.get().load(CurrentUser.currentUser?.Avatar).into(mBinding.imgAvatar)
+        }
     }
 
     private fun addEvents() {

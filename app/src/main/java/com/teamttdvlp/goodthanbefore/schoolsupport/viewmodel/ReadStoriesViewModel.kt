@@ -22,4 +22,11 @@ class ReadStoriesViewModel : ViewModel  {
         mUserManager.getInfo(authorId)
     }
 
+    fun setBookmark (storyId:String) {
+
+    }
+
+    fun unSetBookmark () {
+
+    }
 }

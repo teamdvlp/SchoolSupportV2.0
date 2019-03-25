@@ -13,6 +13,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.DateSupport
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.ReadInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ReadStoriesViewModel
+import kotlinx.coroutines.*
 import java.lang.Exception
 
 class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent {
@@ -58,6 +59,33 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent {
     }
 
     private fun addEvents() {
+        mBinding.btnBookmark.setOnCheckedChangeListener({v, isChecked ->
+            if (isChecked) {
 
+            }
+        })
+    }
+    var job : Job? = null
+    private fun countDown (isChecked : Boolean) {
+        if (job != null) {
+            job!!.cancel()
+            job!!.start()
+            return;
+        }
+        job = GlobalScope.launch {
+            delay(5000)
+            GlobalScope.launch(Dispatchers.Main) {
+                delayDone(isChecked)
+            }
+        }
+        job!!.start()
+    }
+
+    private fun delayDone (isChecked : Boolean) {
+        if (isChecked) {
+
+        } else {
+
+        }
     }
 }

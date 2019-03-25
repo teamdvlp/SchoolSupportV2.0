@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 
@@ -60,6 +61,12 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
             val intent = Intent(context, UserActivity::class.java)
             startActivity(intent)
         }
+
+        adapter.addOnBookMarkClickListener(object : RecyclerViewLoadmoreAdapter.OnItemClickListener {
+            override fun onClicked(position: Int) {
+                Toast.makeText(context, "" +position, Toast.LENGTH_LONG).show()
+            }
+        })
 
         global_btn_search.setOnClickListener {
             startActivity(Intent(context!!, SearchBarActivity::class.java))

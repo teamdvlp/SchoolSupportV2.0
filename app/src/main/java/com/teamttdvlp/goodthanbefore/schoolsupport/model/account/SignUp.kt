@@ -18,7 +18,8 @@ class SignUp {
                 var user = User()
                 user.DisplayName = displayName
                 user.Id = it.result!!.user.uid
-                val newProfile = UserProfileChangeRequest.Builder().setDisplayName(displayName)
+                val newProfile = UserProfileChangeRequest.Builder()
+                    .setDisplayName(displayName)
                     .setPhotoUri(Uri.EMPTY)
                     .build()
                 it.result!!.user.updateProfile(newProfile).addOnCompleteListener {

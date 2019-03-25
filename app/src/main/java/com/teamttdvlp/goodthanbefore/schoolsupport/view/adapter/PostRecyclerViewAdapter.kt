@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -22,8 +23,13 @@ class PostRecyclerViewAdapter  (
     listItem: ArrayList<Stories>,
     context: Context) : RecyclerViewLoadmoreAdapter<PostRecyclerViewAdapter.LoadedViewDataHolder>(context) {
     private var listItem = listItem
+    private var onBookMarkBtnClickListener:OnItemClickListener? = null
     override fun getCount(): Int {
             return listItem.size
+    }
+
+    fun addOnBookMarkClickListener (listener:OnItemClickListener) {
+        onBookMarkBtnClickListener = listener
     }
 
     override fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): LoadedViewDataHolder {
@@ -31,6 +37,7 @@ class PostRecyclerViewAdapter  (
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_lv_post, parent, false)
         var viewHolder = LoadedViewDataHolder(itemView)
         viewHolder.onItemClickListener = getOnItemCLickedListener()
+        viewHolder.onBookMarkClickListener = onBookMarkBtnClickListener
         return viewHolder
     }
 
@@ -65,16 +72,23 @@ class PostRecyclerViewAdapter  (
             var txtAuthor : TextView
             var txtDate : TextView
             var txtTag : TextView
+            var btnBookmark: Button
             var onItemClickListener : OnItemClickListener? = null
+            var onBookMarkClickListener : OnItemClickListener? = null
             constructor(item_view : View) : super (item_view) {
                  imgAvatar= item_view.findViewById(R.id.item_ilp_img_avatar)
                  txtPostTitle = item_view.findViewById(R.id.item_ilp_txt_post_title)
                  txtAuthor  = item_view.findViewById(R.id.item_ilp_txt_author)
                  txtDate  = item_view.findViewById(R.id.item_ilp_txt_date)
                  txtTag  = item_view.findViewById(R.id.item_ilp_txt_tag)
+                 btnBookmark = item_view.findViewById(R.id.item_ilp_rbtn_bookmark)
                 item_view.setOnClickListener({
                     onItemClickListener?.onClicked(adapterPosition)
                 })
+
+                btnBookmark.setOnClickListener {
+                    onBookMarkClickListener?.onClicked(adapterPosition)
+                }
             }
         }
 

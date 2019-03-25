@@ -17,6 +17,8 @@ class KeepMeLogin : IKeepMeLogin {
             user.Id = mAuth.currentUser!!.uid
             user.DisplayName = mAuth.currentUser!!.displayName!!
             user.Avatar = mAuth.currentUser!!.photoUrl.toString()
+            Log.d("KeepMeLogin", user.DisplayName)
+            Log.d("KeepMeLogin", user.Avatar)
             return user
         } else {
             return null

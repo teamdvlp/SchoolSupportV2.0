@@ -8,5 +8,4 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEv
 interface IUserInfo {
     fun writeInfo(user: User, callback:WriteInfoEvent)
     fun readInfo (userId:String, callback : ReadInfoEvent)
-    fun updateInfo (user : User, callback: UpdateInfoEvent)
 }

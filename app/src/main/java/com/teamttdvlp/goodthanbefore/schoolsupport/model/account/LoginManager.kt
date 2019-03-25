@@ -10,10 +10,12 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process.UserManager
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetUserInterestEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.ReadInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 import java.lang.Exception
 
-class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
+class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent, ReadInfoEvent {
+
     private var loginNormally : ILoginNormally
     private var loginGoogle : ILoginWithGoogle
     private var loginFacebook : ILoginWithFacebook
@@ -33,7 +35,7 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
 
         userManager.getUserInterestListener = this
         userManager.setUserInfoListener = this
-
+        userManager.getUserInfoListener = this
     }
 
     fun keepMeLogin () : Boolean {
@@ -66,7 +68,20 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent {
     override fun onLoginSuccess(user: User) {
         Log.d("sukien", "onLoginSuccess")
         this.currentUser = user
-        userManager.writeInfo(user)
+        userManager.getInfo(user.Id)
+    }
+
+    override fun onReadInfoSuccess(user: User?) {
+        Log.d("sukien", "onReadInfSuccess")
+        user!!.DisplayName = currentUser.DisplayName
+        user!!.Avatar = currentUser.Avatar
+        currentUser = user
+        userManager.writeInfo(currentUser)
+    }
+
+    override fun onReadInfoFailed(e: Exception?) {
+        Log.d("sukien", "onReadInfFailed")
+        onLoginEvent?.onLoginFailed(e)
     }
 
     override fun onWriteInfoSuccess() {
