@@ -7,6 +7,7 @@
               tools:layout="@layout/fragment_write_story">
         <argument android:name="name" android:defaultValue="abc"/>
     </fragment>
+
     <fragment android:id="@+id/SubmitFragment"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.SubmitStoryFragment"
               android:label="FragmentSubmit"

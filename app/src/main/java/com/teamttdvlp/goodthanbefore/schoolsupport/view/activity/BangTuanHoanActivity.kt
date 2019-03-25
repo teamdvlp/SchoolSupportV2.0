@@ -79,6 +79,7 @@ class BangTuanHoanActivity : AppCompatActivity() {
         rcvSearchAdapter = Search_Chem_Element_Adapter(this)
         rcvSearchAdapter.adaptFor(rcv_search)
         rcvSearchAdapter.setData(data)
+        rcvSearchAdapter.observe(edt_search)
         rcvSearchAdapter.setOnItemClickListener (object : Search_Chem_Element_Adapter.OnItemClickListener {
             override fun onItemClick(element: ChemicalElement) {
                 if ((BangTuanHoanNav.currentDestination != BangTuanHoanNav.graph.findNode(R.id.bth_nav_fragment_watch_ceinfo))) {

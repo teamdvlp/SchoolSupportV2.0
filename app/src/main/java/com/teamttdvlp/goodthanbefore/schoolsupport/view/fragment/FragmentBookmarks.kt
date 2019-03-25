@@ -77,6 +77,7 @@ class FragmentBookmarks : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAd
 
     private fun addControls() {
         mAdapter = PostRecyclerViewAdapter(mViewModel.storyData, context!!)
+        mAdapter.stillHasUnloadedData(false)
         mBinding.bookmarkRcvPost.adapter = mAdapter
         bookmark_rcv_post.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mAdapter.adaptFor(mBinding.bookmarkRcvPost)

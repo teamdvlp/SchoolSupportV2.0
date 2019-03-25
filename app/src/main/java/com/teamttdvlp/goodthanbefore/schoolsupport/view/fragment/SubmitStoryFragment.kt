@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,12 +23,15 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.PostNewStoryEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.notifiChanged
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.WriteStoriesActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SubmitStoryViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoriesViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import kotlinx.android.synthetic.main.activity_view_profile.view.*
+import kotlinx.android.synthetic.main.dialog_submit_story_layout.*
 import java.lang.Exception
 
 class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
@@ -62,6 +67,20 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         addControls()
         addEvents()
     }
+    private val listTopic : Array<String> = arrayOf("Biology", "Chemistry"
+        , "CivicEducation", "CompetitionNews"
+        , "EducationNews", "English"
+        , "Geography", "Gymnastics"
+        , "History", "IT"
+        , "Literature", "Math"
+        , "Physics", "SexEducation"
+        , "TechnologyNews")
+
+    private fun addControls() {
+        val topicAdapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, listTopic)
+        topicAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
+        mBinding.spinnerTopic.adapter = topicAdapter
+    }
 
     private fun addEvents() {
         mBinding.btnCancel.setOnClickListener{
@@ -89,6 +108,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
             mViewModel.postStory(this, bitmap)
             showProgressbar(true)
         }}
+
     }
 
     private fun checkData() : Boolean {
@@ -99,7 +119,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         if (data.Review.length < 26) {
             return false
         }
-        if (data.Tag.length == 0) {
+        if (data.Topic.isEmpty()) {
             return false
         }
         if (mBinding.imgAvatar.drawable== null) {
@@ -146,15 +166,12 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         Toast.makeText(context, "Post Story Failed", Toast.LENGTH_LONG).show()
     }
 
-    private fun addControls() {
-    }
-
     private fun setUpStory () {
         mViewModel.currentStory.value!!.PostedTime = System.currentTimeMillis()
         mViewModel.currentStory.value!!.Content = arguments?.getString("Content")!!
         mViewModel.currentStory.value!!.Author = CurrentUser.currentUser!!.Id
         mViewModel.currentStory.value!!.AuthorDisplayName = CurrentUser.currentUser!!.DisplayName
-        mViewModel.currentStory.value!!.Tag = mBinding.edtTag.text.toString()
+        mViewModel.currentStory.value!!.Topic = mBinding.spinnerTopic.selectedItem.toString()
         mViewModel.currentStory.notifiChanged()
         Log.d("SubmitStory", "content: " + mStory.Content)
     }

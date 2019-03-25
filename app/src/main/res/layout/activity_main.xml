@@ -31,6 +31,7 @@
 
         <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableRadioButton
                 android:id="@+id/rbtn_local"
+                android:visibility="gone"
                 android:layout_marginRight="55dp"
                 app:checked_bg="@drawable/rbtn_local_clicked"
                 app:unchecked_bg="@drawable/rbtn_local"

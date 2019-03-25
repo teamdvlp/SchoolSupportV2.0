@@ -53,9 +53,10 @@ class PostRecyclerViewAdapter  (
             holder.apply {
                 if (!story.Avatar.isNullOrEmpty())
                 Picasso.get().load(story.Avatar).into(imgAvatar)
-                txtPostTitle?.text = story.Title
-                txtAuthor?.text = story.AuthorDisplayName
-                txtDate?.text = convertTimeMilisToDate(story.PostedTime)
+                txtPostTitle.text = story.Title
+                txtAuthor.text = story.AuthorDisplayName
+                txtTag.text = story.Topic
+                txtDate.text = convertTimeMilisToDate(story.PostedTime)
             }
         }
     }

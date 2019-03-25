@@ -37,6 +37,7 @@ class UserActivity : AppCompatActivity() {
         super.onResume()
         if (CurrentUser.bitmapUserAvatar != null)
         imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
+        txtUserName.text = CurrentUser.currentUser?.DisplayName
     }
 
     private fun addEvents() {

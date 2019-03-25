@@ -54,6 +54,7 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         mViewMode = getViewModel()
 
         adapter = PostRecyclerViewAdapter(mViewMode.storyData, context!!)
+        adapter.stillHasUnloadedData(false)
         rcv_tester!!.adapter = adapter
         adapter.adaptFor(rcv_tester)
     }

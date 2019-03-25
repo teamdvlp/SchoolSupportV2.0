@@ -100,10 +100,8 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     }
 
     fun setOnBtnSignUpClickListener (listener : (View) -> Unit) {
-        onBtnSignUpClickListener = object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                listener.invoke(v!!)
-            }
+        onBtnSignUpClickListener = View.OnClickListener {
+                v -> listener.invoke(v!!)
         }
     }
 

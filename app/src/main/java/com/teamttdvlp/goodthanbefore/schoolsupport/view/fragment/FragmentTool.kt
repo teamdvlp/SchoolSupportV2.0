@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.BangTuanHoanActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.OnlineSearchChemicalEquationActivity
 import kotlinx.android.synthetic.main.fragment_tool.*
 
 
@@ -24,6 +25,10 @@ class FragmentTool : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         btn_bangtuanhoan.setOnClickListener {
             startActivity(Intent(activity!!, BangTuanHoanActivity::class.java))
+        }
+
+        btn_search_chem_eq.setOnClickListener {
+            startActivity(Intent(activity!!, OnlineSearchChemicalEquationActivity::class.java))
         }
     }
 

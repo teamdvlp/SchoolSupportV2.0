@@ -57,14 +57,14 @@ class FragmentWriteStory : Fragment(), UploadAvatarEvent {
         mBinding.btnClose.setOnClickListener {
             Log.d("contentAre", mBinding.editor.html)
         }
-        mBinding.editor.toolbar.setOnInsertImageButtonClickListener({
-//            Log.d("firstHTML", mBinding.editor.html )
-//            mBinding.editor.fromHtml("<html><body><img src=\"https://firebasestorage.googleapis.com/v0/b/schoolsupport-22ad2.appspot.com/o/Stories%2FpjX4eCdUONudjNfFjaL1%2Favatar.png?alt=media&token=f71404b1-5543-49e5-8730-3fa8ce76a6a2\" alt=\"Simply Easy Learning\" width=\"200\"" + "height=\"80\">" + "</body></html>")
-//            Log.d("HTMLLast", mBinding.editor.html)
+        mBinding.editor.toolbar.setOnInsertImageButtonClickListener {
+            //            Log.d("firstHTML", mBinding.editor.html )
+    //            mBinding.editor.fromHtml("<html><body><img src=\"https://firebasestorage.googleapis.com/v0/b/schoolsupport-22ad2.appspot.com/o/Stories%2FpjX4eCdUONudjNfFjaL1%2Favatar.png?alt=media&token=f71404b1-5543-49e5-8730-3fa8ce76a6a2\" alt=\"Simply Easy Learning\" width=\"200\"" + "height=\"80\">" + "</body></html>")
+    //            Log.d("HTMLLast", mBinding.editor.html)
             CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(context!!, this)
-        })
+        }
     }
     override fun onUploadSuccess(downloadUri: String) {
         val htmlResult = "<html><body><img src=\"${downloadUri}\"/> \n </body></html>"
