@@ -1,6 +1,7 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoriesActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BookmarkViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
@@ -49,13 +51,22 @@ class FragmentBookmarks : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAd
     }
 
     private fun addEvents() {
-
+        mAdapter.addOnItemClickedListener(object : RecyclerViewLoadmoreAdapter.OnItemClickListener {
+            override fun onClicked(position: Int) {
+                var i : Intent = Intent(activity, ReadStoriesActivity::class.java)
+                i.putExtra("Story", mViewModel.storyData[position])
+                startActivity(i)
+            }
+        })
     }
 
     override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
         mViewModel.storyData.addAll(result)
         mAdapter.endLoadingState()
         mAdapter.notifyDataSetChanged()
+        if (result.size==0) {
+            mAdapter.stillHasUnloadedData(false)
+        }
     }
 
     override fun onGetMultipleStoriesFailed() {
@@ -77,7 +88,7 @@ class FragmentBookmarks : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAd
 
     private fun addControls() {
         mAdapter = PostRecyclerViewAdapter(mViewModel.storyData, context!!)
-        mAdapter.stillHasUnloadedData(false)
+        mAdapter.stillHasUnloadedData(true)
         mBinding.bookmarkRcvPost.adapter = mAdapter
         bookmark_rcv_post.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         mAdapter.adaptFor(mBinding.bookmarkRcvPost)

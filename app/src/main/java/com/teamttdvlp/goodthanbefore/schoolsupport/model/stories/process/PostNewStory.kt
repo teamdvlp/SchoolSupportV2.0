@@ -27,9 +27,6 @@ class PostNewStory : IPostNewStory {
         return storyId
     }
 
-    fun calculateCycle () {
-
-    }
     val ONE_DAY_IN_MILIS = 86_400_000
     fun createCycle (startTime:Long) : HashMap<String, ArrayList<String>> {
         var result : HashMap<String, ArrayList<String>> = HashMap()
@@ -65,6 +62,8 @@ class PostNewStory : IPostNewStory {
         story.ThreeHotDayLifeCycle = firstCycle["three"]!!
         story.FiveHotDayLifeCycle = firstCycle["five"]!!
         story.SevenHotDayLifeCycle = firstCycle["seven"]!!
+        story.splitTitle.clear()
+        story.splitTitle.putAll(splitTitle(story.Title))
         Log.d("StoryId", story.Id)
         postStoryAvatar(storyAvatar, story.Id,object : UploadAvatarEvent {
             override fun onUploadSuccess(downloadUri: String) {
@@ -72,17 +71,11 @@ class PostNewStory : IPostNewStory {
                 mFirestore.collection("Stories").document(storyId).set(story)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            var splitTitle = splitTitle(story.Title)
-                            var mergeData : HashMap<String, HashMap<String, Boolean>> = HashMap()
-                            mergeData["splitTitle"] = splitTitle
-                            mFirestore.collection("Stories").document(storyId).set(mergeData, SetOptions.merge())
-                                .addOnCompleteListener {
                                     if (it.isSuccessful) {
                                         listener.onPostNewStorySuccess()
                                     } else {
                                         listener.onPostNewStoryFailed(it.exception)
                                     }
-                                }
                         } else {
                             listener.onPostNewStoryFailed(it.exception)
                         }

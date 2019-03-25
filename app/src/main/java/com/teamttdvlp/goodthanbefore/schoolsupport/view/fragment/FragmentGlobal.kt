@@ -54,7 +54,6 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         mViewMode = getViewModel()
 
         adapter = PostRecyclerViewAdapter(mViewMode.storyData, context!!)
-        adapter.stillHasUnloadedData(false)
         rcv_tester!!.adapter = adapter
         adapter.adaptFor(rcv_tester)
     }
@@ -80,7 +79,6 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         adapter.addOnScrollListener(object : RecyclerViewLoadmoreAdapter.OnScrollListener {
             override fun onScrollToFirstElement() {
                 mBinding.globalDividerLine.apply {
-                    Log.d("loadne", "loading")
                     if (visibility == VISIBLE) {
                     }
                     visibility = INVISIBLE
@@ -90,6 +88,7 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
             override fun onScrollToLastElement() {
                 // Bat buoc goi truoc khi load du lieu, thoi la bi bug
                 adapter.startLoadingState()
+                Log.d("loadne", "loading")
                 loadMore()
             }
 
@@ -137,6 +136,7 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
             object : GetMultipleStories {
                 override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
                     mViewMode.storyData.addAll(result)
+                    Log.d("loadne", "loading")
 //                if (mViewMode.storyData.size==0) {
 //                    adapter.endLoadingState()
 //                    adapter.isEndOfList = true
@@ -148,7 +148,6 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
                 }
 
                 override fun onGetMultipleStoriesFailed() {
-                    adapter.isEndOfList = true
                 }
 
             })

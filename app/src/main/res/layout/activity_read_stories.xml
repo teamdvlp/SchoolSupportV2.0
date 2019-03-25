@@ -89,7 +89,7 @@
                     android:id="@+id/img_circle_avatar"
                     android:layout_marginStart="15dp"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+                    android:layout_height="30dp" android:src="@drawable/icon_default_avatar"/>
 
             <TextView
                     android:id="@+id/txt_author_name"

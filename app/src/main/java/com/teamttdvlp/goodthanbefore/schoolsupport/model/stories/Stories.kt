@@ -42,6 +42,7 @@ class Stories : Serializable {
     var SevenHotDayLifeCycle : ArrayList<String> = ArrayList()
     // spawn: chỉ cần random ngày bắt đầu (từ tháng 1 đến tháng 3, sau đó cộng lên)
     var ReputationLifeCycle : ArrayList<String> = ArrayList()
+    var splitTitle : HashMap<String, Boolean> = HashMap()
     // spawn: random từ 1 đến 4
     // nếu là 1 -> isRep=true, is Hot=false
     // nếu là 2 -> isRep=true, is Hot = true

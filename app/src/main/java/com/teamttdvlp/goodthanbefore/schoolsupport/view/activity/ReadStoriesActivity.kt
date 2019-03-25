@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityReadStoriesBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
@@ -46,6 +49,9 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent, NewBookmarkEvent
         mBinding.txtContent.fromHtml(mViewModel.story.Content)
         mBinding.txtPostTime.text = DateSupport.getDateByTimeMillis(mViewModel.story.PostedTime)
         mViewModel.getAuthor(mViewModel.story.Author, this)
+        storyThreeCycleUpdater["threeHotDayCycle"] = mViewModel.story.ThreeHotDayCycle
+        storyThreeLifeCycleUpdater["threeHotDayLifeCycle"] = ArrayList()
+        storyThreeLifeCycleUpdater["threeHotDayLifeCycle"]!!.addAll(mViewModel.story.ThreeHotDayLifeCycle)
         Log.d("authorla", mViewModel.story.Author + "aaa")
 //        mViewModel.previousBtnBookmarkStatus.observe(this,object:Observer<Boolean> {
 //            override fun onChanged(t: Boolean?) {
@@ -78,6 +84,9 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent, NewBookmarkEvent
     override fun onReadInfoSuccess(user: User?) {
         mAuthor = user!!
         mBinding.txtAuthorName.text = mAuthor.DisplayName
+        if (!mAuthor.Avatar.isNullOrEmpty()) {
+            Picasso.get().load(mAuthor.Avatar).into(mBinding.imgCircleAvatar)
+        }
     }
 
     override fun onReadInfoFailed(e: Exception?) {
@@ -109,14 +118,55 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent, NewBookmarkEvent
                 mBinding.btnBookmark.isChecked = mViewModel.previousBtnBookmarkStatus.value!!
             } else {
                 if (isChecked) {
+                    checkCycle(1)
                     mViewModel.setLiked(mViewModel.story.Id, this)
+                    updateStory()
                 } else {
+                    checkCycle(-1)
                     mViewModel.unSetLike(mViewModel.story.Id, this)
+                    updateStory()
                 }
                 mViewModel.isBtnLikeProcessing.value = true
                 mViewModel.previousBtnLikeStatus.value = isChecked
             }
         })
+    }
+    var storyThreeLifeCycleUpdater : HashMap<String, ArrayList<String>> = HashMap()
+    var storyThreeCycleUpdater : HashMap<String, Long> = HashMap()
+    private fun updateStory () {
+        FirebaseFirestore.getInstance().collection("Stories").document(mViewModel.story.Id)
+            .set(storyThreeLifeCycleUpdater, SetOptions.merge())
+        FirebaseFirestore.getInstance().collection("Stories").document(mViewModel.story.Id)
+            .set(storyThreeCycleUpdater, SetOptions.merge())
+
+    }
+
+    private fun checkCycle (like : Int) {
+        var today  = System.currentTimeMillis()
+        if (!storyThreeLifeCycleUpdater["threeHotDayLifeCycle"]!!.contains(DateSupport.getDateByTimeMillis(today))) {
+            storyThreeLifeCycleUpdater["threeHotDayLifeCycle"]!!.clear()
+            storyThreeLifeCycleUpdater["threeHotDayLifeCycle"]!!.addAll(calculateNewCycle(3))
+        }
+        storyThreeCycleUpdater["threeHotDayCycle"] = storyThreeCycleUpdater["threeHotDayCycle"]!! +  like
+        mViewModel.story.ThreeHotDayLifeCycle.clear()
+        mViewModel.story.ThreeHotDayLifeCycle.addAll(storyThreeLifeCycleUpdater["threeHotDayLifeCycle"]!!)
+        mViewModel.story.ThreeHotDayCycle =  storyThreeCycleUpdater["threeHotDayCycle"]!!
+    }
+    val ONE_DAY_IN_MILIS = 86_400_000
+    private fun calculateNewCycle (cycle : Int) : ArrayList<String>{
+        var today  = System.currentTimeMillis()
+        var deltaDate = ((today - mViewModel.story.PostedTime)/ONE_DAY_IN_MILIS).toLong() + 1
+        var sodu =  (deltaDate % cycle)
+        var ngaydautien = (today - (sodu-1)*ONE_DAY_IN_MILIS)
+        return createCycle(ngaydautien, cycle)
+    }
+
+    fun createCycle (startTime:Long, cycleDay:Int) : ArrayList<String> {
+        var result : ArrayList<String> = ArrayList()
+        for (i in 0..cycleDay-1) {
+            result.add(DateSupport.getDateByTimeMillis(startTime + i * ONE_DAY_IN_MILIS))
+        }
+        return result
     }
 
     override fun onNewBoomarkSuccess() {

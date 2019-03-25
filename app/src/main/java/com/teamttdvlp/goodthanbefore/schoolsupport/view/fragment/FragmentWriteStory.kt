@@ -51,9 +51,11 @@ class FragmentWriteStory : Fragment(), UploadAvatarEvent {
 
     fun addControls() {}
     fun addEvents() {
-        val mBundle : Bundle = Bundle()
-        mBundle.putString("Content", mBinding.editor.html)
-        mBinding.btnNext.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.SubmitFragment, mBundle))
+        mBinding.btnNext.setOnClickListener ({
+            val mBundle : Bundle = Bundle()
+            mBundle.putString("Content", mBinding.editor.html)
+            Navigation.findNavController(it).navigate(R.id.SubmitFragment, mBundle)
+        })
         mBinding.btnClose.setOnClickListener {
             Log.d("contentAre", mBinding.editor.html)
         }
