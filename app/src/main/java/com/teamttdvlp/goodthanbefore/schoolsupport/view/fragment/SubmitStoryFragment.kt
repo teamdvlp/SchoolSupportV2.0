@@ -152,15 +152,10 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent, WriteStoriesActivity.
     }
 
     private fun setUpStory () {
-        mViewModel.currentStory.observe(this, object : Observer<Stories> {
-            override fun onChanged(t: Stories?) {
-
-            }
-
-        })
         mViewModel.currentStory.value!!.PostedTime = System.currentTimeMillis()
         mViewModel.currentStory.value!!.Content = arguments?.getString("Content")!!
-        mViewModel.currentStory.value!!.Author = CurrentUser.currentUser!!.DisplayName
+        mViewModel.currentStory.value!!.Author = CurrentUser.currentUser!!.Id
+        mViewModel.currentStory.value!!.AuthorDisplayName = CurrentUser.currentUser!!.DisplayName
         mViewModel.currentStory.notifiChanged()
         Log.d("SubmitStory", "content: " + mStory.Content)
     }

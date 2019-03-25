@@ -47,7 +47,7 @@ class PostRecyclerViewAdapter  (
                 if (!story.Avatar.isNullOrEmpty())
                 Picasso.get().load(story.Avatar).into(imgAvatar)
                 txtPostTitle?.text = story.Title
-                txtAuthor?.text = story.Author
+                txtAuthor?.text = story.AuthorDisplayName
                 txtDate?.text = convertTimeMilisToDate(story.PostedTime)
             }
         }

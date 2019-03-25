@@ -154,9 +154,9 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
                 startActivity(intent)
         }else {
             var intent = Intent(context, MainActivity::class.java)
-            CurrentUser.currentUser = user
             startActivity(intent)
         }
+        CurrentUser.currentUser = user
         activity?.finish()
         Toast.makeText(context, "Login success", Toast.LENGTH_LONG)
     }

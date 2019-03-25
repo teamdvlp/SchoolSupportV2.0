@@ -39,7 +39,7 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent {
         mBinding.txtBigTitle.text = mViewModel.story.Title
         mBinding.txtContent.fromHtml(mViewModel.story.Content)
         mBinding.txtPostTime.text = DateSupport.getDateByTimeMillis(mViewModel.story.PostedTime)
-//        mViewModel.getAuthor(mViewModel.story.Author, this)
+        mViewModel.getAuthor(mViewModel.story.Author, this)
         Log.d("authorla", mViewModel.story.Author + "aaa")
     }
 
