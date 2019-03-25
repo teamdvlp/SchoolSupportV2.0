@@ -13,7 +13,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import java.lang.Exception
 
-class MainViewModel() : ViewModel() {
+class MainViewModel : ViewModel() {
 
     var mStorageRef = FirebaseStorage.getInstance()
 

@@ -3,6 +3,7 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -17,6 +18,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentLogin
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.collections.HashMap
@@ -31,12 +33,13 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addControls()
         addSetup()
         addEvents()
-
     }
 
 
     private fun addEvents() {
-
+        FragmentLogin.getInstance().setOnBtnSignUpClickListener {
+            mBinding.pgLogin.setCurrentItem(1, true)
+        }
     }
 
     private fun addSetup() {

@@ -34,7 +34,6 @@
                 android:background="#ffffff">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                    android:src="@drawable/edt_account"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:id="@+id/imgAvatar"
@@ -47,7 +46,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintHorizontal_bias="0"/>
+                    app:layout_constraintHorizontal_bias="0" android:src="@drawable/icon_default_avatar"/>
             <TextView
                     android:text="User name"
                     android:layout_width="wrap_content"

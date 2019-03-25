@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import java.lang.Exception
@@ -149,6 +151,7 @@ class FragmentSignUp : Fragment(), LoginEvent {
     }
 
     override fun onLoginFailed(e: Exception?) {
+        Log.e("faled login", "adisconme")
         activityModel.isLoading.value = View.VISIBLE
     }
 

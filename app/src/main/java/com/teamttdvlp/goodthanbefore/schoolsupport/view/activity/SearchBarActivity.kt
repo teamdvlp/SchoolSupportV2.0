@@ -12,12 +12,14 @@ class SearchBarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_bar)
+        search_bar_edt_search.requestFocus()
         search_bar_edt_search.setOnEditorActionListener {
             v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 var keyword = search_bar_edt_search.text.toString()
                 var intent = Intent(this, SearchActivity::class.java).putExtra("Keyword", keyword)
                 startActivity(intent)
+                finish()
             }
             return@setOnEditorActionListener true
         }

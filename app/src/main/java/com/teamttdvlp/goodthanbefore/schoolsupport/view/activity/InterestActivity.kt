@@ -15,6 +15,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SetUserInterestEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.InterestRecylerViewAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.InterestViewModel
 import kotlinx.android.synthetic.main.activity_interest.*
@@ -82,8 +83,12 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
 
     fun loadData () {
         val onLoadSuccess : (ArrayList<Interest>) -> Unit = {
-            for (topic in it) {
-                topic.ticked = user!!.Interests.contains(topic.name)
+            if (user != null)
+                for (topic in it) {
+                    topic.ticked = user!!.Interests.contains(topic.name)
+                }
+            else {
+                logError("null roi:Dit me")
             }
             Log.d("UserInteres", user!!.Interests.toString())
             interestList.clear()

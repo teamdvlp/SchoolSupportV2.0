@@ -8,19 +8,18 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import android.content.Intent
-import android.R
 import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UpdateInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
-import kotlinx.android.synthetic.main.activity_view_profile.*
-import java.io.ByteArrayOutputStream
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 
 
 class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
@@ -33,10 +32,10 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.teamttdvlp.goodthanbefore.schoolsupport.R.layout.activity_edit_profile)
+        setContentView(R.layout.activity_edit_profile)
         currentUser = CurrentUser.currentUser!!
         currentAvatar = CurrentUser.bitmapUserAvatar
-        img_avatar.setImageBitmap(currentAvatar)
+        if (currentAvatar != null) img_avatar.setImageBitmap(currentAvatar)
         mViewModel = getViewModel()
         addControls()
         addEvents ()

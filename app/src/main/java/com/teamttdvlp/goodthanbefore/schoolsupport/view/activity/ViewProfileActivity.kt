@@ -34,7 +34,8 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
 
     override fun onResume() {
         super.onResume()
-        imgAvatar.background = BitmapDrawable(resources, CurrentUser.bitmapUserAvatar)
+        if (CurrentUser.bitmapUserAvatar != null)
+        imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
         txtUserName.text = CurrentUser.currentUser?.DisplayName
         txtAbout.text = CurrentUser.currentUser?.About
     }
@@ -42,9 +43,8 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     private fun setup() {
         mViewModel = getViewModel()
         mBinding.txtUserName.text = CurrentUser.currentUser?.DisplayName
-        if (!CurrentUser.currentUser?.Avatar.isNullOrEmpty()) {
-            Picasso.get().load(CurrentUser.currentUser?.Avatar).into(mBinding.imgAvatar)
-        }
+        if (CurrentUser.currentUser?.Avatar != null)
+        Picasso.get().load(CurrentUser.currentUser?.Avatar).into(mBinding.imgAvatar)
     }
 
     private fun addEvents() {

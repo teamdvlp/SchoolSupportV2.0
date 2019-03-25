@@ -13,6 +13,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityUserBindi
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_user.*
 
@@ -34,6 +35,7 @@ class UserActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (CurrentUser.bitmapUserAvatar != null)
         imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
     }
 
@@ -53,8 +55,6 @@ class UserActivity : AppCompatActivity() {
 
     private fun setUp() {
         mBinding.txtUserName.text =CurrentUser.currentUser!!.DisplayName
-        if (!CurrentUser.currentUser!!.Avatar.isNullOrEmpty())
-        Picasso.get().load(CurrentUser.currentUser!!.Avatar).into(mBinding.imgAvatar)
     }
 
 }

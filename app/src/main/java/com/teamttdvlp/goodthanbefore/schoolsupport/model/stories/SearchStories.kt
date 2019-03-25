@@ -14,7 +14,7 @@ class SearchStoriesByTitle : ISearchStoryByTitle {
         mFirestore= FirebaseFirestore.getInstance()
     }
 
-    fun searchStories (title : String, callBack : SearchStoriesEvent) {
+    override fun search (title : String, callBack : SearchStoriesEvent) {
         var col = mFirestore.collection("Stories")
         var titleParts = splitTitle(title)
         var queries : Query? = null

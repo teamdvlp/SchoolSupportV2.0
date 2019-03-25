@@ -41,6 +41,8 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     private lateinit var mFBLoginManager:com.facebook.login.LoginManager
     private val REQUESTCODE_GG_SIGNIN = 9
 
+    private var onBtnSignUpClickListener : View.OnClickListener? = null
+
     private lateinit var activityViewModel : LoginViewModel
     @InternalCoroutinesApi
     override fun onCreateView(
@@ -89,6 +91,17 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
 
         mBinding.btnWorkOffline.setOnClickListener {
             startActivity(Intent(context, MainActivity::class.java))
+        }
+
+        mBinding.btnSignup.setOnClickListener (onBtnSignUpClickListener)
+
+    }
+
+    fun setOnBtnSignUpClickListener (listener : (View) -> Unit) {
+        onBtnSignUpClickListener = object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                listener.invoke(v!!)
+            }
         }
     }
 

@@ -19,6 +19,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.process.UserLikedStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     private fun addControls() {
         mViewModel = getViewModel()
         mainNavHost = Navigation.findNavController(this, R.id.main_nav_host)
+        mViewModel.setUpCurrentUser()
     }
 
     private fun addEvents() {

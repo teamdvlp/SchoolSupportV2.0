@@ -13,7 +13,7 @@ class SignUp {
         mAuth = FirebaseAuth.getInstance()
     }
     fun signup(email: String, password: String,displayName:String, callback: LoginEvent) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener({
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
                 var user = User()
                 user.DisplayName = displayName
@@ -34,6 +34,6 @@ class SignUp {
                 Log.d("sukien", "signup failed: ${it.exception!!.message}")
                 callback.onLoginFailed(it.exception)
             }
-        })
+        }
     }
 }
