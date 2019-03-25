@@ -20,8 +20,18 @@ class PostNewStory : IPostNewStory {
         mFirestore = FirebaseFirestore.getInstance()
     }
 
-    override fun postStory(story: Stories, storyAvatar:Bitmap, listener : PostNewStoryEvent) {
-        val storyId : String = mFirestore.collection("Stories").document().id
+    override fun getStoryId () :String {
+        var storyId = mFirestore.collection("Stories").document().id
+        return storyId
+    }
+
+    override fun postStory(id : String?,story: Stories, storyAvatar:Bitmap, listener : PostNewStoryEvent) {
+        val storyId : String
+        if (story !=null) {
+            storyId = id!!
+        } else {
+            storyId = getStoryId()
+        }
         story.Id = storyId
         Log.d("StoryId", story.Id)
         postStoryAvatar(storyAvatar, story.Id,object : UploadAvatarEvent {
@@ -30,6 +40,8 @@ class PostNewStory : IPostNewStory {
                 mFirestore.collection("Stories").document(storyId).set(story)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
+                            var a : String = "aasdasd"
+                            a.indexOf("</body>")
                             listener.onPostNewStorySuccess()
                         } else {
                             listener.onPostNewStoryFailed(it.exception)
@@ -42,7 +54,6 @@ class PostNewStory : IPostNewStory {
             }
 
         })
-
     }
 
     override fun postStoryAvatar(bitmap: Bitmap, storyId:String, listener : UploadAvatarEvent) {

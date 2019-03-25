@@ -6,6 +6,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.PostNewStor
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
 
 interface IPostNewStory {
-    fun postStory (story:Stories, storyAvatar:Bitmap,listener : PostNewStoryEvent)
+    fun postStory (id : String?,story:Stories, storyAvatar:Bitmap,listener : PostNewStoryEvent)
     fun postStoryAvatar (bitmap:Bitmap, storyId:String, listener : UploadAvatarEvent)
+    fun getStoryId () :String
 }

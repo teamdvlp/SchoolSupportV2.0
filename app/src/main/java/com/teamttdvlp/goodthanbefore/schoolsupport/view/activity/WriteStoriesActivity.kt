@@ -28,10 +28,10 @@ class WriteStoriesActivity : AppCompatActivity() {
         mViewModel = getViewModel()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        activityResultListener.onActivityResultListener(requestCode, resultCode, data)
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        activityResultListener.onActivityResultListener(requestCode, resultCode, data)
+//    }
 
     private fun addControls() {
 

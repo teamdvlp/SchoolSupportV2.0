@@ -120,6 +120,11 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         mViewMode.loadHotStories(CurrentUser.currentUser!!.Interests, checkPointThree,checkPointFive,checkPointSeven, object:GetMultipleStories {
             override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
                 mViewMode.storyData.addAll(result)
+//                if (mViewMode.storyData.size==0) {
+//                    adapter.endLoadingState()
+//                    adapter.isEndOfList = true
+//                    return;
+//                }
                 mViewMode.removeDuplicateItem()
                 adapter.notifyDataSetChanged()
                 adapter.endLoadingState()

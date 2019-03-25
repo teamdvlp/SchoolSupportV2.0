@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
@@ -142,7 +143,7 @@ class FragmentSignUp : Fragment(), LoginEvent {
     override fun onLoginSuccess(user: User) {
         activityModel.isLoading.value = View.VISIBLE
         var intent = Intent(context, InterestActivity::class.java)
-        intent.putExtra("User", user)
+        CurrentUser.currentUser = user
         startActivity(intent)
         activity?.finish()
     }

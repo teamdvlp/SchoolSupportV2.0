@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         setContentView(R.layout.activity_main)
         addControls()
         addEvents()
-        var arr = SpawnStories().spawnStories(10)
-        for (story in arr) {
-            FirebaseFirestore.getInstance().collection("Stories").document(story.Id)
-                .set(story)
-        }
+//        var arr = SpawnStories().spawnStories(10)
+//        for (story in arr) {
+//            FirebaseFirestore.getInstance().collection("Stories").document(story.Id)
+//                .set(story)
+//        }
     }
 
     private fun addControls() {
