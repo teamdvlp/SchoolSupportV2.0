@@ -29,11 +29,13 @@ import kotlinx.android.synthetic.main.fragment_global.*
 
 class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListener {
 
-    private lateinit var mBinding : FragmentGlobalBinding
+
+
+    private lateinit var mBinding: FragmentGlobalBinding
 
     private lateinit var mViewMode: GlobalViewModel
-    private lateinit var adapter : PostRecyclerViewAdapter
-    private lateinit var activityModel : MainViewModel
+    private lateinit var adapter: PostRecyclerViewAdapter
+    private lateinit var activityModel: MainViewModel
     private var isLoading = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,16 +49,16 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         addEvents()
     }
 
-    fun addControl () {
+    fun addControl() {
         activityModel = activity!!.getViewModel()
         mViewMode = getViewModel()
 
-        adapter = PostRecyclerViewAdapter(mViewMode.storyData,context!!)
+        adapter = PostRecyclerViewAdapter(mViewMode.storyData, context!!)
         rcv_tester!!.adapter = adapter
         adapter.adaptFor(rcv_tester)
     }
 
-    fun addEvents () {
+    fun addEvents() {
         global_btn_user.setOnClickListener {
             val intent = Intent(context, UserActivity::class.java)
             startActivity(intent)
@@ -64,7 +66,7 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
 
         adapter.addOnBookMarkClickListener(object : RecyclerViewLoadmoreAdapter.OnItemClickListener {
             override fun onClicked(position: Int) {
-                Toast.makeText(context, "" +position, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "" + position, Toast.LENGTH_LONG).show()
             }
         })
 
@@ -78,8 +80,9 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
             override fun onScrollToFirstElement() {
                 mBinding.globalDividerLine.apply {
                     Log.d("loadne", "loading")
-                    if (visibility == VISIBLE)
-                        visibility = INVISIBLE
+                    if (visibility == VISIBLE) {
+                    }
+                    visibility = INVISIBLE
                 }
             }
 
@@ -91,8 +94,9 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
 
             override fun onScroll() {
                 mBinding.globalDividerLine.apply {
-                    if (visibility == INVISIBLE)
-                        visibility = VISIBLE
+                    if (visibility == INVISIBLE) {
+                    }
+                    visibility = VISIBLE
                 }
             }
 
@@ -100,47 +104,52 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
     }
 
     override fun onClicked(position: Int) {
-        val storyClicked:Stories = mViewMode.storyData[position]
-        val intent = Intent(activity,ReadStoriesActivity::class.java)
+        val storyClicked: Stories = mViewMode.storyData[position]
+        val intent = Intent(activity, ReadStoriesActivity::class.java)
         intent.putExtra("Story", storyClicked)
         startActivity(intent)
     }
 
-    fun loadMore () {
-        var checkPointThree : Long = 0
-        var checkPointFive : Long= 0
-        var checkPointSeven :Long= 0
+    fun loadMore() {
+        var checkPointThree: Long = 0
+        var checkPointFive: Long = 0
+        var checkPointSeven: Long = 0
         if (mViewMode.storyData.size > 0) {
-            checkPointThree = mViewMode.storyData[mViewMode.storyData.size-1].ThreeHotDayCycle
-            checkPointFive = mViewMode.storyData[mViewMode.storyData.size-1].FiveHotDayCycle
-            checkPointSeven = mViewMode.storyData[mViewMode.storyData.size-1].SevenHotDayCycle
+            checkPointThree = mViewMode.storyData[mViewMode.storyData.size - 1].ThreeHotDayCycle
+            checkPointFive = mViewMode.storyData[mViewMode.storyData.size - 1].FiveHotDayCycle
+            checkPointSeven = mViewMode.storyData[mViewMode.storyData.size - 1].SevenHotDayCycle
         } else {
             checkPointThree = Long.MAX_VALUE
             checkPointFive = Long.MAX_VALUE
             checkPointSeven = Long.MAX_VALUE
         }
 
-        Log.d("checkpoints5: " , checkPointFive.toString())
-        Log.d("checkpoints7: " , checkPointSeven.toString())
-        Log.d("checkpoints3: " , checkPointThree.toString())
+        Log.d("checkpoints5: ", checkPointFive.toString())
+        Log.d("checkpoints7: ", checkPointSeven.toString())
+        Log.d("checkpoints3: ", checkPointThree.toString())
 
-        mViewMode.loadHotStories(CurrentUser.currentUser!!.Interests, checkPointThree,checkPointFive,checkPointSeven, object:GetMultipleStories {
-            override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
-                mViewMode.storyData.addAll(result)
+        mViewMode.loadHotStories(
+            CurrentUser.currentUser!!.Interests,
+            checkPointThree,
+            checkPointFive,
+            checkPointSeven,
+            object : GetMultipleStories {
+                override fun onGetMultipleStoriesSuccess(result: ArrayList<Stories>) {
+                    mViewMode.storyData.addAll(result)
 //                if (mViewMode.storyData.size==0) {
 //                    adapter.endLoadingState()
 //                    adapter.isEndOfList = true
 //                    return;
 //                }
-                mViewMode.removeDuplicateItem()
-                adapter.notifyDataSetChanged()
-                adapter.endLoadingState()
-            }
+                    mViewMode.removeDuplicateItem()
+                    adapter.notifyDataSetChanged()
+                    adapter.endLoadingState()
+                }
 
-            override fun onGetMultipleStoriesFailed() {
-                adapter.isEndOfList = true
-            }
+                override fun onGetMultipleStoriesFailed() {
+                    adapter.isEndOfList = true
+                }
 
-        })
+            })
     }
 }
