@@ -99,7 +99,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -151,7 +151,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -186,7 +186,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -203,7 +203,7 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -220,12 +220,37 @@
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000"/>
+                android:textColor="#000000" android:alpha="0.5"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="0.3dp"
                 android:id="@+id/line11"
+                android:background="#707070"/>
+
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:id="@+id/line12"
+                android:background="#707070"/>
+        <TextView
+                android:text="Sign out"
+                android:textSize="13sp"
+                android:fontFamily="@font/marat_sans_regular"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:id="@+id/local_txt_sign_out"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:paddingStart="47dp"
+                android:textColor="#000000"
+        />
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:id="@+id/line13"
                 android:background="#707070"/>
     </LinearLayout>
 

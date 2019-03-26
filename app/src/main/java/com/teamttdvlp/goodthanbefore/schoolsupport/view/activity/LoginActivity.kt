@@ -19,14 +19,15 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBind
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.SpawnStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentLogin
+import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.collections.HashMap
 
-class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
+class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener, FragmentLogin.OnButtonsClickListener {
     private lateinit var mBinding : ActivityLoginBinding
-    private lateinit var mViewModel : LoginViewModel
 
+    private lateinit var mViewModel : LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,11 +36,13 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         addEvents()
     }
 
+    override fun onSignUpButtonClick() {
+        pgLogin.setCurrentItem(1, true)
+    }
+
 
     private fun addEvents() {
-        FragmentLogin.getInstance().setOnBtnSignUpClickListener {
-            mBinding.pgLogin.setCurrentItem(1, true)
-        }
+
     }
 
     private fun addSetup() {

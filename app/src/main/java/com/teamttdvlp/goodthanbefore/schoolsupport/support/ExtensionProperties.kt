@@ -7,6 +7,10 @@ fun Any.logError(mess_name : String, message : Any) {
 }
 
 fun Any.logError (message : String) {
-    val indexOfDoubleComma = message.indexOf(":")
-    Log.e(message.substring(0, indexOfDoubleComma), message.substring(indexOfDoubleComma + 1))
+    if (message.contains(":")) {
+        val indexOfDoubleComma = message.indexOf(":")
+        Log.e(message.substring(0, indexOfDoubleComma), message.substring(indexOfDoubleComma + 1))
+    } else {
+        Log.e("Message: ", message)
+    }
 }

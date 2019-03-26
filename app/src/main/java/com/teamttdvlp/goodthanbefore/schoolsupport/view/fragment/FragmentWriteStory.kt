@@ -51,14 +51,17 @@ class FragmentWriteStory : Fragment(), UploadAvatarEvent {
 
     fun addControls() {}
     fun addEvents() {
-        mBinding.btnNext.setOnClickListener ({
+        mBinding.btnNext.setOnClickListener {
             val mBundle : Bundle = Bundle()
             mBundle.putString("Content", mBinding.editor.html)
             Navigation.findNavController(it).navigate(R.id.SubmitFragment, mBundle)
-        })
+        }
+
         mBinding.btnClose.setOnClickListener {
             Log.d("contentAre", mBinding.editor.html)
+            activity?.finish()
         }
+
         mBinding.editor.toolbar.setOnInsertImageButtonClickListener {
             //            Log.d("firstHTML", mBinding.editor.html )
     //            mBinding.editor.fromHtml("<html><body><img src=\"https://firebasestorage.googleapis.com/v0/b/schoolsupport-22ad2.appspot.com/o/Stories%2FpjX4eCdUONudjNfFjaL1%2Favatar.png?alt=media&token=f71404b1-5543-49e5-8730-3fa8ce76a6a2\" alt=\"Simply Easy Learning\" width=\"200\"" + "height=\"80\">" + "</body></html>")

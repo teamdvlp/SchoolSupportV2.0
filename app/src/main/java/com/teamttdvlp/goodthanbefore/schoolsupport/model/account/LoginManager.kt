@@ -12,6 +12,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetUserInte
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.ReadInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import java.lang.Exception
 
 class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent, ReadInfoEvent {
@@ -73,9 +74,10 @@ class LoginManager : LoginEvent, WriteInfoEvent, GetUserInterestEvent, ReadInfoE
 
     override fun onReadInfoSuccess(user: User?) {
         Log.d("sukien", "onReadInfSuccess")
-        user!!.DisplayName = currentUser.DisplayName
-        user!!.Avatar = currentUser.Avatar
-        currentUser = user
+        logError("User null? ${user == null}")
+//        user!!.DisplayName = currentUser.DisplayName
+//        user!!.Avatar = currentUser.Avatar
+//        currentUser = user
         userManager.writeInfo(currentUser)
     }
 
