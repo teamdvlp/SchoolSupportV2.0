@@ -44,6 +44,10 @@
         </activity>
         <activity android:name=".view.activity.ChemicalEquationActivity">
         </activity>
+        <activity android:name=".view.activity.GraphDrawerActivity">
+        </activity>
+        <activity android:name=".view.activity.SpecialGraphMenuActivity">
+        </activity>
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>
