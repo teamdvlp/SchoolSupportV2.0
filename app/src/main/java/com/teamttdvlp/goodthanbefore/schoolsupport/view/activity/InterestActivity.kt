@@ -75,6 +75,7 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
     }
     override fun onSetUserInterestEventSuccess() {
         startActivity(Intent(this, MainActivity::class.java).putExtra("User", user))
+        finish()
     }
 
     override fun onSetUserInterestEventFailed(e: Exception?) {

@@ -1,5 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -155,11 +156,12 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
     override fun onCancel() {
         Log.w(LogCode.login, "FB connection was cancel")
     }
+    private  var mContext : Context? = null
 
     override fun onLoginSuccess(user: User) {
         Log.d("LoginCC", user.Interests.size.toString())
         if (user.Interests.size == 0) {
-            var intent = Intent(context, InterestActivity::class.java)
+            var intent = Intent(activity!!.applicationContext, InterestActivity::class.java)
                 intent.putExtra("User", user)
                 startActivity(intent)
         }else {

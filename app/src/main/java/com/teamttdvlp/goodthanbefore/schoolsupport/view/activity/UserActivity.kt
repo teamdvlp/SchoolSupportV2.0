@@ -49,8 +49,16 @@ class UserActivity : AppCompatActivity() {
 
         mBinding.btnCustomizeYourInterest.setOnClickListener {
             val intent = Intent(this, InterestActivity::class.java)
+
             intent.putExtra("User",CurrentUser.currentUser)
             startActivity(intent)
+        }
+        mBinding.localTxtSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            var i = Intent(this, LoginActivity::class.java)
+            finishAffinity()
+            startActivity(i)
+            CurrentUser.currentUser = null
         }
     }
 

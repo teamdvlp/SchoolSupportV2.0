@@ -47,6 +47,7 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent, NewBookmarkEvent
         mBinding.txtAuthorName.text = mViewModel.story.Author
         mBinding.txtBigTitle.text = mViewModel.story.Title
         mBinding.txtContent.fromHtml(mViewModel.story.Content)
+        mBinding.txtShortDescription.text = mViewModel.story.Review
         mBinding.txtPostTime.text = DateSupport.getDateByTimeMillis(mViewModel.story.PostedTime)
         mViewModel.getAuthor(mViewModel.story.Author, this)
         storyThreeCycleUpdater["threeHotDayCycle"] = mViewModel.story.ThreeHotDayCycle
