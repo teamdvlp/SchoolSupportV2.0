@@ -32,6 +32,7 @@ class FragmentWriteStory : Fragment(), UploadAvatarEvent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = getViewModel()
+
     }
 
     override fun onCreateView(
