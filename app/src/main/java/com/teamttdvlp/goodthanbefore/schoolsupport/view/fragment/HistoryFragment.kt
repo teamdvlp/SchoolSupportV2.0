@@ -19,7 +19,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.HistoryViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
 
-class FragmentHistory : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
+class HistoryFragment : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
 
     private lateinit var mBinding:FragmentHistoryBinding
     private lateinit var activityViewModel:ViewProfileViewModel
@@ -89,8 +89,8 @@ class FragmentHistory : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdap
     }
 
     companion object {
-        private val mInstance : FragmentHistory = FragmentHistory()
-        fun getInstance () : FragmentHistory {
+        private val mInstance : HistoryFragment = HistoryFragment()
+        fun getInstance () : HistoryFragment {
             return mInstance
         }
     }

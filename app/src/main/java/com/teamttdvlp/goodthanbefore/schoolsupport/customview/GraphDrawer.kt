@@ -15,9 +15,6 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.UnitConverter.DpToPix
 import java.lang.Exception
 import java.math.BigDecimal
 
-/**
- * @see AddMoreGraphDrawer
- */
 class GraphDrawer : View {
 
     var start_X_value : Float = 0.0f

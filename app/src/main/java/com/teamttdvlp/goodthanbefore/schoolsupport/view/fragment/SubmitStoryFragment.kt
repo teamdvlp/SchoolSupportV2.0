@@ -79,7 +79,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
     private fun addControls() {
         val topicAdapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, listTopic)
         topicAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-        mBinding.spinnerTopic.adapter = topicAdapter
+        mBinding.spnTopic.adapter = topicAdapter
     }
 
     private fun addEvents() {
@@ -147,10 +147,10 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
     fun showProgressbar (isLoading : Boolean) {
         if (isLoading) {
             mBinding.mainLayout.visibility = View.GONE
-            mBinding.progresBar.visibility =  View.VISIBLE
+            mBinding.progress.visibility =  View.VISIBLE
         } else {
             mBinding.mainLayout.visibility = View.VISIBLE
-            mBinding.progresBar.visibility = View.GONE
+            mBinding.progress.visibility = View.GONE
         }
     }
 
@@ -171,7 +171,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         mViewModel.currentStory.value!!.Content = arguments?.getString("Content")!!
         mViewModel.currentStory.value!!.Author = CurrentUser.currentUser!!.Id
         mViewModel.currentStory.value!!.AuthorDisplayName = CurrentUser.currentUser!!.DisplayName
-        mViewModel.currentStory.value!!.Topic = mBinding.spinnerTopic.selectedItem.toString()
+        mViewModel.currentStory.value!!.Topic = mBinding.spnTopic.selectedItem.toString()
         mViewModel.currentStory.notifiChanged()
         Log.d("SubmitStory", "content: " + mStory.Content)
     }

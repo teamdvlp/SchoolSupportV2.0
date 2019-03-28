@@ -1,19 +1,14 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
-import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityUserBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_user.*
 
@@ -36,8 +31,8 @@ class UserActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (CurrentUser.bitmapUserAvatar != null)
-        imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
-        txtUserName.text = CurrentUser.currentUser?.DisplayName
+        img_avatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
+        txt_user_name.text = CurrentUser.currentUser?.DisplayName
     }
 
     private fun addEvents() {
@@ -53,7 +48,7 @@ class UserActivity : AppCompatActivity() {
             intent.putExtra("User",CurrentUser.currentUser)
             startActivity(intent)
         }
-        mBinding.localTxtSignOut.setOnClickListener {
+        mBinding.btnSignOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             var i = Intent(this, LoginActivity::class.java)
             finishAffinity()

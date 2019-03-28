@@ -7,7 +7,7 @@ import android.widget.CompoundButton
 import android.widget.RadioButton
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 
-class DrawableRadioButton : RadioButton {
+class RadioButton : RadioButton {
 
     var checked_background : Drawable? = null
 

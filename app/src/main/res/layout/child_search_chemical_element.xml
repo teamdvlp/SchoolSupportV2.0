@@ -7,7 +7,7 @@
 
 
     <TextView
-            android:id="@+id/child_txt_chem_element_symbol"
+            android:id="@+id/txt_chem_element_symbol"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:background="@color/bright_yellow"
@@ -28,7 +28,7 @@
             tools:layout_editor_absoluteY="16dp"/>
 
     <TextView
-            android:id="@+id/child_txt_chem_element_name"
+            android:id="@+id/txt_chem_element_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alpha="1.0"

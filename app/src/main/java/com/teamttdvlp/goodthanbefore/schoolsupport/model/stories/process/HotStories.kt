@@ -29,12 +29,13 @@ class HotStories : IHotStories {
         FirebaseFunctions.getInstance().getHttpsCallable("getHotStoriesByTopic")
             .call(data)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
+                if (it.isSuccessful && it.result?.data !=null) {
                     val result : ArrayList<Stories> = ArrayList()
                     val jsArr : JSONArray = JSONArray(it.result!!.data.toString())
                     for (i in 0..jsArr.length()-1) {
                         val storiesJS:JSONObject = jsArr[i] as JSONObject
-                        val mStories = Stories.fromJSONObject(storiesJS)
+                        val mStories
+                                = Stories.fromJSONObject(storiesJS)
                         result.add(mStories)
                         if (mStories.ThreeHotDayCycle < minximumThreeCheckPoint) {
                             minximumThreeCheckPoint = mStories.ThreeHotDayCycle

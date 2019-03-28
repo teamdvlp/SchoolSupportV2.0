@@ -34,7 +34,7 @@ class PostRecyclerViewAdapter  (
 
     override fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): LoadedViewDataHolder {
         Log.e("On Create View Holder", "Loaded item")
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_lv_post, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.item_lv_story, parent, false)
         var viewHolder = LoadedViewDataHolder(itemView)
         viewHolder.onItemClickListener = getOnItemCLickedListener()
         viewHolder.onBookMarkClickListener = onBookMarkBtnClickListener
@@ -77,12 +77,12 @@ class PostRecyclerViewAdapter  (
             var onItemClickListener : OnItemClickListener? = null
             var onBookMarkClickListener : OnItemClickListener? = null
             constructor(item_view : View) : super (item_view) {
-                 imgAvatar= item_view.findViewById(R.id.item_ilp_img_avatar)
-                 txtPostTitle = item_view.findViewById(R.id.item_ilp_txt_post_title)
-                 txtAuthor  = item_view.findViewById(R.id.item_ilp_txt_author)
-                 txtDate  = item_view.findViewById(R.id.item_ilp_txt_date)
-                 txtTag  = item_view.findViewById(R.id.item_ilp_txt_tag)
-                 btnBookmark = item_view.findViewById(R.id.item_ilp_rbtn_bookmark)
+                 imgAvatar= item_view.findViewById(R.id.img_avatar)
+                 txtPostTitle = item_view.findViewById(R.id.txt_post_title)
+                 txtAuthor  = item_view.findViewById(R.id.txt_author)
+                 txtDate  = item_view.findViewById(R.id.txt_date)
+                 txtTag  = item_view.findViewById(R.id.txt_tag)
+                 btnBookmark = item_view.findViewById(R.id.rbtn_bookmark)
                 item_view.setOnClickListener({
                     onItemClickListener?.onClicked(adapterPosition)
                 })

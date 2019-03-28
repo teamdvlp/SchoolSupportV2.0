@@ -36,7 +36,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:id="@+id/imgAvatar"
+                    android:id="@+id/img_avatar"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="47dp"
@@ -51,10 +51,10 @@
                     android:text="User name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtUserName"
+                    android:id="@+id/txt_user_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+                    app:layout_constraintStart_toEndOf="@+id/img_avatar"
                     android:layout_marginStart="21dp"
                     android:layout_marginTop="13dp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -71,13 +71,13 @@
                     android:id="@+id/txtViewProfile"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+                    app:layout_constraintStart_toEndOf="@+id/img_avatar"
                     android:layout_marginStart="21dp"
                     app:layout_constraintHorizontal_bias="0.0"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:textColor="#1B5E20"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_user_name"
                     app:layout_constraintVertical_bias="0.0"
                     android:fontFamily="@font/marat_sans_regular"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -94,12 +94,12 @@
                 android:textSize="13sp"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnStories"
+                android:id="@+id/btn_stories"
                 android:layout_marginTop="20.3dp"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -112,11 +112,11 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnNotification"
+                android:id="@+id/btn_notification"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnCustomizeYourInterest"
+                android:id="@+id/btn_customize_your_interest"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
@@ -146,12 +146,12 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnNightMode"
+                android:id="@+id/btn_night_mode"
                 android:layout_marginTop="20.3dp"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -164,12 +164,12 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnSetting"
+                android:id="@+id/btn_setting"
                 android:layout_marginTop="20.3dp"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -182,11 +182,11 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnHelp"
+                android:id="@+id/btn_help"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -199,11 +199,11 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/btnTermOfService"
+                android:id="@+id/btn_term_of_service"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -216,11 +216,11 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/local_txt_privacy_policy"
+                android:id="@+id/btn_privacy_policy"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"
-                android:textColor="#000000" android:alpha="0.5"/>
+                android:textColor="#000000"/>
         <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
@@ -240,7 +240,7 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
-                android:id="@+id/local_txt_sign_out"
+                android:id="@+id/btn_sign_out"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:paddingStart="47dp"

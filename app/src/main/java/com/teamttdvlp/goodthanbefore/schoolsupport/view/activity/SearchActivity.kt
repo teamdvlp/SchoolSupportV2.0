@@ -18,7 +18,6 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SearchStori
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.SearchDirectoryViewPagerAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentSearchByStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_search.*
 import org.w3c.dom.Text

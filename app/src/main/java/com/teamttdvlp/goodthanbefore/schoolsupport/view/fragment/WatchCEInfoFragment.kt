@@ -17,7 +17,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BangTuanHoanViewModel
 
-class FragmentWatchCEInfo : Fragment() {
+class WatchCEInfoFragment : Fragment() {
     
     lateinit var mBinding : FragmentWatchCeinfoBinding
 

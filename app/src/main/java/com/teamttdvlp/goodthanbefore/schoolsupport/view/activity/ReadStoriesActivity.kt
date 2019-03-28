@@ -86,7 +86,7 @@ class ReadStoriesActivity : AppCompatActivity(), ReadInfoEvent, NewBookmarkEvent
         mAuthor = user!!
         mBinding.txtAuthorName.text = mAuthor.DisplayName
         if (!mAuthor.Avatar.isNullOrEmpty()) {
-            Picasso.get().load(mAuthor.Avatar).into(mBinding.imgCircleAvatar)
+            Picasso.get().load(mAuthor.Avatar).into(mBinding.imgAvatar)
         }
     }
 

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import kotlinx.android.synthetic.main.activity_search_bar.*
 
@@ -22,7 +21,7 @@ class SearchBarActivity : AppCompatActivity() {
 
     private fun addEvents() {
 
-        search_bar_edt_search.setOnEditorActionListener {
+        edt_search.setOnEditorActionListener {
                 _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 search()
@@ -37,7 +36,7 @@ class SearchBarActivity : AppCompatActivity() {
     }
 
     private fun search () {
-        var keyword = search_bar_edt_search.text.toString()
+        var keyword = edt_search.text.toString()
         var intent = Intent(this, SearchActivity::class.java).putExtra("Keyword", keyword)
         startActivity(intent)
         finish()

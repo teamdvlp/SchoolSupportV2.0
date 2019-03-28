@@ -100,8 +100,8 @@ class Search_Chem_Element_Adapter(internal var context: Context) : RecyclerView.
         internal var txt_chem_element_name: TextView
 
         init {
-            txt_chem_element_name = itemView.findViewById(R.id.child_txt_chem_element_name)
-            txt_chem_element_symbol = itemView.findViewById(R.id.child_txt_chem_element_symbol)
+            txt_chem_element_name = itemView.findViewById(R.id.txt_chem_element_name)
+            txt_chem_element_symbol = itemView.findViewById(R.id.txt_chem_element_symbol)
         }
     }
 

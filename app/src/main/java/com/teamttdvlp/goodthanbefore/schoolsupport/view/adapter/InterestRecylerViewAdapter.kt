@@ -1,11 +1,9 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableCheckBox
+import com.teamttdvlp.goodthanbefore.schoolsupport.customview.CheckBox
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 
@@ -72,10 +70,10 @@ class InterestRecylerViewAdapter (var context: Context, var item_list : ArrayLis
     }
 
     inner class DataViewHolder: RecyclerView.ViewHolder {
-        var img_avatar : ImageView = itemView.findViewById(R.id.item_lsi_img_avatar)
-        var txt_name : TextView = itemView.findViewById(R.id.item_lsi_txt_interest_name)
-        var txt_description  : TextView = itemView.findViewById(R.id.item_lsi_txt_description)
-        var rbtn_is_selected : DrawableCheckBox = itemView.findViewById(R.id.item_lsi_rbtn_is_selected)
+        var img_avatar : ImageView = itemView.findViewById(R.id.img_avatar)
+        var txt_name : TextView = itemView.findViewById(R.id.txt_interest_name)
+        var txt_description  : TextView = itemView.findViewById(R.id.txt_description)
+        var rbtn_is_selected : CheckBox = itemView.findViewById(R.id.rbtn_is_selected)
         var onChosenChangeListener : OnItemChooseChangeListener? = null
 
         constructor(itemView: View ) : super (itemView) {

@@ -82,28 +82,28 @@ class BangTuanHoangGridviewAdapter (var context: Context, var itemList : ArrayLi
 
     fun processTitle (title : TitleChemicalElement, parent : ViewGroup) : View{
         var childView = layoutInflater.inflate(R.layout.item_title_bangtuanhoang_element, parent, false)
-        var imgTitle = childView.findViewById<ImageView>(R.id.item_title_img_title)
+        var imgTitle = childView.findViewById<ImageView>(R.id.img_title)
         imgTitle.background = context.getDrawable(title.titleImageId)
         return childView
     }
 
     fun processShortyTitle (title : ShortyTitleChemicalElement, parent : ViewGroup) : View{
         var childView = layoutInflater.inflate(R.layout.item_short_title_bangtuanhoang_element, parent, false)
-        var imgTitle = childView.findViewById<ImageView>(R.id.item_title_img_title)
+        var imgTitle = childView.findViewById<ImageView>(R.id.img_title)
         imgTitle.background = context.getDrawable(title.titleImageId)
         return childView
     }
 
     fun processCycleAndGroupElement (parent : ViewGroup) : View{
         var childView = layoutInflater.inflate(R.layout.item_nhom_chuky_bangtuanhoang_element, parent, false)
-        var imgTitle = childView.findViewById<ImageView>(R.id.item_title_img_title)
+        var imgTitle = childView.findViewById<ImageView>(R.id.img_title)
         imgTitle.background = context.getDrawable(R.drawable.nhom_chuky)
         return childView
     }
 
     fun processCycleChemicalElement (cycle : CycleChemicalElement, parent : ViewGroup) : View {
         var childView = layoutInflater.inflate(R.layout.item_chuky_bangtuanhoang_element, parent, false)
-        var imgTitle = childView.findViewById<ImageView>(R.id.item_title_img_title)
+        var imgTitle = childView.findViewById<ImageView>(R.id.img_title)
         imgTitle.background = context.getDrawable(cycle.cycleImageId)
         return childView
     }

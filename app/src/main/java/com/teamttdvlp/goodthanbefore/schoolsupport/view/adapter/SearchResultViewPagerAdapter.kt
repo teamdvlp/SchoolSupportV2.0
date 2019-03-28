@@ -9,7 +9,7 @@ class SearchResultViewPagerAdapter(fragmentManager: FragmentManager) : FragmentP
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> FragmentHistory()
+            0 -> HistoryFragment()
             else -> FragmentTop()
         }
     }

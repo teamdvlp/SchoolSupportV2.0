@@ -36,7 +36,7 @@ import java.lang.Exception
 import java.util.*
 import kotlin.collections.HashMap
 
-class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult>, LoginEvent {
+class LoginFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult>, LoginEvent {
     private lateinit var mBinding : FragmentLoginBinding
     private lateinit var signinApi : GoogleApiClient
     private lateinit var mCallbackManager: CallbackManager
@@ -188,8 +188,8 @@ class FragmentLogin : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
         activityViewModel.onLoginEvent = this
     }
     companion object {
-        private val mInstance : FragmentLogin = FragmentLogin()
-        fun getInstance () : FragmentLogin {
+        private val mInstance : LoginFragment = LoginFragment()
+        fun getInstance () : LoginFragment {
             return mInstance
         }
     }

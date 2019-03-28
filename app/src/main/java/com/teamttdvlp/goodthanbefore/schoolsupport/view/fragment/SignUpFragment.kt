@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
@@ -21,9 +20,9 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivit
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
 import java.lang.Exception
 
-class FragmentSignUp : Fragment(), LoginEvent {
+class SignUpFragment : Fragment(), LoginEvent {
 
-    private lateinit var mBind : FragmentSignUpBinding
+    private lateinit var mBind : com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
     private lateinit var activityModel : LoginViewModel
 
     private var isEmailValid = false
@@ -54,7 +53,7 @@ class FragmentSignUp : Fragment(), LoginEvent {
         mBind.btnSignupOk.setOnClickListener{
             val email = mBind.edtEmail.text.toString()
             val password = mBind.edtPassword.text.toString()
-            val displayName = mBind.edtDisplayname.text.toString()
+            val displayName = mBind.edtDisplayName.text.toString()
             activityModel.signup(email, password, displayName)
             activityModel.isLoading.value = View.GONE
         }
@@ -66,9 +65,9 @@ class FragmentSignUp : Fragment(), LoginEvent {
                 mBind.rbtnEmailValid.visibility = View.VISIBLE
                 resetButton()
                 if (!isEmailValid) {
-                    mBind.txtErrMessEmailInValid.visibility = View.VISIBLE
+                    mBind.txtErrMessEmailInvalid.visibility = View.VISIBLE
                 } else {
-                    mBind.txtErrMessEmailInValid.visibility = View.GONE
+                    mBind.txtErrMessEmailInvalid.visibility = View.GONE
                 }
             }
 
@@ -85,9 +84,9 @@ class FragmentSignUp : Fragment(), LoginEvent {
                 mBind.rbtnPasswordValid.visibility = View.VISIBLE
                 resetButton()
                 if (!isPasswordValid) {
-                    mBind.txtErrMessPasswordInValid.visibility = View.VISIBLE
+                    mBind.txtErrMessPasswordInvalid.visibility = View.VISIBLE
                 } else {
-                    mBind.txtErrMessPasswordInValid.visibility = View.GONE
+                    mBind.txtErrMessPasswordInvalid.visibility = View.GONE
                 }
             }
 
@@ -98,16 +97,16 @@ class FragmentSignUp : Fragment(), LoginEvent {
             }
 
         })
-        mBind.edtDisplayname.addTextChangedListener(object : TextWatcher {
+        mBind.edtDisplayName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 var isDisplayNameValid = activityModel.checkDisplayname(s.toString())
                 mBind.rbtnDisplayNameValid.isChecked = isDisplayNameValid
                 mBind.rbtnDisplayNameValid.visibility = View.VISIBLE
                 resetButton()
                 if (!isDisplayNameValid) {
-                    mBind.txtErrMessDisplayNameInValid.visibility = View.VISIBLE
+                    mBind.txtErrMessDisplayNameInvalid.visibility = View.VISIBLE
                 } else {
-                    mBind.txtErrMessDisplayNameInValid.visibility = View.GONE
+                    mBind.txtErrMessDisplayNameInvalid.visibility = View.GONE
                 }
             }
 
@@ -170,8 +169,8 @@ class FragmentSignUp : Fragment(), LoginEvent {
     }
 
     companion object {
-        private val mInstance : FragmentSignUp = FragmentSignUp()
-        fun getInstance () : FragmentSignUp {
+        private val mInstance : SignUpFragment = SignUpFragment()
+        fun getInstance () : SignUpFragment {
             return mInstance
         }
 

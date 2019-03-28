@@ -8,7 +8,7 @@
 
     <ImageView
             android:background="@drawable/empty_white"
-            android:id="@+id/item_title_img_title2"
+            android:id="@+id/img_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintVertical_bias="1"

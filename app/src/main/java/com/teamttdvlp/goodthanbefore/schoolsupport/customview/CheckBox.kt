@@ -7,11 +7,7 @@ import android.widget.CheckBox
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 
 
-/**
- * This class is created for reducing drawable's count
- * We don't need to create .xml file selector for state changing
- */
-class DrawableCheckBox : CheckBox {
+class CheckBox : CheckBox {
 
     var checked_background : Drawable? = null
 

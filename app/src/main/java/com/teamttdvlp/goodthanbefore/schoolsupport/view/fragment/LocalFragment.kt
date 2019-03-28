@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 
 
-class FragmentLocal : Fragment() {
+class LocalFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_local, container, false)
     }

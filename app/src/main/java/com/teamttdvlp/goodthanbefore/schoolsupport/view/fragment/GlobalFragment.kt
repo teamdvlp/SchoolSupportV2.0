@@ -29,8 +29,6 @@ import kotlinx.android.synthetic.main.fragment_global.*
 
 class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListener {
 
-
-
     private lateinit var mBinding: FragmentGlobalBinding
 
     private lateinit var mViewMode: GlobalViewModel
@@ -54,8 +52,8 @@ class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
         mViewMode = getViewModel()
 
         adapter = PostRecyclerViewAdapter(mViewMode.storyData, context!!)
-        rcv_tester!!.adapter = adapter
-        adapter.adaptFor(rcv_tester)
+        lv_tester!!.adapter = adapter
+        adapter.adaptFor(lv_tester)
     }
 
     fun addEvents() {

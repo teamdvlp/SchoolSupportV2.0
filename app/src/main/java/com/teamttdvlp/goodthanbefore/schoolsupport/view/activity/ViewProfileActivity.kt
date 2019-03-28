@@ -1,8 +1,6 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioGroup
@@ -12,7 +10,6 @@ import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityViewProfileBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.UserProfilePagerAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
@@ -35,9 +32,9 @@ class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     override fun onResume() {
         super.onResume()
         if (CurrentUser.bitmapUserAvatar != null)
-        imgAvatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
-        txtUserName.text = CurrentUser.currentUser?.DisplayName
-        txtAbout.text = CurrentUser.currentUser?.About
+        img_avatar.setImageBitmap(CurrentUser.bitmapUserAvatar)
+        txt_user_name.text = CurrentUser.currentUser?.DisplayName
+        txt_about.text = CurrentUser.currentUser?.About
     }
 
     private fun setup() {

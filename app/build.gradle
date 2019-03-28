@@ -28,6 +28,7 @@ android {
     }
 
     kapt {
+        generateStubs = true
         javacOptions {
             // Increase the max count of errors from annotation processors.
             // Default is 100.
@@ -87,6 +88,17 @@ dependencies {
     // Math expression parser
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:4.2.0'
 
+    ext.dagger2_version = '2.21'
+    // Basic Dagger 2 (required)
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+
+    // dagger.android package (optional)
+    implementation "com.google.dagger:dagger-android:$dagger2_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
+
+    // Support library support (optional)
+    kapt "com.google.dagger:dagger-android-support:$dagger2_version"
     //Timber - Logging support
     implementation 'com.jakewharton.timber:timber:4.7.1'
 

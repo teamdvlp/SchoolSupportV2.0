@@ -21,9 +21,9 @@
                 android:background="@drawable/btn_edit"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toTopOf="@+id/txtUserName"
+                app:layout_constraintTop_toTopOf="@+id/txt_user_name"
                 android:layout_marginTop="4dp"
-                android:id="@+id/btnEdit"/>
+                android:id="@+id/btn_edit"/>
         <TextView
                 android:text="Your name"
                 android:textAlignment="textStart"
@@ -34,12 +34,12 @@
                 android:textColor="#000000"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtUserName"
-                app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+                android:id="@+id/txt_user_name"
+                app:layout_constraintStart_toEndOf="@+id/img_avatar"
                 app:layout_constraintBottom_toTopOf="@+id/guideline5"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="3dp" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/btnEdit"/>
+                app:layout_constraintEnd_toStartOf="@+id/btn_edit"/>
         <TextView
                 android:text="Your about here Your about here Your about here Your about here Your about here Your about here Your about here Your about here Your about here"
                 android:textSize="11sp"
@@ -47,16 +47,16 @@
                 android:fontFamily="@font/marat_sans_regular"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtAbout"
-                app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+                android:id="@+id/txt_about"
+                app:layout_constraintStart_toEndOf="@+id/img_avatar"
                 android:layout_marginStart="16dp"
                 app:layout_constraintTop_toTopOf="@+id/guideline5" android:layout_marginTop="3dp"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/btnEdit"/>
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/btn_edit"/>
         <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:scaleType="centerCrop"
-                android:id="@+id/imgAvatar"
+                android:id="@+id/img_avatar"
                 android:layout_marginTop="7dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,14 +66,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/guideline5"
-                app:layout_constraintTop_toTopOf="@id/imgAvatar"
-                app:layout_constraintBottom_toBottomOf="@id/imgAvatar" app:layout_constraintEnd_toEndOf="@+id/imgAvatar"
-                app:layout_constraintStart_toEndOf="@+id/imgAvatar"/>
+                app:layout_constraintTop_toTopOf="@id/img_avatar"
+                app:layout_constraintBottom_toBottomOf="@id/img_avatar" app:layout_constraintEnd_toEndOf="@+id/img_avatar"
+                app:layout_constraintStart_toEndOf="@+id/img_avatar"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/txtAbout" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_about" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" android:id="@+id/linearLayout">
 
             <TextView
@@ -82,7 +82,7 @@
                     android:textSize="13sp"
                     android:textColor="#000000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView11"/>
+                    android:layout_height="wrap_content" android:id="@+id/txt_following_count"/>
 
             <TextView
                     android:text="Following"
@@ -106,7 +106,7 @@
                     android:textColor="#000000"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtFollower"/>
+                    android:id="@+id/txt_follower_count"/>
             <TextView
                     android:text="Followers"
                     android:fontFamily="@font/marat_sans_regular"
@@ -132,28 +132,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView13" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/tabLayout">
-            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableRadioButton
+            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
                     android:layout_width="wrap_content"
                     android:focusable="false"
                     android:checked="true"
                     android:layout_height="15dp"
                     android:layout_marginLeft="15dp"
                     app:unchecked_bg="@drawable/rbtn_lastest"
-                    app:checked_bg="@drawable/rbtn_lastest_clicked" android:id="@+id/btnLastest"/>
-            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableRadioButton
+                    app:checked_bg="@drawable/rbtn_lastest_clicked" android:id="@+id/btn_lastest"/>
+            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:focusable="false"
                     android:layout_marginLeft="15dp"
                     app:unchecked_bg="@drawable/rbtn_claps"
-                    app:checked_bg="@drawable/rbtn_claps_clicked" android:id="@+id/btnClaps"/>
-            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.DrawableRadioButton
+                    app:checked_bg="@drawable/rbtn_claps_clicked" android:id="@+id/btn_claps"/>
+            <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:focusable="false"
                     android:layout_marginLeft="15dp"
                     app:unchecked_bg="@drawable/rbtn_highlight"
-                    app:checked_bg="@drawable/rbtn_highlight_clicked" android:id="@+id/btnHighlights"/>
+                    app:checked_bg="@drawable/rbtn_highlight_clicked" android:id="@+id/btn_highlights"/>
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.viewpager.widget.ViewPager
@@ -161,7 +161,7 @@
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/vpgProfile"
+            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/vpg_profile"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

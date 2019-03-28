@@ -25,7 +25,7 @@ import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 
-class FragmentWriteStory : Fragment(), UploadAvatarEvent {
+class WriteStoryFragment : Fragment(), UploadAvatarEvent {
 
     private lateinit var mBinding : FragmentWriteStoryBinding
     private lateinit var mViewModel : WriteStoryViewModel
@@ -114,7 +114,7 @@ class FragmentWriteStory : Fragment(), UploadAvatarEvent {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentWriteStory().apply {
+            WriteStoryFragment().apply {
 
             }
     }

@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentSearchByTags
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.SearchByTagsFragment
 
-/**
- * @see FragmentSearchByTags
- */
 class SearchByTagRecyclerViewAdapter(var context : Context, var itemList : ArrayList<String>, var recyclerView : RecyclerView) : RecyclerView.Adapter<SearchByTagRecyclerViewAdapter.DataViewHolder>() {
 
     private var onItemClickListener : OnItemClickListener? = null
@@ -22,7 +19,7 @@ class SearchByTagRecyclerViewAdapter(var context : Context, var itemList : Array
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchByTagRecyclerViewAdapter.DataViewHolder {
-        var view = LayoutInflater.from(context).inflate(R.layout.item_view_search_by_tag, parent, false)
+        var view = LayoutInflater.from(context).inflate(R.layout.item_lv_search_by_tag, parent, false)
         view.setOnClickListener(onClickListener)
         return DataViewHolder(view)
     }
@@ -38,7 +35,7 @@ class SearchByTagRecyclerViewAdapter(var context : Context, var itemList : Array
     }
 
     class DataViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var tag : TextView = itemView.findViewById(R.id.item_vsbt_txt_tag)
+        var tag : TextView = itemView.findViewById(R.id.txt_tag)
     }
 
     interface OnItemClickListener {

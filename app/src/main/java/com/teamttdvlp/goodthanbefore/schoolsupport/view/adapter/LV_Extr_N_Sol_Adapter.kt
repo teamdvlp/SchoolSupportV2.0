@@ -36,7 +36,7 @@ class LV_Extr_N_Sol_Adapter (var context : Context?, var list : ArrayList<Point>
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view = LayoutInflater.from(context).inflate(R.layout.child_ex_n_sol, parent, false)
-        var txt_info = view.findViewById(R.id.child_ex_n_sol_txt_info) as TextView
+        var txt_info = view.findViewById(R.id.txt_info) as TextView
         txt_info.text = describeContent!!(list!!.get(position), position)
         return view
     }

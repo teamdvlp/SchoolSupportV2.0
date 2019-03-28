@@ -4,16 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Interest
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SetUserInterestEvent
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.WriteInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.InterestRecylerViewAdapter
@@ -46,7 +43,7 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
     fun addControl () {
         mViewModel = getViewModel()
         rcv_interest_adapter = InterestRecylerViewAdapter(this, interestList)
-        rcv_interest_adapter.adaptFor(lvInterest)
+        rcv_interest_adapter.adaptFor(lv_interest)
         setUpErrorDialog()
     }
 
@@ -55,7 +52,7 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
     }
 
     fun addEvents () {
-        btnNext.setOnClickListener {
+        btn_next.setOnClickListener {
             if (rcv_interest_adapter.selectedItemList.size >= REQUIRE_SELECTED_CONTENT_COUNT)
             {
                 try {

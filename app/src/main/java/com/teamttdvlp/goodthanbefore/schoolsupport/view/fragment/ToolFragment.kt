@@ -16,7 +16,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMen
 import kotlinx.android.synthetic.main.fragment_tool.*
 
 
-class FragmentTool : Fragment(), View.OnClickListener {
+class ToolFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
