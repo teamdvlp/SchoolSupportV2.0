@@ -7,10 +7,10 @@
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentGlobal"
               android:label="FragmentNewStories" tools:layout="@layout/fragment_tool"/>
     <fragment android:id="@+id/main_nav_fragment_local"
-              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentLocal"
+              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.LocalFragment"
               android:label="FragmentNewStories"/>
     <fragment android:id="@+id/main_nav_fragment_tool"
-              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentTool"
+              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.ToolFragment"
               android:label="FragmentNewStories"/>
     <fragment android:id="@+id/main_nav_fragment_bookmarks"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentBookmarks"
