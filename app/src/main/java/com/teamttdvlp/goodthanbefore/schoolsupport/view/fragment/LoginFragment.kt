@@ -63,12 +63,6 @@ class LoginFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
 
     private fun addControls() {
         activityViewModel = activity!!.getViewModel()
-        FirebaseFirestore.getInstance().collection("Stories23")
-            .whereArrayContains("date", "07-03-2019")
-            .get()
-            .addOnCompleteListener {
-                Log.d("Fuck", "thanh cong")
-            }
     }
 
     private fun addEvents() {

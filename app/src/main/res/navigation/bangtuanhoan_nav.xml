@@ -15,7 +15,7 @@
                 app:exitAnim="@anim/move_left"/>
     </fragment>
     <fragment android:id="@+id/bth_nav_fragment_watch_ceinfo"
-              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentWatchCEInfo"
+              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.WatchCEInfoFragment"
               android:label="ChemicalElementInfo"
               tools:layout="@layout/fragment_watch_ceinfo">
         <action android:id="@+id/action_bth_nav_fragment_watch_ceinfo_to_bth_nav_fragment_bth"
