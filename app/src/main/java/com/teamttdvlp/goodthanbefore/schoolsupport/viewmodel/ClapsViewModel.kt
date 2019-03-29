@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.process.UserStoriesManger
-import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 
 class ClapsViewModel : ViewModel {

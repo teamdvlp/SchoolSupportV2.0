@@ -15,19 +15,18 @@
             android:theme="@style/AppTheme">
         <activity android:name=".view.activity.SearchChemicalEquationActivity">
         </activity>
-        <activity android:name=".view.activity.SearchEQuationActivity">
-        </activity>
         <activity android:name=".view.activity.BangTuanHoanActivity">
         </activity>
         <activity android:name=".view.activity.ReadStoriesActivity">
         </activity>
-        <activity android:name=".view.activity.WriteStoriesActivity">
+        <activity android:name=".view.activity.CreateStoriesActivity">
         </activity>
         <activity android:name=".view.activity.EditProfileActivity">
         </activity>
         <activity android:name=".view.activity.UserActivity">
         </activity>
         <activity android:name=".view.activity.ViewProfileActivity"/>
+
         <activity android:name=".view.activity.OfflineToolActivity">
         </activity>
         <activity android:name=".view.activity.InterestActivity">

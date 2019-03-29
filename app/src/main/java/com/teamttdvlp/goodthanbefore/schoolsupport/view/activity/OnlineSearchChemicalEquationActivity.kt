@@ -17,7 +17,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.functions.OnReachASearc
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.functions.OnlineSearchChemEquaManager
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.removeAllSpace
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.RecyclerViewSearchCEqAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.OnlineSearchViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.OnlineSearchChemicalEquationViewModel
 import kotlinx.android.synthetic.main.activity_online_search_chemical_equation.*
 import kotlinx.android.synthetic.main.activity_view_profile.view.*
 
@@ -34,7 +34,7 @@ class OnlineSearchChemicalEquationActivity : AppCompatActivity() {
 
     lateinit var onl_sch_chem_list_adapter : RecyclerViewSearchCEqAdapter
 
-    lateinit var viewModel : OnlineSearchViewModel
+    lateinit var viewModel : OnlineSearchChemicalEquationViewModel
 
     lateinit var keyboardManager : InputMethodManager
 
@@ -117,7 +117,7 @@ class OnlineSearchChemicalEquationActivity : AppCompatActivity() {
     }
 
     fun initViewModel () {
-        viewModel = ViewModelProviders.of(this).get(OnlineSearchViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(OnlineSearchChemicalEquationViewModel::class.java)
 
     }
 

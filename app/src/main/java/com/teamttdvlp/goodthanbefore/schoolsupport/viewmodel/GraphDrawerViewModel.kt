@@ -9,7 +9,7 @@ import android.os.Parcelable
 import android.util.Log
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.graph.process.GraphDrawerDataGetter
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.GraphDrawerActivity
-class MVVM_GraphDrawerActivityPresenter(var view : Application) {
+class GraphDrawerViewModel (var view : Application) {
 
     var ldt_graph_type : MutableLiveData<GraphInfo> = MutableLiveData()
 

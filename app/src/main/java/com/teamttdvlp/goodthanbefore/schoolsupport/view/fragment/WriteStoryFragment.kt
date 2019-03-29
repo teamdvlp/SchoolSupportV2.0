@@ -18,7 +18,6 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentWriteStoryBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoriesViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoryViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView

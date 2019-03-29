@@ -13,7 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.retroschoolsupporttoolmodule.Search_Chem_Element_Adapter
+import com.example.retroschoolsupporttoolmodule.SearchChemicalElementRCVAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.ChemicalElement
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
@@ -30,7 +30,7 @@ class BangTuanHoanActivity : AppCompatActivity() {
 
     private var rcvSearchList = ArrayList<ChemicalElement>()
 
-    private lateinit var rcvSearchAdapter : Search_Chem_Element_Adapter
+    private lateinit var rcvSearchAdapter : SearchChemicalElementRCVAdapter
 
     private lateinit var BangTuanHoanNav : NavController
 
@@ -65,11 +65,11 @@ class BangTuanHoanActivity : AppCompatActivity() {
     }
 
     private fun setUpSearchRCV (data : ArrayList<ChemicalElement>) {
-        rcvSearchAdapter = Search_Chem_Element_Adapter(this)
+        rcvSearchAdapter = SearchChemicalElementRCVAdapter(this)
         rcvSearchAdapter.adaptFor(lv_search)
         rcvSearchAdapter.setData(data)
         rcvSearchAdapter.observe(edt_search)
-        rcvSearchAdapter.setOnItemClickListener (object : Search_Chem_Element_Adapter.OnItemClickListener {
+        rcvSearchAdapter.setOnItemClickListener (object : SearchChemicalElementRCVAdapter.OnItemClickListener {
             override fun onItemClick(element: ChemicalElement) {
                 if ((BangTuanHoanNav.currentDestination != BangTuanHoanNav.graph.findNode(R.id.bth_nav_fragment_watch_ceinfo))) {
                     var bundle = Bundle()

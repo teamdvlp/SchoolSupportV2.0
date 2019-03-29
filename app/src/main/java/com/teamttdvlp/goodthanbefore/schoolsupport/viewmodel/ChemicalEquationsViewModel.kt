@@ -6,11 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ChemicalEquationsViewModel : AndroidViewModel {
+class ChemicalEquationViewModel : AndroidViewModel {
 
     constructor(app : Application) : super (app) {
 
     }
-
 
 }
