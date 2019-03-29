@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 
-class FragmentHighlights : Fragment() {
+class HighlightsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,8 +22,8 @@ class FragmentHighlights : Fragment() {
     }
 
     companion object {
-        private val mInstance : FragmentHighlights = FragmentHighlights()
-        fun getInstance () : FragmentHighlights {
+        private val mInstance : HighlightsFragment = HighlightsFragment()
+        fun getInstance () : HighlightsFragment {
             return mInstance
         }}
 }

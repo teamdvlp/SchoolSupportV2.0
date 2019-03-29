@@ -9,9 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.drawgraphmodule.Point
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import kotlinx.android.synthetic.main.child_ex_n_sol.view.*
 
-typealias DescribeContent = ((point : Point, pos : Int) -> String)
 
 class LV_Extr_N_Sol_Adapter (var context : Context?, var list : ArrayList<Point>?) : BaseAdapter() {
 
@@ -42,3 +40,4 @@ class LV_Extr_N_Sol_Adapter (var context : Context?, var list : ArrayList<Point>
     }
 
 }
+typealias DescribeContent = ((point : Point, pos : Int) -> String)

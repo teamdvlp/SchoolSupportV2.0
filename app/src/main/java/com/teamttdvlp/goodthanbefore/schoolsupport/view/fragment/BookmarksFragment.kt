@@ -23,7 +23,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 
 
-class FragmentBookmarks : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
+class BookmarksFragment : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
 
     private lateinit var mAdapter : PostRecyclerViewAdapter
     private lateinit var mViewModel : BookmarkViewModel

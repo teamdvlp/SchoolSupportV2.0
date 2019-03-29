@@ -13,7 +13,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.Story
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_top.*
 
-class FragmentTop : androidx.fragment.app.Fragment() {
+class TopFragment : androidx.fragment.app.Fragment() {
 
     lateinit var adapter : PostRecyclerViewAdapter
 

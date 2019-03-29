@@ -18,15 +18,15 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.Chemica
 
 import java.util.ArrayList
 
-class Search_Chem_Element_Adapter(internal var context: Context) : RecyclerView.Adapter<Search_Chem_Element_Adapter.DataViewHolder>(), Filterable {
+class SearchChemicalElementRCVAdapter(internal var context: Context) : RecyclerView.Adapter<SearchChemicalElementRCVAdapter.DataViewHolder>(), Filterable {
 
-    internal var filter: Search_Chem_Element_Adapter.Searcher
+    internal var filter: SearchChemicalElementRCVAdapter.Searcher
 
     internal lateinit var list: ArrayList<ChemicalElement>
 
     internal lateinit var defaultList: ArrayList<ChemicalElement>
 
-    internal var onCustomItemClickListener: Search_Chem_Element_Adapter.OnItemClickListener? = null
+    internal var onCustomItemClickListener: SearchChemicalElementRCVAdapter.OnItemClickListener? = null
 
     private var rcv: RecyclerView? = null
 
@@ -75,12 +75,12 @@ class Search_Chem_Element_Adapter(internal var context: Context) : RecyclerView.
         this.onCustomItemClickListener = onCustomItemClickListener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Search_Chem_Element_Adapter.DataViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchChemicalElementRCVAdapter.DataViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.child_search_chemical_element, parent, false)
         return DataViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: Search_Chem_Element_Adapter.DataViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchChemicalElementRCVAdapter.DataViewHolder, position: Int) {
         holder.itemView.setOnClickListener(onClickListener)
         val element = list[position]
         holder.txt_chem_element_symbol.text = element.symbol

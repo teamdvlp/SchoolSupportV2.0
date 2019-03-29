@@ -17,10 +17,10 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 
-class WriteStoriesActivity : AppCompatActivity() {
+class CreateStoriesActivity : AppCompatActivity() {
     lateinit var mViewModel : WriteStoriesViewModel
     lateinit var mViewBinding : ActivityWriteStoriesBinding
-    lateinit var activityResultListener: WriteStoriesActivity.OnActivityResultListener
+    lateinit var activityResultListener: CreateStoriesActivity.OnActivityResultListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_stories)

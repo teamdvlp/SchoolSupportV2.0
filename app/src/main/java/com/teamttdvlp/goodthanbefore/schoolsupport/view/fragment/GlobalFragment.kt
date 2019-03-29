@@ -27,7 +27,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.GlobalViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_global.*
 
-class FragmentGlobal : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListener {
+class GlobalFragment : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListener {
 
     private lateinit var mBinding: FragmentGlobalBinding
 

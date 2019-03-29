@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentClaps
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentHighlights
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.ClapsFragment
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.HighlightsFragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.HistoryFragment
 
 class UserProfilePagerAdapter : FragmentPagerAdapter {
@@ -15,8 +15,8 @@ class UserProfilePagerAdapter : FragmentPagerAdapter {
     override fun getItem(position: Int): Fragment {
         when (position) {
             0 ->  {return HistoryFragment.getInstance()}
-            1 -> {return FragmentClaps.getInstance()}
-            else -> {return FragmentHighlights.getInstance()}
+            1 -> {return ClapsFragment.getInstance()}
+            else -> {return HighlightsFragment.getInstance()}
         }
     }
 

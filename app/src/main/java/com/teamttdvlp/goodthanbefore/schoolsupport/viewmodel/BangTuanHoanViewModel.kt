@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.ChemicalElement
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.BangTuanHoanActivity
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentBangTuanHoang
 
 /**
  * @see BangTuanHoanActivity

@@ -18,7 +18,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ClapsViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
 
-class   FragmentClaps : Fragment(), RecyclerViewLoadmoreAdapter.OnScrollListener, GetMultipleStories {
+class ClapsFragment : Fragment(), RecyclerViewLoadmoreAdapter.OnScrollListener, GetMultipleStories {
     private lateinit var mBinding: FragmentClapsBinding
     private lateinit var activityViewModel: ViewProfileViewModel
     private lateinit var mViewModel: ClapsViewModel
@@ -86,8 +86,8 @@ class   FragmentClaps : Fragment(), RecyclerViewLoadmoreAdapter.OnScrollListener
         mAdapter.notifyDataSetChanged()
     }
     companion object {
-        private val mInstance : FragmentClaps = FragmentClaps()
-        fun getInstance () : FragmentClaps {
+        private val mInstance : ClapsFragment = ClapsFragment()
+        fun getInstance () : ClapsFragment {
             return mInstance
         }}
 }

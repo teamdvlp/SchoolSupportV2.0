@@ -25,13 +25,10 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.PostNewStor
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.notifiChanged
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.WriteStoriesActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SubmitStoryViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoriesViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import kotlinx.android.synthetic.main.activity_view_profile.view.*
-import kotlinx.android.synthetic.main.dialog_submit_story_layout.*
 import java.lang.Exception
 
 class SubmitStoryFragment : Fragment(), PostNewStoryEvent {

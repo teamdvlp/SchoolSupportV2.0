@@ -22,7 +22,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BangTuanHoanViewMod
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.FrmtBangTuanHoanViewModel
 
 
-class FragmentBangTuanHoang : Fragment() {
+class BangTuanHoangFragment : Fragment() {
 
     lateinit var mBd : FragmentBangTuanHoangBinding
     lateinit var mViewModel : FrmtBangTuanHoanViewModel
