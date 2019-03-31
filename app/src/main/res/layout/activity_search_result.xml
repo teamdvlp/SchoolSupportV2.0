@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".view.activity.SearchResultActivity"
 >
-    <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SearchResultActivityBinding"/>
+    <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SearchResultActivityBinding">
+    </data>
 <LinearLayout
         android:id="@+id/activity_search_result"
         android:orientation="vertical"

@@ -45,7 +45,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         mBinding.lifecycleOwner = this
         mViewModel = getViewModel()
         Log.d("accc", "chayroido")
-        mBinding.mVieModel = mViewModel
+        mBinding.viewModel = mViewModel
         mBinding.txtDate.text = mViewModel.getCurrentDate()
         mBinding.txtAuthor.text = CurrentUser.currentUser!!.DisplayName
         return mBinding.root

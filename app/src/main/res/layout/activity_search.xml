@@ -4,7 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".view.activity.SearchActivity">
-    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SearchActivityBinding"/>
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SearchActivityBinding">
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.SearchActivityViewModel"/>
+    </data>
 <LinearLayout
         android:orientation="vertical"
         android:id="@+id/activity_search"

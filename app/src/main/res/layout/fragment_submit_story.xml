@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SubmitStoryFragmentBinding">
-    <variable name="mVieModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.SubmitStoryFragmentViewModel"/>
+    <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.SubmitStoryFragmentViewModel"/>
 </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
@@ -23,7 +23,7 @@
 
             <EditText
                     android:hint="Type your title"
-                    android:text="@={mVieModel.currentStory.Title}"
+                    android:text="@={viewModel.currentStory.Title}"
                     android:background="@color/transparent"
                     android:inputType="textShortMessage|textMultiLine"
                     android:maxLength="52"
@@ -43,7 +43,7 @@
                     app:layout_constraintVertical_bias="0.0"/>
             <TextView
                     android:layout_width="0dp" android:layout_height="17dp"
-                    android:text="@={mVieModel.currentStory.Author}"
+                    android:text="@={viewModel.currentStory.Author}"
                     app:layout_constraintEnd_toStartOf="@+id/img_avatar"
                     android:textSize="13dp"
                     android:textColor="#000000"
@@ -73,7 +73,7 @@
                     app:layout_constraintVertical_bias="0.0"/>
             <EditText
                     android:hint="Type your review here"
-                    android:text="@={mVieModel.currentStory.Review}"
+                    android:text="@={viewModel.currentStory.Review}"
                     android:maxLines="3"
                     android:maxLength="95"
                     android:background="@color/transparent"

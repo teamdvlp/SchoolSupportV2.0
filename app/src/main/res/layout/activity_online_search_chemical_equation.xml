@@ -3,7 +3,9 @@
          xmlns:app="http://schemas.android.com/apk/res-auto"
          xmlns:tools="http://schemas.android.com/tools"
          tools:context=".view.activity.OnlineSearchChemicalEquationActivity">
-<data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.OnlineSearchChemicalEquationActivityBinding"/>
+    <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.OnlineSearchChemicalEquationActivityBinding">
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.OnlineSearchChemicalEquationActivityViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

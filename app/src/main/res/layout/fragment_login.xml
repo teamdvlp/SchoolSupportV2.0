@@ -3,7 +3,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".view.activity.MainActivity">
-<data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.LoginFragmentBinding"/>
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.LoginFragmentBinding">
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.LoginViewFragmentModel"></variable>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -5,7 +5,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".view.activity.GraphDrawerActivity"
 >
-    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.GraphDrawerActivityBinding" />
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.GraphDrawerActivityBinding" >
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphDrawerActivityViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"

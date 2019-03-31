@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     private fun addControls() {
         mViewModel = getViewModel()
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_login)
-        mBinding.mViewModel = mViewModel
+        mBinding.viewModel = mViewModel
         mBinding.lifecycleOwner = this
         mBinding.pgLogin.adapter = LoginViewPagerAdapter(supportFragmentManager)
     }

@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.UserActivityBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.UserActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.UserActivityViewModel

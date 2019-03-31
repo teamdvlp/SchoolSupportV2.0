@@ -2,7 +2,9 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
-<data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.ReadStoryActivityBinding"/>
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.ReadStoryActivityBinding">
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.ReadStoriesActivityViewModel"/>
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
