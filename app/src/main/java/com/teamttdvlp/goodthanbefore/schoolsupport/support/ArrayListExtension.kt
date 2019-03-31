@@ -7,7 +7,7 @@ inline fun <T> ArrayList<T>.add_removeIdenticalItem (partner:ArrayList<T>) : Arr
                 partner.remove(item2)
             }
         }
-    }
+}
     this.addAll(partner)
     return this
 }

@@ -18,10 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentLoginBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.LoginFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.LogCode
@@ -30,21 +28,20 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.MainActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.OfflineToolActivity
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.LoginActivityViewModel
 import kotlinx.coroutines.*
 import java.lang.Exception
 import java.util.*
-import kotlin.collections.HashMap
 
 class LoginFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener, FacebookCallback<LoginResult>, LoginEvent {
-    private lateinit var mBinding : FragmentLoginBinding
+    private lateinit var mBinding : LoginFragmentBinding
     private lateinit var signinApi : GoogleApiClient
     private lateinit var mCallbackManager: CallbackManager
     private var permissonFacebook = Arrays.asList("email","public_profile")
     private lateinit var mFBLoginManager:com.facebook.login.LoginManager
     private val REQUESTCODE_GG_SIGNIN = 9
 
-    private lateinit var activityViewModel : LoginViewModel
+    private lateinit var activityViewModel : LoginActivityViewModel
     @InternalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -112,6 +109,7 @@ class LoginFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
         } else {
         }
 
+
     }
 
     private fun GGLoginSetup() {
@@ -158,7 +156,8 @@ class LoginFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener, Fa
             var intent = Intent(activity!!.applicationContext, InterestActivity::class.java)
                 intent.putExtra("User", user)
                 startActivity(intent)
-        }else {
+        } else {
+            Log.d("test", "chay")
             var intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
         }

@@ -13,20 +13,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.RxKotlin">
+        </activity>
         <activity android:name=".view.activity.SearchChemicalEquationActivity">
         </activity>
-        <activity android:name=".view.activity.BangTuanHoanActivity">
+        <activity android:name=".view.activity.BanTuanHoanActivity">
         </activity>
-        <activity android:name=".view.activity.ReadStoriesActivity">
+        <activity android:name=".view.activity.ReadStoryActivity">
         </activity>
-        <activity android:name=".view.activity.CreateStoriesActivity">
+        <activity android:name=".view.activity.CreateStoryActivity">
         </activity>
         <activity android:name=".view.activity.EditProfileActivity">
         </activity>
         <activity android:name=".view.activity.UserActivity">
         </activity>
         <activity android:name=".view.activity.ViewProfileActivity"/>
-
         <activity android:name=".view.activity.OfflineToolActivity">
         </activity>
         <activity android:name=".view.activity.InterestActivity">
@@ -47,6 +48,7 @@
         </activity>
         <activity android:name=".view.activity.SpecialGraphMenuActivity">
         </activity>
+
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>

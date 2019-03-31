@@ -9,19 +9,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentClapsBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.ClapsFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ClapsViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.ViewProfileActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.ClapsFragmentViewModel
 
 class ClapsFragment : Fragment(), RecyclerViewLoadmoreAdapter.OnScrollListener, GetMultipleStories {
-    private lateinit var mBinding: FragmentClapsBinding
-    private lateinit var activityViewModel: ViewProfileViewModel
-    private lateinit var mViewModel: ClapsViewModel
+    private lateinit var mBinding: ClapsFragmentBinding
+    private lateinit var activityViewModel: ViewProfileActivityViewModel
+    private lateinit var mViewModel: ClapsFragmentViewModel
 
     private lateinit var mAdapter: PostRecyclerViewAdapter
 

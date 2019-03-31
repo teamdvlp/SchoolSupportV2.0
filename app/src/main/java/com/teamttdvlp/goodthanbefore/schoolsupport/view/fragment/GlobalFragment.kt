@@ -13,27 +13,27 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentGlobalBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.GlobalFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoriesActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoryActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SearchBarActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.UserActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.GlobalViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.MainActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.GlobalFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_global.*
 
 class GlobalFragment : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListener {
 
-    private lateinit var mBinding: FragmentGlobalBinding
+    private lateinit var mBinding: GlobalFragmentBinding
 
-    private lateinit var mViewMode: GlobalViewModel
+    private lateinit var mViewMode: GlobalFragmentViewModel
     private lateinit var adapter: PostRecyclerViewAdapter
-    private lateinit var activityModel: MainViewModel
+    private lateinit var activityModel: MainActivityViewModel
     private var isLoading = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -103,7 +103,7 @@ class GlobalFragment : Fragment(), RecyclerViewLoadmoreAdapter.OnItemClickListen
 
     override fun onClicked(position: Int) {
         val storyClicked: Stories = mViewMode.storyData[position]
-        val intent = Intent(activity, ReadStoriesActivity::class.java)
+        val intent = Intent(activity, ReadStoryActivity::class.java)
         intent.putExtra("Story", storyClicked)
         startActivity(intent)
     }

@@ -14,7 +14,7 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SetUserInte
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.InterestRecylerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.InterestViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.InterestActivityViewModel
 import kotlinx.android.synthetic.main.activity_interest.*
 import java.lang.Exception
 
@@ -23,7 +23,7 @@ class InterestActivity : AppCompatActivity(), SetUserInterestEvent {
 
     lateinit var rcv_interest_adapter : InterestRecylerViewAdapter
 
-    lateinit var mViewModel : InterestViewModel
+    lateinit var mViewModel : InterestActivityViewModel
 
     var interestList = ArrayList<Interest>()
 

@@ -1,9 +1,7 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
 import android.app.Activity
-import android.content.ContentProvider
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -13,21 +11,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.google.zxing.common.StringUtils
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentWriteStoryBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.WriteStoryFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoryViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.WriteStoryFragmentViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 
 class WriteStoryFragment : Fragment(), UploadAvatarEvent {
 
-    private lateinit var mBinding : FragmentWriteStoryBinding
-    private lateinit var mViewModel : WriteStoryViewModel
+    private lateinit var mBinding : WriteStoryFragmentBinding
+    private lateinit var mViewModel : WriteStoryFragmentViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewModel = getViewModel()

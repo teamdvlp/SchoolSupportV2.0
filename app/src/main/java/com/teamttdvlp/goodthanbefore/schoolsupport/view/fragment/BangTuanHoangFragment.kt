@@ -2,30 +2,28 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.retroschoolsupporttoolmodule.BangTuanHoangGridviewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentBangTuanHoangBinding
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.BangTuanHoangFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.chemicalelement.IChemicalElement
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalelement.ChemicalElement
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BangTuanHoanViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.FrmtBangTuanHoanViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.BangTuanHoanActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.BangTuanHoanFragmentViewModel
 
 
 class BangTuanHoangFragment : Fragment() {
 
-    lateinit var mBd : FragmentBangTuanHoangBinding
-    lateinit var mViewModel : FrmtBangTuanHoanViewModel
+    lateinit var mBd : BangTuanHoangFragmentBinding
+    lateinit var mViewModel : BangTuanHoanFragmentViewModel
     lateinit var gridAdapter: BangTuanHoangGridviewAdapter
     var gridBthList : ArrayList<IChemicalElement>? = null
 
@@ -44,7 +42,7 @@ class BangTuanHoangFragment : Fragment() {
     }
 
     private fun addControls() {
-        mViewModel = ViewModelProviders.of(this).get(FrmtBangTuanHoanViewModel::class.java)
+        mViewModel = getViewModel()
         gridBthList = mViewModel.spawnData()
         sendDataToActivity(gridBthList!!)
 
@@ -68,7 +66,7 @@ class BangTuanHoangFragment : Fragment() {
         for (e in source) {
             if (e is ChemicalElement) data.add(e)
         }
-        var activityViewModel = ViewModelProviders.of(activity!!).get(BangTuanHoanViewModel::class.java)
+        var activityViewModel:BangTuanHoanActivityViewModel = getViewModel()
         activityViewModel.searchCEListData.value = data
     }
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragment.ToolFragment">
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.ToolFragmentBinding"></data>
+<LinearLayout
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:orientation="vertical"
-             tools:context=".view.fragment.FragmentGlobal">
+             android:orientation="vertical">
     <TextView
             android:textSize="20sp"
             android:text="Tools"
@@ -125,3 +126,5 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    </layout>

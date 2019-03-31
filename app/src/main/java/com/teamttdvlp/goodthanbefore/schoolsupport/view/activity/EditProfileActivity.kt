@@ -3,7 +3,6 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.EditProfileViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_edit_profile.*
@@ -14,18 +13,20 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.EditProfileActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UpdateInfoEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.UploadAvatarEvent
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.EditProfileActivityViewModel
 
 
 class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
 
-    lateinit var mViewModel : EditProfileViewModel
-
+    private lateinit var mViewModel : EditProfileActivityViewModel
+    private lateinit var mBinding : EditProfileActivityBinding
     lateinit var currentUser : User
 
     var currentAvatar : Bitmap? = null
@@ -33,6 +34,7 @@ class EditProfileActivity : AppCompatActivity(), UpdateInfoEvent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile)
         currentUser = CurrentUser.currentUser!!
         currentAvatar = CurrentUser.bitmapUserAvatar
         if (currentAvatar != null) img_avatar.setImageBitmap(currentAvatar)

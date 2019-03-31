@@ -10,25 +10,25 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSearchByStoriesBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SearchByStoryFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoriesActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoryActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SearchViewModel
-import kotlinx.android.synthetic.main.fragment_search_by_stories.*
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.SearchActivityViewModel
+import kotlinx.android.synthetic.main.fragment_search_by_story.*
 
 class  SearchByStoriesFragment : androidx.fragment.app.Fragment() {
 
-    lateinit var mBinding : FragmentSearchByStoriesBinding
+    lateinit var mBinding : SearchByStoryFragmentBinding
 
-    lateinit var activityViewModel : SearchViewModel
+    lateinit var activityViewModel : SearchActivityViewModel
 
     lateinit var rcvSearchAdapter : PostRecyclerViewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_by_stories, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_by_story, container, false)
         return mBinding.root
     }
 
@@ -52,7 +52,7 @@ class  SearchByStoriesFragment : androidx.fragment.app.Fragment() {
     private fun addEvents() {
         rcvSearchAdapter.addOnItemClickedListener(object : RecyclerViewLoadmoreAdapter.OnItemClickListener {
             override fun onClicked(position: Int) {
-                var i : Intent = Intent(activity, ReadStoriesActivity::class.java)
+                var i : Intent = Intent(activity, ReadStoryActivity::class.java)
                 i.putExtra("Story",activityViewModel.resultStories.value!![position])
                 startActivity(i)
             }

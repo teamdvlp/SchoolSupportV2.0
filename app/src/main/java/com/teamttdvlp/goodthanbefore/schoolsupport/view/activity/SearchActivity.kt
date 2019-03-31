@@ -3,7 +3,6 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.activity
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,25 +10,21 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.SearchStoriesEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.SearchDirectoryViewPagerAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SearchViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.SearchActivityViewModel
 import kotlinx.android.synthetic.main.activity_search.*
-import org.w3c.dom.Text
 import java.lang.Exception
-import kotlin.math.log
 
 class SearchActivity : AppCompatActivity(), SearchStoriesEvent {
 
-
     lateinit var adapter : SearchDirectoryViewPagerAdapter
 
-    lateinit var mViewModel : SearchViewModel
+    lateinit var mViewModel : SearchActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

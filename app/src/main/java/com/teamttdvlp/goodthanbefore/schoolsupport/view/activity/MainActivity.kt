@@ -8,13 +8,13 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
 
     lateinit var mainNavHost : NavController
-    lateinit var mViewModel : MainViewModel
+    lateinit var mViewModel : MainActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         rbtn_tool.setOnCheckedChangeListener (this)
         rbtn_bookmarks.setOnCheckedChangeListener (this)
         rbtn_new_stories.setOnClickListener {
-            startActivity(Intent(this, CreateStoriesActivity::class.java))
+            startActivity(Intent(this, CreateStoryActivity::class.java))
         }
     }
 

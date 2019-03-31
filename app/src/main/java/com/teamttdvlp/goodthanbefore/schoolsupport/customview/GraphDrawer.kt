@@ -131,7 +131,7 @@ class GraphDrawer : View {
         }
 
         fun drawAxis () {
-            canvas!!.drawLine((width/2).toFloat(), 0f, (width/2).toFloat(), height.toFloat(), axis_paint)
+            canvas.drawLine((width/2).toFloat(), 0f, (width/2).toFloat(), height.toFloat(), axis_paint)
 
             canvas.drawLine(0f, (height/2).toFloat(), width.toFloat(), (height/2).toFloat(), axis_paint)
 

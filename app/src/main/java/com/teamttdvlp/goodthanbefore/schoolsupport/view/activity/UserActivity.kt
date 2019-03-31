@@ -6,15 +6,15 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityUserBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.UserActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.UserViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.UserActivityViewModel
 import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity() {
-    private lateinit var mBinding : ActivityUserBinding
-    private lateinit var mViewModel:UserViewModel
+    private lateinit var mBinding : UserActivityBinding
+    private lateinit var mViewModel: UserActivityViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)

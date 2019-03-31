@@ -2,40 +2,33 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.DialogSubmitStoryLayoutBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SubmitStoryFragmentBinding
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.PostNewStoryEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.notifiChanged
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.SubmitStoryViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.WriteStoriesViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.SubmitStoryFragmentViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import java.lang.Exception
 
 class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
     private var mStory : Stories = Stories()
-    private lateinit var mBinding : DialogSubmitStoryLayoutBinding
-    private lateinit var mViewModel : SubmitStoryViewModel
-    private lateinit var activittViewModel : WriteStoriesViewModel
+    private lateinit var mBinding : SubmitStoryFragmentBinding
+    private lateinit var mViewModel : SubmitStoryFragmentViewModel
 
     companion object {
         fun newInstance (date:String, author:String) : SubmitStoryFragment {
@@ -48,10 +41,9 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_submit_story_layout, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_submit_story, container, false)
         mBinding.lifecycleOwner = this
         mViewModel = getViewModel()
-        activittViewModel = getViewModel()
         Log.d("accc", "chayroido")
         mBinding.mVieModel = mViewModel
         mBinding.txtDate.text = mViewModel.getCurrentDate()
@@ -76,7 +68,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
     private fun addControls() {
         val topicAdapter = ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_item, listTopic)
         topicAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
-        mBinding.spnTopic.adapter = topicAdapter
+//        mBinding.spnTopic.adapter = topicAdapter
     }
 
     private fun addEvents() {
@@ -105,7 +97,6 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
             mViewModel.postStory(this, bitmap)
             showProgressbar(true)
         }}
-
     }
 
     private fun checkData() : Boolean {
@@ -119,9 +110,9 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
         if (data.Topic.isEmpty()) {
             return false
         }
-        if (mBinding.imgAvatar.drawable== null) {
-            return false
-        }
+//        if (mBinding.imgAvatar.drawable== null) {
+//            return false
+//        }
         return true
     }
 
@@ -133,7 +124,7 @@ class SubmitStoryFragment : Fragment(), PostNewStoryEvent {
             if (resultCode == Activity.RESULT_OK) {
                 val resultUri = result.uri
                 Log.d("avatarURi", result.toString())
-                mBinding.imgAvatar.setImageURI(resultUri)
+//                mBinding.imgAvatar.setImageURI(resultUri)
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 val error = result.error
                 Log.e("loiroine ", "EditProfileActivity.kt \n onActivityResult \n $error")

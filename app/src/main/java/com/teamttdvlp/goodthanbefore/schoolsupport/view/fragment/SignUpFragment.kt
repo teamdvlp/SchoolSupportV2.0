@@ -11,19 +11,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SignUpFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.users.User
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.LoginEvent
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.logError
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.InterestActivity
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.LoginActivityViewModel
 import java.lang.Exception
 
 class SignUpFragment : Fragment(), LoginEvent {
 
-    private lateinit var mBind : com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentSignUpBinding
-    private lateinit var activityModel : LoginViewModel
+    private lateinit var mBind : SignUpFragmentBinding
+    private lateinit var activityModel : LoginActivityViewModel
 
     private var isEmailValid = false
     private var isPasswordValid = true

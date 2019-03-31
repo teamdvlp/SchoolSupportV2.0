@@ -11,24 +11,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentBookmarkBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.BookMarkFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoriesActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.ReadStoryActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.BookmarkViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.MainActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.BookmarkFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 
 
 class BookmarksFragment : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
 
     private lateinit var mAdapter : PostRecyclerViewAdapter
-    private lateinit var mViewModel : BookmarkViewModel
-    private lateinit var mBinding : FragmentBookmarkBinding
-    private lateinit var activityViewModel: MainViewModel
+    private lateinit var mViewModel : BookmarkFragmentViewModel
+    private lateinit var mBinding : BookMarkFragmentBinding
+    private lateinit var activityViewModel: MainActivityViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_bookmark, container, false)
         activityViewModel = activity!!.getViewModel()
@@ -49,7 +49,7 @@ class BookmarksFragment : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAd
     private fun addEvents() {
         mAdapter.addOnItemClickedListener(object : RecyclerViewLoadmoreAdapter.OnItemClickListener {
             override fun onClicked(position: Int) {
-                var i : Intent = Intent(activity, ReadStoriesActivity::class.java)
+                var i : Intent = Intent(activity, ReadStoryActivity::class.java)
                 i.putExtra("Story", mViewModel.storyData[position])
                 startActivity(i)
             }

@@ -6,7 +6,7 @@
             app:startDestination="@id/bth_nav_fragment_bth">
 
     <fragment android:id="@+id/bth_nav_fragment_bth"
-              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.FragmentBangTuanHoang"
+              android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.BangTuanHoangFragment"
               android:label="FragmentNewStories"
               tools:layout="@layout/fragment_bang_tuan_hoang">
         <action android:id="@+id/action_bth_nav_fragment_bth_to_watch_ceinfo_fragment"
@@ -17,7 +17,7 @@
     <fragment android:id="@+id/bth_nav_fragment_watch_ceinfo"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.WatchCEInfoFragment"
               android:label="ChemicalElementInfo"
-              tools:layout="@layout/fragment_watch_ceinfo">
+              tools:layout="@layout/fragment_watch_ce_info">
         <action android:id="@+id/action_bth_nav_fragment_watch_ceinfo_to_bth_nav_fragment_bth"
                 app:destination="@id/bth_nav_fragment_bth" app:enterAnim="@anim/move_right"
                 app:exitAnim="@anim/move_right" app:popEnterAnim="@anim/move_right" app:popExitAnim="@anim/move_right"/>

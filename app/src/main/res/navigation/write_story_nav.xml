@@ -11,5 +11,5 @@
     <fragment android:id="@+id/SubmitFragment"
               android:name="com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.SubmitStoryFragment"
               android:label="FragmentSubmit"
-              tools:layout="@layout/dialog_submit_story_layout"/>
+              tools:layout="@layout/fragment_submit_story"/>
 </navigation>

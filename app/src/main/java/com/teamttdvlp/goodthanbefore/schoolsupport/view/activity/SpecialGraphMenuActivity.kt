@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.GraphInfo
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphInfo
 import kotlinx.android.synthetic.main.activity_special_graph_menu.*
 
 class SpecialGraphMenuActivity : AppCompatActivity() {
@@ -112,7 +112,14 @@ class SpecialGraphMenuActivity : AppCompatActivity() {
             Log.e("GRAPH TYPE WHEN PROCESS", graph_type.toString())
             var startX = special_graph_edt_startX.text.toString().toFloat()
             var endX = special_graph_edt_endX.text.toString().toFloat()
-            var graph = GraphInfo(startX, endX, Color.BLUE, "", graph_info, graph_type)
+            var graph = GraphInfo(
+                startX,
+                endX,
+                Color.BLUE,
+                "",
+                graph_info,
+                graph_type
+            )
 
             intent.putExtra(GRAPH_INFO, graph)
             startActivity(intent)

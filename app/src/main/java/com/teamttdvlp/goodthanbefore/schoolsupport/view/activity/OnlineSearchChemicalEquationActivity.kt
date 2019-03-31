@@ -9,17 +9,15 @@ import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalequation.ChemicalEquation
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.functions.OnReachASearch
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.functions.OnlineSearchChemEquaManager
+import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.removeAllSpace
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.RecyclerViewSearchCEqAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.OnlineSearchChemicalEquationViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.OnlineSearchChemicalEquationActivityViewModel
 import kotlinx.android.synthetic.main.activity_online_search_chemical_equation.*
-import kotlinx.android.synthetic.main.activity_view_profile.view.*
 
 /**
  * @see OnlineSearchChemicalEquationDataGetter
@@ -34,7 +32,7 @@ class OnlineSearchChemicalEquationActivity : AppCompatActivity() {
 
     lateinit var onl_sch_chem_list_adapter : RecyclerViewSearchCEqAdapter
 
-    lateinit var viewModel : OnlineSearchChemicalEquationViewModel
+    lateinit var viewModel : OnlineSearchChemicalEquationActivityViewModel
 
     lateinit var keyboardManager : InputMethodManager
 
@@ -117,7 +115,7 @@ class OnlineSearchChemicalEquationActivity : AppCompatActivity() {
     }
 
     fun initViewModel () {
-        viewModel = ViewModelProviders.of(this).get(OnlineSearchChemicalEquationViewModel::class.java)
+        viewModel = getViewModel()
 
     }
 

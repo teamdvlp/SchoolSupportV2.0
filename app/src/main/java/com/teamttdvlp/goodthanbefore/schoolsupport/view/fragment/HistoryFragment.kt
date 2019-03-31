@@ -7,23 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.google.firebase.storage.FirebaseStorage
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.FragmentHistoryBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.HistoryFragmentBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.interfaces.view.RecyclerViewLoadmoreAdapter
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.stories.Stories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.dataclass.GetMultipleStories
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.PostRecyclerViewAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.HistoryViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.ViewProfileActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.HistoryFragmentViewModel
 
 class HistoryFragment : Fragment(), GetMultipleStories, RecyclerViewLoadmoreAdapter.OnScrollListener {
 
-    private lateinit var mBinding:FragmentHistoryBinding
-    private lateinit var activityViewModel:ViewProfileViewModel
-    private lateinit var mViewModel:HistoryViewModel
+    private lateinit var mBinding: HistoryFragmentBinding
+    private lateinit var activityViewModel: ViewProfileActivityViewModel
+    private lateinit var mViewModel: HistoryFragmentViewModel
 
     private lateinit var mAdapter:PostRecyclerViewAdapter
 

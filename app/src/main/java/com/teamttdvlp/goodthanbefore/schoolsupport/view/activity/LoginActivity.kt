@@ -6,17 +6,17 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.LoginActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LoginViewPagerAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.LoginViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityLoginBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.fragment.LoginFragment
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.LoginActivityViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener, LoginFragment.OnButtonsClickListener {
-    private lateinit var mBinding : ActivityLoginBinding
 
-    private lateinit var mViewModel : LoginViewModel
+    private lateinit var mViewModel : LoginActivityViewModel
+    private lateinit var mBinding : LoginActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)

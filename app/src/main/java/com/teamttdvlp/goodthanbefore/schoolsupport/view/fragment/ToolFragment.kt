@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.BangTuanHoanActivity
+import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.BanTuanHoanActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.OnlineSearchChemicalEquationActivity
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMenuActivity
 import kotlinx.android.synthetic.main.fragment_tool.*
@@ -25,7 +25,7 @@ class ToolFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         btn_bangtuanhoan.setOnClickListener {
-            startActivity(Intent(activity!!, BangTuanHoanActivity::class.java))
+            startActivity(Intent(activity!!, BanTuanHoanActivity::class.java))
         }
 
         btn_search_chem_eq.setOnClickListener {

@@ -20,8 +20,8 @@ import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMen
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMenuActivity.Companion.TAM_THUC_BAC_2
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMenuActivity.Companion.TU_THUC_BAC_3
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.LV_Extr_N_Sol_Adapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.GraphDrawerViewModel
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.GraphInfo
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphDrawerActivityViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphInfo
 import kotlinx.android.synthetic.main.activity_graph_drawer.*
 import org.mariuszgromada.math.mxparser.Expression
 import org.mariuszgromada.math.mxparser.Function
@@ -29,7 +29,7 @@ import java.math.BigDecimal
 
 class GraphDrawerActivity : AppCompatActivity() {
 
-    lateinit var viewModel : GraphDrawerViewModel
+    lateinit var viewModel : GraphDrawerActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class GraphDrawerActivity : AppCompatActivity() {
 
     fun setUpViewModel () {
 
-        viewModel = GraphDrawerViewModel(application)
+        viewModel = GraphDrawerActivityViewModel(application)
 
         viewModel.ldt_graph_type.observe(this, object : Observer<GraphInfo> {
             override fun onChanged(gr: GraphInfo?) {

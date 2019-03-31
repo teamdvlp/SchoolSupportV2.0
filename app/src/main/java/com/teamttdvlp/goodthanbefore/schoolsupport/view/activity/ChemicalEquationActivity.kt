@@ -5,7 +5,7 @@ import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityChemicalEquationBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.ChemicalEquationActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalequation.ChemicalEquation
 import kotlinx.android.synthetic.main.activity_chemical_equation.*
 
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_chemical_equation.*
  */
 class ChemicalEquationActivity : AppCompatActivity() {
 
-    lateinit var mBinding : ActivityChemicalEquationBinding
+    lateinit var mBinding : ChemicalEquationActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

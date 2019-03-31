@@ -8,16 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import com.squareup.picasso.Picasso
 import com.teamttdvlp.goodthanbefore.schoolsupport.R
-import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ActivityViewProfileBinding
+import com.teamttdvlp.goodthanbefore.schoolsupport.databinding.ViewProfileActivityBinding
 import com.teamttdvlp.goodthanbefore.schoolsupport.model.CurrentUser
 import com.teamttdvlp.goodthanbefore.schoolsupport.support.getViewModel
 import com.teamttdvlp.goodthanbefore.schoolsupport.view.adapter.UserProfilePagerAdapter
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.ViewProfileViewModel
+import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.ViewProfileActivityViewModel
 import kotlinx.android.synthetic.main.activity_view_profile.*
 
 class ViewProfileActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
-    private lateinit var mBinding:ActivityViewProfileBinding
-    private lateinit var mViewModel : ViewProfileViewModel
+    private lateinit var mBinding: ViewProfileActivityBinding
+    private lateinit var mViewModel : ViewProfileActivityViewModel
     private lateinit var mAdapter : UserProfilePagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

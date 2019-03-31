@@ -3,8 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable name="mViewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.MainViewModel"/>
+    <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.MainActivityBinding">
+        <variable name="mViewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.MainActivityViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
