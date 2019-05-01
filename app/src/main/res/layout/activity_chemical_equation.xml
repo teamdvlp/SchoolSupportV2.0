@@ -13,7 +13,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.activity.ChemicalEquationActivity"
+            tools:context=".presenter.view.activity.ChemicalEquationActivity"
             tools:layout_editor_absoluteY="25dp">
 
 

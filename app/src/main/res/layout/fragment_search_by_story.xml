@@ -3,12 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SearchByStoryFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.SearchByStoriesFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.SearchByStoriesFragmentViewModel"/>
     </data>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.fragment.FragmentSearchByStories">
+            tools:context=".presenter.view.fragment.FragmentSearchByStories">
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lv_search"

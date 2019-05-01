@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.MainActivityBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.MainActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.MainActivityViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/radioGroup">
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.RadioButton
                 android:id="@+id/rbtn_global"
                 android:layout_marginRight="55dp"
                 app:checked_bg="@drawable/rbtn_global_clicked"
@@ -29,7 +29,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.RadioButton
                 android:id="@+id/rbtn_local"
                 android:visibility="gone"
                 android:layout_marginRight="55dp"
@@ -39,7 +39,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.RadioButton
                 android:id="@+id/rbtn_new_stories"
                 android:layout_marginRight="55dp"
                 app:checked_bg="@drawable/btn_new_stories_clicked"
@@ -48,7 +48,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.RadioButton
                 android:id="@+id/rbtn_tool"
                 android:layout_marginRight="55dp"
                 app:checked_bg="@drawable/rbtn_tool_tab"
@@ -57,7 +57,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"/>
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.RadioButton
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.RadioButton
                 android:id="@+id/rbtn_bookmarks"
                 app:checked_bg="@drawable/rbtn_bookmark_tab_clicked"
                 app:unchecked_bg="@drawable/rbtn_bookmark_tab"

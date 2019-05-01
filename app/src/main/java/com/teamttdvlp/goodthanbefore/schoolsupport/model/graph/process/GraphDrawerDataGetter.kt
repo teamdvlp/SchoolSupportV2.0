@@ -1,8 +1,8 @@
 package com.teamttdvlp.goodthanbefore.schoolsupport.model.graph.process
 
 import android.app.Activity
-import com.teamttdvlp.goodthanbefore.schoolsupport.view.activity.SpecialGraphMenuActivity.Companion.GRAPH_INFO
-import com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphInfo
+import com.teamttdvlp.goodthanbefore.schoolsupport.presenter.view.activity.SpecialGraphMenuActivity.Companion.GRAPH_INFO
+import com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.GraphInfo
 
 /**
  * @see phamf.com.chemicalapp.ViewModel.MVVM_GraphDrawerActivityPresenter

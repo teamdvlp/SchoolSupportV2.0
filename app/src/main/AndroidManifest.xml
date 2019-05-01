@@ -13,40 +13,42 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.RxKotlin">
+        <activity android:name=".presenter.view.activity.LoginActivity">
         </activity>
-        <activity android:name=".view.activity.SearchChemicalEquationActivity">
+        <activity android:name=".presenter.view.activity.RxKotlin">
         </activity>
-        <activity android:name=".view.activity.BanTuanHoanActivity">
+        <activity android:name=".presenter.view.activity.SearchChemicalEquationActivity">
         </activity>
-        <activity android:name=".view.activity.ReadStoryActivity">
+        <activity android:name=".presenter.view.activity.BanTuanHoanActivity">
         </activity>
-        <activity android:name=".view.activity.CreateStoryActivity">
+        <activity android:name=".presenter.view.activity.ReadStoryActivity">
         </activity>
-        <activity android:name=".view.activity.EditProfileActivity">
+        <activity android:name=".presenter.view.activity.CreateStoryActivity">
         </activity>
-        <activity android:name=".view.activity.UserActivity">
+        <activity android:name=".presenter.view.activity.EditProfileActivity">
         </activity>
-        <activity android:name=".view.activity.ViewProfileActivity"/>
-        <activity android:name=".view.activity.OfflineToolActivity">
+        <activity android:name=".presenter.view.activity.UserActivity">
         </activity>
-        <activity android:name=".view.activity.InterestActivity">
+        <activity android:name=".presenter.view.activity.ViewProfileActivity"/>
+        <activity android:name=".presenter.view.activity.OfflineToolActivity">
         </activity>
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".presenter.view.activity.InterestActivity">
         </activity>
-        <activity android:name=".view.activity.SearchBarActivity">
+        <activity android:name=".presenter.view.activity.MainActivity">
         </activity>
-        <activity android:name=".view.activity.SearchActivity">
+        <activity android:name=".presenter.view.activity.SearchBarActivity">
         </activity>
-        <activity android:name=".view.activity.SearchResultActivity">
+        <activity android:name=".presenter.view.activity.SearchActivity">
         </activity>
-        <activity android:name=".view.activity.OnlineSearchChemicalEquationActivity">
+        <activity android:name=".presenter.view.activity.SearchResultActivity">
         </activity>
-        <activity android:name=".view.activity.ChemicalEquationActivity">
+        <activity android:name=".presenter.view.activity.OnlineSearchChemicalEquationActivity">
         </activity>
-        <activity android:name=".view.activity.GraphDrawerActivity">
+        <activity android:name=".presenter.view.activity.ChemicalEquationActivity">
         </activity>
-        <activity android:name=".view.activity.SpecialGraphMenuActivity">
+        <activity android:name=".presenter.view.activity.GraphDrawerActivity">
+        </activity>
+        <activity android:name=".presenter.view.activity.SpecialGraphMenuActivity">
         </activity>
 
         <meta-data
@@ -69,7 +71,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.LoginActivity">
+        <activity android:name=".presenter.view.activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
 >
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SpecialGraphMenuActvityBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.SpecialGraphMenuActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.SpecialGraphMenuActivityViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
                                                    android:layout_width="match_parent"

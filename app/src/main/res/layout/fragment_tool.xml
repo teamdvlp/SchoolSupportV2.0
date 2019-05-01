@@ -2,9 +2,9 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".view.fragment.ToolFragment">
+        tools:context=".presenter.view.fragment.ToolFragment">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.ToolFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.OfflineToolFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.OfflineToolFragmentViewModel"/>
     </data>
 <LinearLayout
              android:layout_width="match_parent"

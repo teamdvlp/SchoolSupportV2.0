@@ -2,9 +2,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".view.activity.SearchActivity">
+        tools:context=".presenter.view.activity.SearchActivity">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.SearchBarActivityBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.SearchBarActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.SearchBarActivityViewModel"/>
     </data>
 <LinearLayout
         android:gravity="end"

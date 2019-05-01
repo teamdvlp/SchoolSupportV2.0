@@ -47,7 +47,7 @@
                   app:layout_constraintEnd_toStartOf="@+id/rbtn_is_selected"
                   app:layout_constraintHorizontal_bias="0.0"
                   app:layout_constraintTop_toBottomOf="@+id/txt_interest_name"/>
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.CheckBox
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.CheckBox
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:button="@null"

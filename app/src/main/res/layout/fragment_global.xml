@@ -4,12 +4,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.GlobalFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.GlobalFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.GlobalFragmentViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".view.fragment.FragmentGlobal">
+            tools:context=".presenter.view.fragment.FragmentGlobal">
 
 
         <ImageButton

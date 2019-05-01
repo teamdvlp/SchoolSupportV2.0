@@ -92,7 +92,7 @@
                 android:id="@+id/img_avatar"
                 android:layout_marginTop="36dp" app:layout_constraintTop_toTopOf="parent"/>
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.CheckBox
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.CheckBox
                 android:layout_width="20dp"
                 android:layout_height="21dp"
                 app:checked_background="@drawable/rbtn_bookmark_story_clicked"

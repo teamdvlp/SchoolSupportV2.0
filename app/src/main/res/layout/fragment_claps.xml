@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.ClapsFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.ClapsFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.ClapsFragmentViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

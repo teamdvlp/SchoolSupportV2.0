@@ -2,9 +2,9 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android"
          xmlns:app="http://schemas.android.com/apk/res-auto"
          xmlns:tools="http://schemas.android.com/tools"
-         tools:context=".view.activity.OnlineSearchChemicalEquationActivity">
+         tools:context=".presenter.view.activity.OnlineSearchChemicalEquationActivity">
     <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.OnlineSearchChemicalEquationActivityBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.OnlineSearchChemicalEquationActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.OnlineSearchChemicalEquationActivityViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                 android:textSize="15sp"/>
 
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.VirtualKeyBoardSensor
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.VirtualKeyBoardSensor
                 android:id="@+id/onl_sch_eq_edt_result_chems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                 android:textSize="15sp"/>
 
 
-        <com.teamttdvlp.goodthanbefore.schoolsupport.customview.VirtualKeyBoardSensor
+        <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.VirtualKeyBoardSensor
                 android:id="@+id/onl_sch_eq_edt_adding_chems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

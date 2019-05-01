@@ -2,9 +2,9 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".view.fragment.FragmentBookmark">
+        tools:context=".presenter.view.fragment.FragmentBookmark">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.BookMarkFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.BookmarkFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.BookmarkFragmentViewModel"/>
     </data>
 <LinearLayout
         android:orientation="vertical"

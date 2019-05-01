@@ -3,17 +3,17 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".view.activity.GraphDrawerActivity"
+        tools:context=".presenter.view.activity.GraphDrawerActivity"
 >
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.GraphDrawerActivityBinding" >
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.GraphDrawerActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.GraphDrawerActivityViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    >
 
-    <com.teamttdvlp.goodthanbefore.schoolsupport.customview.GraphDrawer
+    <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.GraphDrawer
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <com.teamttdvlp.goodthanbefore.schoolsupport.customview.ExtremeAndSolutionDrawer
+    <com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.customview.ExtremeAndSolutionDrawer
         android:id="@+id/graph_extreme_n_solution"
         android:layout_width="match_parent"
         android:layout_height="0dp"

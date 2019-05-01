@@ -4,13 +4,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data class="com.teamttdvlp.goodthanbefore.schoolsupport.databinding.activity.UserActivityBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.activity.UserActivityViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.activity.UserActivityViewModel"/>
     </data>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".view.activity.UserActivity"
+            tools:context=".presenter.view.activity.UserActivity"
             android:background="#F6F5F5">
         <TextView
                 android:text="You"

@@ -2,9 +2,9 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".view.fragment.SearchByTagsFragment">
+        tools:context=".presenter.view.fragment.SearchByTagsFragment">
     <data class = "com.teamttdvlp.goodthanbefore.schoolsupport.databinding.fragment.SearchByTagsFragmentBinding">
-        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.viewmodel.fragment.SearchByTagsFragmentViewModel"/>
+        <variable name="viewModel" type="com.teamttdvlp.goodthanbefore.schoolsupport.presenter.viewmodel.fragment.SearchByTagsFragmentViewModel"/>
     </data>
 
 <FrameLayout

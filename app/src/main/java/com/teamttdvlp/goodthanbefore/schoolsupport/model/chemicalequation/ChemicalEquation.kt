@@ -2,7 +2,7 @@ package com.teamttdvlp.goodthanbefore.schoolsupport.model.chemicalequation
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.teamttdvlp.goodthanbefore.schoolsupport.support.HtmlContentGetter
+import com.teamttdvlp.goodthanbefore.schoolsupport.otherstuff.support.HtmlContentGetter
 
 class ChemicalEquation (
     var id : Int = 0,
